@@ -16,6 +16,9 @@
       --gold-dark: #a08540;
       --white: #ffffff;
       --glass: rgba(10, 61, 46, 0.4);
+      --success: #2ecc71;
+      --warning: #f39c12;
+      --danger: #e74c3c;
     }
 
     * {
@@ -82,6 +85,18 @@
     @keyframes heartBeat {
       0%, 100% { transform: scale(1); }
       50% { transform: scale(1.2); }
+    }
+
+    @keyframes bellRing {
+      0%, 100% { transform: rotate(0deg); }
+      10%, 30%, 50% { transform: rotate(15deg); }
+      20%, 40% { transform: rotate(-15deg); }
+      60% { transform: rotate(0deg); }
+    }
+
+    @keyframes bellPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.15); }
     }
 
     /* My Schedule FAB */
@@ -163,7 +178,13 @@
     }
     .panel-header h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--gold); }
 
-    .panel-close {
+    .panel-header-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .panel-close, .notification-settings-btn {
       background: rgba(255,255,255,0.1);
       border: none;
       border-radius: 50%;
@@ -175,8 +196,13 @@
       cursor: pointer;
       transition: all 0.3s ease;
     }
-    .panel-close:hover { background: rgba(201, 169, 98, 0.2); }
-    .panel-close svg { width: 20px; height: 20px; stroke: var(--white); }
+    .panel-close:hover, .notification-settings-btn:hover { background: rgba(201, 169, 98, 0.2); }
+    .panel-close svg, .notification-settings-btn svg { width: 20px; height: 20px; stroke: var(--white); fill: none; }
+
+    .notification-settings-btn.has-notifications svg {
+      stroke: var(--gold);
+      animation: bellPulse 2s ease-in-out infinite;
+    }
 
     .panel-tabs {
       display: flex;
@@ -210,6 +236,73 @@
     .panel-section { display: none; }
     .panel-section.active { display: block; }
 
+    /* Notification Banner */
+    .notification-banner {
+      background: linear-gradient(135deg, rgba(201, 169, 98, 0.15), rgba(201, 169, 98, 0.05));
+      border: 1px solid rgba(201, 169, 98, 0.3);
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .notification-banner.granted {
+      background: linear-gradient(135deg, rgba(46, 204, 113, 0.15), rgba(46, 204, 113, 0.05));
+      border-color: rgba(46, 204, 113, 0.3);
+    }
+
+    .notification-banner.denied {
+      background: linear-gradient(135deg, rgba(231, 76, 60, 0.15), rgba(231, 76, 60, 0.05));
+      border-color: rgba(231, 76, 60, 0.3);
+    }
+
+    .notification-banner svg {
+      width: 24px;
+      height: 24px;
+      flex-shrink: 0;
+    }
+
+    .notification-banner.granted svg { stroke: var(--success); }
+    .notification-banner.denied svg { stroke: var(--danger); }
+    .notification-banner:not(.granted):not(.denied) svg { stroke: var(--gold); }
+
+    .notification-banner-content {
+      flex: 1;
+    }
+
+    .notification-banner-title {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 2px;
+    }
+
+    .notification-banner-text {
+      font-size: 0.75rem;
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    .notification-banner-btn {
+      background: var(--gold);
+      border: none;
+      border-radius: 8px;
+      padding: 8px 16px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--emerald-darkest);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      white-space: nowrap;
+    }
+
+    .notification-banner-btn:hover {
+      background: var(--gold-light);
+      transform: translateY(-1px);
+    }
+
+    /* Saved Item */
     .saved-item {
       background: rgba(201, 169, 98, 0.08);
       border: 1px solid rgba(201, 169, 98, 0.15);
@@ -222,14 +315,22 @@
     .saved-item:hover { border-color: rgba(201, 169, 98, 0.3); }
     .saved-item .item-day { font-size: 0.7rem; color: var(--gold); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
     .saved-item .item-time { font-size: 0.8rem; color: rgba(255,255,255,0.5); margin-bottom: 6px; }
-    .saved-item .item-title { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--white); margin-bottom: 8px; }
+    .saved-item .item-title { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--white); margin-bottom: 8px; padding-right: 40px; }
     .saved-item .item-type { display: inline-block; font-size: 0.7rem; padding: 4px 10px; background: rgba(201, 169, 98, 0.15); color: var(--gold); border-radius: 20px; }
 
-    .saved-item .remove-btn {
+    .saved-item .item-actions {
       position: absolute;
       top: 12px;
       right: 12px;
-      background: rgba(231, 76, 60, 0.2);
+      display: flex;
+      gap: 8px;
+      opacity: 0;
+      transition: all 0.3s ease;
+    }
+    .saved-item:hover .item-actions { opacity: 1; }
+
+    .saved-item .remove-btn, .saved-item .notify-btn {
+      background: rgba(255,255,255,0.1);
       border: none;
       border-radius: 50%;
       width: 28px;
@@ -238,16 +339,404 @@
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      opacity: 0;
       transition: all 0.3s ease;
     }
-    .saved-item:hover .remove-btn { opacity: 1; }
     .saved-item .remove-btn:hover { background: #e74c3c; }
-    .saved-item .remove-btn svg { width: 14px; height: 14px; stroke: var(--white); }
+    .saved-item .notify-btn:hover { background: rgba(201, 169, 98, 0.3); }
+    .saved-item .remove-btn svg, .saved-item .notify-btn svg { width: 14px; height: 14px; stroke: var(--white); fill: none; }
+
+    .saved-item .notify-btn.active {
+      background: var(--gold);
+    }
+    .saved-item .notify-btn.active svg {
+      stroke: var(--emerald-darkest);
+      animation: bellRing 0.5s ease;
+    }
+
+    /* Notification Controls in saved item */
+    .notification-controls {
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid rgba(201, 169, 98, 0.1);
+      display: none;
+    }
+
+    .notification-controls.show {
+      display: block;
+      animation: fadeInUp 0.3s ease;
+    }
+
+    .notification-controls-label {
+      font-size: 0.7rem;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .notification-controls-label svg {
+      width: 12px;
+      height: 12px;
+      stroke: var(--gold);
+    }
+
+    .reminder-options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .reminder-option {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(201, 169, 98, 0.2);
+      border-radius: 20px;
+      padding: 5px 12px;
+      font-size: 0.7rem;
+      color: rgba(255, 255, 255, 0.6);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .reminder-option:hover {
+      border-color: rgba(201, 169, 98, 0.5);
+      color: var(--white);
+    }
+
+    .reminder-option.selected {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: var(--emerald-darkest);
+      font-weight: 500;
+    }
 
     .empty-state { text-align: center; padding: 60px 20px; color: rgba(255,255,255,0.4); }
     .empty-state svg { width: 60px; height: 60px; stroke: rgba(201, 169, 98, 0.3); margin-bottom: 20px; }
     .empty-state p { font-size: 0.9rem; }
+
+    /* Notification Settings Modal */
+    .settings-modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(8px);
+      z-index: 1100;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .settings-modal-overlay.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .settings-modal {
+      background: var(--emerald-dark);
+      border: 1px solid rgba(201, 169, 98, 0.3);
+      border-radius: 20px;
+      width: 100%;
+      max-width: 400px;
+      max-height: 90vh;
+      overflow-y: auto;
+      transform: scale(0.9) translateY(20px);
+      transition: transform 0.3s ease;
+    }
+
+    .settings-modal-overlay.open .settings-modal {
+      transform: scale(1) translateY(0);
+    }
+
+    .settings-modal-header {
+      padding: 24px;
+      border-bottom: 1px solid rgba(201, 169, 98, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .settings-modal-header h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      color: var(--gold);
+    }
+
+    .settings-modal-close {
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .settings-modal-close:hover {
+      background: rgba(201, 169, 98, 0.2);
+    }
+
+    .settings-modal-close svg {
+      width: 18px;
+      height: 18px;
+      stroke: var(--white);
+    }
+
+    .settings-modal-body {
+      padding: 24px;
+    }
+
+    .settings-section {
+      margin-bottom: 24px;
+    }
+
+    .settings-section:last-child {
+      margin-bottom: 0;
+    }
+
+    .settings-section-title {
+      font-size: 0.75rem;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 12px;
+    }
+
+    .settings-option {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 16px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(201, 169, 98, 0.1);
+      border-radius: 10px;
+      margin-bottom: 8px;
+    }
+
+    .settings-option:last-child {
+      margin-bottom: 0;
+    }
+
+    .settings-option-info {
+      flex: 1;
+    }
+
+    .settings-option-label {
+      font-size: 0.9rem;
+      color: var(--white);
+      margin-bottom: 2px;
+    }
+
+    .settings-option-desc {
+      font-size: 0.75rem;
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    /* Toggle Switch */
+    .toggle-switch {
+      position: relative;
+      width: 48px;
+      height: 26px;
+      flex-shrink: 0;
+    }
+
+    .toggle-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .toggle-slider {
+      position: absolute;
+      cursor: pointer;
+      inset: 0;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(201, 169, 98, 0.2);
+      border-radius: 26px;
+      transition: all 0.3s ease;
+    }
+
+    .toggle-slider::before {
+      content: '';
+      position: absolute;
+      height: 20px;
+      width: 20px;
+      left: 2px;
+      bottom: 2px;
+      background: var(--white);
+      border-radius: 50%;
+      transition: all 0.3s ease;
+    }
+
+    .toggle-switch input:checked + .toggle-slider {
+      background: var(--gold);
+      border-color: var(--gold);
+    }
+
+    .toggle-switch input:checked + .toggle-slider::before {
+      transform: translateX(22px);
+      background: var(--emerald-darkest);
+    }
+
+    /* Default Reminder Select */
+    .default-reminder-select {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+    }
+
+    .default-reminder-option {
+      padding: 12px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(201, 169, 98, 0.15);
+      border-radius: 10px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .default-reminder-option:hover {
+      border-color: rgba(201, 169, 98, 0.4);
+    }
+
+    .default-reminder-option.selected {
+      background: rgba(201, 169, 98, 0.15);
+      border-color: var(--gold);
+    }
+
+    .default-reminder-option .time {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 2px;
+    }
+
+    .default-reminder-option.selected .time {
+      color: var(--gold);
+    }
+
+    .default-reminder-option .label {
+      font-size: 0.7rem;
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    /* Permission Status */
+    .permission-status {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 16px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(201, 169, 98, 0.1);
+      border-radius: 10px;
+    }
+
+    .permission-status.granted {
+      border-color: rgba(46, 204, 113, 0.3);
+      background: rgba(46, 204, 113, 0.1);
+    }
+
+    .permission-status.denied {
+      border-color: rgba(231, 76, 60, 0.3);
+      background: rgba(231, 76, 60, 0.1);
+    }
+
+    .permission-status .status-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .permission-status.granted .status-icon {
+      background: rgba(46, 204, 113, 0.2);
+    }
+
+    .permission-status.denied .status-icon {
+      background: rgba(231, 76, 60, 0.2);
+    }
+
+    .permission-status .status-icon svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .permission-status.granted .status-icon svg { stroke: var(--success); }
+    .permission-status.denied .status-icon svg { stroke: var(--danger); }
+    .permission-status:not(.granted):not(.denied) .status-icon svg { stroke: var(--gold); }
+
+    .permission-status .status-info { flex: 1; }
+
+    .permission-status .status-label {
+      font-size: 0.85rem;
+      color: var(--white);
+    }
+
+    .permission-status .status-text {
+      font-size: 0.7rem;
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    .permission-btn {
+      background: var(--gold);
+      border: none;
+      border-radius: 8px;
+      padding: 8px 14px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--emerald-darkest);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .permission-btn:hover {
+      background: var(--gold-light);
+    }
+
+    .permission-btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    /* Test Notification Button */
+    .test-notification-btn {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(135deg, rgba(201, 169, 98, 0.15), rgba(201, 169, 98, 0.05));
+      border: 1px solid rgba(201, 169, 98, 0.3);
+      border-radius: 10px;
+      color: var(--gold);
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .test-notification-btn:hover {
+      background: linear-gradient(135deg, rgba(201, 169, 98, 0.25), rgba(201, 169, 98, 0.1));
+      border-color: var(--gold);
+    }
+
+    .test-notification-btn svg {
+      width: 18px;
+      height: 18px;
+      stroke: var(--gold);
+    }
 
     /* Toast */
     .toast {
@@ -292,6 +781,26 @@
     .bookmark-btn.active { background: var(--gold); border-color: var(--gold); }
     .bookmark-btn.active svg { stroke: var(--emerald-darkest); fill: var(--emerald-darkest); animation: heartBeat 0.4s ease; }
 
+    /* Notification indicator on bookmark */
+    .bookmark-btn .notification-dot {
+      position: absolute;
+      top: -2px;
+      right: -2px;
+      width: 12px;
+      height: 12px;
+      background: var(--success);
+      border: 2px solid var(--emerald-dark);
+      border-radius: 50%;
+      opacity: 0;
+      transform: scale(0);
+      transition: all 0.3s ease;
+    }
+
+    .bookmark-btn.has-notification .notification-dot {
+      opacity: 1;
+      transform: scale(1);
+    }
+
     /* Adjust timeline card for bookmark button */
     .timeline-card { position: relative; }
     .timeline-item:not(.break) .timeline-card { padding-right: 70px; }
@@ -305,6 +814,8 @@
       .timeline-item:not(.break) .timeline-card { padding-right: 20px; }
       .workshop-card { padding-right: 30px; }
       .bookmark-btn { position: relative; top: auto; right: auto; margin-top: 15px; display: inline-flex; }
+      .bookmark-btn .notification-dot { top: -4px; right: -4px; }
+      .saved-item .item-actions { opacity: 1; }
     }
 
     /* Progress Bar */
@@ -1206,6 +1717,10 @@
       .venue-header {
         padding: 40px 25px;
       }
+
+      .default-reminder-select {
+        grid-template-columns: 1fr;
+      }
     }
 
     /* Print */
@@ -1242,12 +1757,20 @@
   <div class="my-schedule-panel" id="schedulePanel">
     <div class="panel-header">
       <h3>My Schedule</h3>
-      <button class="panel-close" onclick="togglePanel()">
-        <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="18" y1="6" x2="6" y2="18"></line>
-          <line x1="6" y1="6" x2="18" y2="18"></line>
-        </svg>
-      </button>
+      <div class="panel-header-actions">
+        <button class="notification-settings-btn" id="notificationSettingsBtn" onclick="openNotificationSettings()" title="Notification Settings">
+          <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+            <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+          </svg>
+        </button>
+        <button class="panel-close" onclick="togglePanel()">
+          <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
     </div>
     <div class="panel-tabs">
       <button class="panel-tab active" onclick="switchPanelTab('sessions')">Sessions</button>
@@ -1255,9 +1778,115 @@
       <button class="panel-tab" onclick="switchPanelTab('speakers')">Speakers</button>
     </div>
     <div class="panel-content">
+      <!-- Notification Banner -->
+      <div class="notification-banner" id="notificationBanner">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+          <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+        </svg>
+        <div class="notification-banner-content">
+          <div class="notification-banner-title">Enable Notifications</div>
+          <div class="notification-banner-text">Get reminded before your sessions start</div>
+        </div>
+        <button class="notification-banner-btn" id="enableNotificationsBtn" onclick="requestNotificationPermission()">Enable</button>
+      </div>
+
       <div class="panel-section active" id="panel-sessions"></div>
       <div class="panel-section" id="panel-workshops"></div>
       <div class="panel-section" id="panel-speakers"></div>
+    </div>
+  </div>
+
+  <!-- Notification Settings Modal -->
+  <div class="settings-modal-overlay" id="settingsModalOverlay" onclick="closeNotificationSettings(event)">
+    <div class="settings-modal" onclick="event.stopPropagation()">
+      <div class="settings-modal-header">
+        <h4>Notification Settings</h4>
+        <button class="settings-modal-close" onclick="closeNotificationSettings()">
+          <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+      <div class="settings-modal-body">
+        <!-- Permission Status -->
+        <div class="settings-section">
+          <div class="settings-section-title">Permission Status</div>
+          <div class="permission-status" id="permissionStatus">
+            <div class="status-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+              </svg>
+            </div>
+            <div class="status-info">
+              <div class="status-label" id="permissionLabel">Checking...</div>
+              <div class="status-text" id="permissionText">Checking notification permission</div>
+            </div>
+            <button class="permission-btn" id="permissionBtn" onclick="requestNotificationPermission()">Enable</button>
+          </div>
+        </div>
+
+        <!-- Global Settings -->
+        <div class="settings-section">
+          <div class="settings-section-title">Preferences</div>
+          <div class="settings-option">
+            <div class="settings-option-info">
+              <div class="settings-option-label">Sound</div>
+              <div class="settings-option-desc">Play sound with notifications</div>
+            </div>
+            <label class="toggle-switch">
+              <input type="checkbox" id="soundToggle" onchange="updateNotificationSettings()">
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+          <div class="settings-option">
+            <div class="settings-option-info">
+              <div class="settings-option-label">Vibration</div>
+              <div class="settings-option-desc">Vibrate on mobile devices</div>
+            </div>
+            <label class="toggle-switch">
+              <input type="checkbox" id="vibrationToggle" onchange="updateNotificationSettings()">
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Default Reminder Time -->
+        <div class="settings-section">
+          <div class="settings-section-title">Default Reminder Time</div>
+          <div class="default-reminder-select" id="defaultReminderSelect">
+            <div class="default-reminder-option" data-value="15" onclick="setDefaultReminder(15)">
+              <div class="time">15 min</div>
+              <div class="label">before</div>
+            </div>
+            <div class="default-reminder-option selected" data-value="30" onclick="setDefaultReminder(30)">
+              <div class="time">30 min</div>
+              <div class="label">before</div>
+            </div>
+            <div class="default-reminder-option" data-value="60" onclick="setDefaultReminder(60)">
+              <div class="time">1 hour</div>
+              <div class="label">before</div>
+            </div>
+            <div class="default-reminder-option" data-value="1440" onclick="setDefaultReminder(1440)">
+              <div class="time">1 day</div>
+              <div class="label">before</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Test Notification -->
+        <div class="settings-section">
+          <button class="test-notification-btn" onclick="sendTestNotification()">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+              <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+            </svg>
+            Send Test Notification
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -1337,36 +1966,6 @@
   </section>
 
   <main>
-
-    <!-- Stats Section -->
-    <section class="stats-section" id="overview">
-      <div class="container">
-        <div class="section-header">
-          <span class="overline">At a Glance</span>
-          <h2>Congress Overview</h2>
-        </div>
-        
-        <div class="stats-grid">
-          <div class="stat-card">
-            <div class="stat-number">2</div>
-            <div class="stat-label">Days</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-number">7</div>
-            <div class="stat-label">Sessions</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-number">5</div>
-            <div class="stat-label">Workshops</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-number">25+</div>
-            <div class="stat-label">Speakers</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- Schedule Section -->
     <section class="schedule-section" id="schedule">
       <div class="container">
@@ -1401,6 +2000,7 @@
               <div class="timeline-card">
                 <button class="bookmark-btn" onclick="toggleBookmark('d1-s1', 'Session 1: Hematopoietic Power', 'Day 1', '8:40 – 10:20', 'session')">
                   <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+                  <span class="notification-dot"></span>
                 </button>
                 <div class="timeline-time">
                   <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1438,6 +2038,7 @@
               <div class="timeline-card">
                 <button class="bookmark-btn" onclick="toggleBookmark('d1-s2', 'Session 2: Mastering Cell Fate', 'Day 1', '11:05 – 11:55', 'session')">
                   <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+                  <span class="notification-dot"></span>
                 </button>
                 <div class="timeline-time">
                   <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1485,6 +2086,7 @@
               <div class="timeline-card">
                 <button class="bookmark-btn" onclick="toggleBookmark('d1-keynote', 'Keynote: Curing Diabetes with Stem Cells', 'Day 1', '13:55 – 14:35', 'session')">
                   <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+                  <span class="notification-dot"></span>
                 </button>
                 <span class="keynote-badge">★ Keynote Lecture</span>
                 <div class="timeline-time">
@@ -1524,6 +2126,7 @@
               <div class="timeline-card">
                 <button class="bookmark-btn" onclick="toggleBookmark('d1-s3', 'Session 3: Global Regeneration', 'Day 1', '15:50 – 17:15', 'session')">
                   <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+                  <span class="notification-dot"></span>
                 </button>
                 <div class="timeline-time">
                   <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1547,6 +2150,7 @@
               <div class="timeline-card">
                 <button class="bookmark-btn" onclick="toggleBookmark('d1-s4', 'Session 4: Cardiac Regeneration', 'Day 1', '17:15 – 18:05', 'session')">
                   <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+                  <span class="notification-dot"></span>
                 </button>
                 <div class="timeline-time">
                   <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1602,6 +2206,7 @@
               <div class="timeline-card">
                 <button class="bookmark-btn" onclick="toggleBookmark('d2-s5', 'Session 5: Stem Cell Regulation', 'Day 2', '9:00 – 9:50', 'session')">
                   <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+                  <span class="notification-dot"></span>
                 </button>
                 <div class="timeline-time">
                   <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1623,6 +2228,7 @@
               <div class="timeline-card">
                 <button class="bookmark-btn" onclick="toggleBookmark('d2-s6', 'Session 6: From Source to Solution', 'Day 2', '9:50 – 10:40', 'session')">
                   <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+                  <span class="notification-dot"></span>
                 </button>
                 <div class="timeline-time">
                   <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1658,6 +2264,7 @@
               <div class="timeline-card">
                 <button class="bookmark-btn" onclick="toggleBookmark('d2-s7', 'Session 7: Novel Approaches', 'Day 2', '11:25 – 12:40', 'session')">
                   <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+                  <span class="notification-dot"></span>
                 </button>
                 <div class="timeline-time">
                   <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1693,6 +2300,7 @@
               <div class="timeline-card">
                 <button class="bookmark-btn" onclick="toggleBookmark('d2-s7cont', 'Session 7 Continued: Novel Approaches', 'Day 2', '13:40 – 15:20', 'session')">
                   <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+                  <span class="notification-dot"></span>
                 </button>
                 <div class="timeline-time">
                   <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1729,6 +2337,7 @@
               <div class="timeline-card">
                 <button class="bookmark-btn" onclick="toggleBookmark('d2-closing', 'Awards Ceremony & Closing', 'Day 2', '16:05 – 16:45', 'session')">
                   <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+                  <span class="notification-dot"></span>
                 </button>
                 <div class="timeline-time">
                   <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1758,6 +2367,7 @@
           <div class="workshop-card" data-id="w1">
             <button class="bookmark-btn" onclick="toggleBookmark('w1', 'How to Establish a Scientific Career?', 'Day 1', '15:15 – 16:30', 'workshop')">
               <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+              <span class="notification-dot"></span>
             </button>
             <div class="workshop-meta">
               <span>Day 1</span>
@@ -1773,6 +2383,7 @@
           <div class="workshop-card" data-id="w2">
             <button class="bookmark-btn" onclick="toggleBookmark('w2', 'Decoding Stem Cell Biology with scverse Tools', 'Day 1', '16:30 – 17:45', 'workshop')">
               <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+              <span class="notification-dot"></span>
             </button>
             <div class="workshop-meta">
               <span>Day 1</span>
@@ -1788,6 +2399,7 @@
           <div class="workshop-card" data-id="w3">
             <button class="bookmark-btn" onclick="toggleBookmark('w3', 'Harvesting Hope: Cord Blood Collections', 'Day 2', '9:30 – 10:45', 'workshop')">
               <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+              <span class="notification-dot"></span>
             </button>
             <div class="workshop-meta">
               <span>Day 2</span>
@@ -1803,6 +2415,7 @@
           <div class="workshop-card" data-id="w4">
             <button class="bookmark-btn" onclick="toggleBookmark('w4', 'Unlocking Immune Power: Why PBMCs Matter', 'Day 2', '11:15 – 12:30', 'workshop')">
               <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+              <span class="notification-dot"></span>
             </button>
             <div class="workshop-meta">
               <span>Day 2</span>
@@ -1818,6 +2431,7 @@
           <div class="workshop-card" data-id="w5">
             <button class="bookmark-btn" onclick="toggleBookmark('w5', 'Exploring the Value of MSCs', 'Day 2', '15:30 – 16:45', 'workshop')">
               <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+              <span class="notification-dot"></span>
             </button>
             <div class="workshop-meta">
               <span>Day 2</span>
@@ -1845,6 +2459,7 @@
           <div class="speaker-card" data-id="sp-hd">
             <button class="bookmark-btn" onclick="toggleBookmark('sp-hd', 'Prof. Hongkui Deng', '', 'Keynote: Chemical Reprogramming', 'speaker')">
               <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+              <span class="notification-dot"></span>
             </button>
             <div class="speaker-avatar">HD</div>
             <div class="speaker-info">
@@ -1856,6 +2471,7 @@
           <div class="speaker-card" data-id="sp-ab">
             <button class="bookmark-btn" onclick="toggleBookmark('sp-ab', 'Prof. Anna Bigas', '', 'Blood Stem Cell Generation', 'speaker')">
               <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+              <span class="notification-dot"></span>
             </button>
             <div class="speaker-avatar">AB</div>
             <div class="speaker-info">
@@ -1867,6 +2483,7 @@
           <div class="speaker-card" data-id="sp-nc">
             <button class="bookmark-btn" onclick="toggleBookmark('sp-nc', 'Prof. Nina Cabezas-Wallscheid', '', 'Bone Marrow Stem Cell', 'speaker')">
               <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+              <span class="notification-dot"></span>
             </button>
             <div class="speaker-avatar">NC</div>
             <div class="speaker-info">
@@ -1878,6 +2495,7 @@
           <div class="speaker-card" data-id="sp-hs">
             <button class="bookmark-btn" onclick="toggleBookmark('sp-hs', 'Prof. Hidetoshi Sakurai', '', 'iPS Cell Therapy for Muscular Disorders', 'speaker')">
               <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+              <span class="notification-dot"></span>
             </button>
             <div class="speaker-avatar">HS</div>
             <div class="speaker-info">
@@ -1889,6 +2507,7 @@
           <div class="speaker-card" data-id="sp-at">
             <button class="bookmark-btn" onclick="toggleBookmark('sp-at', 'Prof. Andreas Trumpp', '', 'Malignant Stem Cells', 'speaker')">
               <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+              <span class="notification-dot"></span>
             </button>
             <div class="speaker-avatar">AT</div>
             <div class="speaker-info">
@@ -1900,6 +2519,7 @@
           <div class="speaker-card" data-id="sp-lv">
             <button class="bookmark-btn" onclick="toggleBookmark('sp-lv', 'Prof. Ludovic Vallier', '', 'Cell Based Therapy for Liver Diseases', 'speaker')">
               <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+              <span class="notification-dot"></span>
             </button>
             <div class="speaker-avatar">LV</div>
             <div class="speaker-info">
@@ -1911,6 +2531,7 @@
           <div class="speaker-card" data-id="sp-ag">
             <button class="bookmark-btn" onclick="toggleBookmark('sp-ag', 'Prof. Antoni Bayes Genis', '', 'UCB-MSCs & Cardiac Repair', 'speaker')">
               <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+              <span class="notification-dot"></span>
             </button>
             <div class="speaker-avatar">AG</div>
             <div class="speaker-info">
@@ -1922,6 +2543,7 @@
           <div class="speaker-card" data-id="sp-hsk">
             <button class="bookmark-btn" onclick="toggleBookmark('sp-hsk', 'Dr. Heli Skottman', '', 'Eye Regeneration with iPSCs', 'speaker')">
               <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+              <span class="notification-dot"></span>
             </button>
             <div class="speaker-avatar">HS</div>
             <div class="speaker-info">
@@ -1933,6 +2555,7 @@
           <div class="speaker-card" data-id="sp-ug">
             <button class="bookmark-btn" onclick="toggleBookmark('sp-ug', 'Dr. Ulf Grawunder', '', 'In Vivo CAR-T Cell Therapy', 'speaker')">
               <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+              <span class="notification-dot"></span>
             </button>
             <div class="speaker-avatar">UG</div>
             <div class="speaker-info">
@@ -1944,6 +2567,7 @@
           <div class="speaker-card" data-id="sp-mm">
             <button class="bookmark-btn" onclick="toggleBookmark('sp-mm', 'Prof. Margherita Maioli', '', 'Stemness & Space Biology', 'speaker')">
               <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+              <span class="notification-dot"></span>
             </button>
             <div class="speaker-avatar">MM</div>
             <div class="speaker-info">
@@ -1955,6 +2579,7 @@
           <div class="speaker-card" data-id="sp-mg">
             <button class="bookmark-btn" onclick="toggleBookmark('sp-mg', 'Prof. Mingxia Gu', '', 'Vascular Organoid Models', 'speaker')">
               <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+              <span class="notification-dot"></span>
             </button>
             <div class="speaker-avatar">MG</div>
             <div class="speaker-info">
@@ -1966,67 +2591,12 @@
           <div class="speaker-card" data-id="sp-sb">
             <button class="bookmark-btn" onclick="toggleBookmark('sp-sb', 'Dr. Sina Bartfeld', '', 'Organoids for Cancer Research', 'speaker')">
               <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+              <span class="notification-dot"></span>
             </button>
             <div class="speaker-avatar">SB</div>
             <div class="speaker-info">
               <h3>Dr. Sina Bartfeld</h3>
               <p class="topic">Organoids for Cancer Research</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Venue Section -->
-    <section class="venue-section" id="venue">
-      <div class="container">
-        <div class="section-header">
-          <span class="overline">Location</span>
-          <h2>Venue Information</h2>
-        </div>
-        
-        <div class="venue-card">
-          <div class="venue-header">
-            <div class="venue-icon">
-              <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                <circle cx="12" cy="10" r="3"></circle>
-              </svg>
-            </div>
-            <h3>Mövenpick Grand Al Bustan</h3>
-            <p>Dubai, United Arab Emirates</p>
-          </div>
-          
-          <div class="venue-details">
-            <div class="venue-detail">
-              <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                <line x1="16" y1="2" x2="16" y2="6"></line>
-                <line x1="8" y1="2" x2="8" y2="6"></line>
-                <line x1="3" y1="10" x2="21" y2="10"></line>
-              </svg>
-              <div class="label">Dates</div>
-              <div class="value">7–8 February 2026</div>
-            </div>
-            
-            <div class="venue-detail">
-              <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="10"></circle>
-                <polyline points="12 6 12 12 16 14"></polyline>
-              </svg>
-              <div class="label">Registration</div>
-              <div class="value">Opens 7:30 AM</div>
-            </div>
-            
-            <div class="venue-detail">
-              <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                <circle cx="9" cy="7" r="4"></circle>
-                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-              </svg>
-              <div class="label">Format</div>
-              <div class="value">In-Person</div>
             </div>
           </div>
         </div>
@@ -2047,17 +2617,33 @@
 
   <script>
     // =====================================================
-    // LOCAL STORAGE MANAGEMENT
+    // STORAGE KEYS
     // =====================================================
     
     const STORAGE_KEY = 'dscc2026_bookmarks';
+    const NOTIFICATIONS_KEY = 'dscc2026_notifications';
+    const SETTINGS_KEY = 'dscc2026_notification_settings';
 
+    // =====================================================
+    // DEFAULT SETTINGS
+    // =====================================================
+    
+    const DEFAULT_SETTINGS = {
+      sound: true,
+      vibration: true,
+      defaultReminder: 30 // minutes
+    };
+
+    // =====================================================
+    // LOCAL STORAGE MANAGEMENT
+    // =====================================================
+    
     function getBookmarks() {
       try {
         const data = localStorage.getItem(STORAGE_KEY);
         return data ? JSON.parse(data) : {};
       } catch (e) {
-        console.error('Error reading localStorage:', e);
+        console.error('Error reading bookmarks:', e);
         return {};
       }
     }
@@ -2066,8 +2652,562 @@
       try {
         localStorage.setItem(STORAGE_KEY, JSON.stringify(bookmarks));
       } catch (e) {
-        console.error('Error saving to localStorage:', e);
+        console.error('Error saving bookmarks:', e);
       }
+    }
+
+    function getNotifications() {
+      try {
+        const data = localStorage.getItem(NOTIFICATIONS_KEY);
+        return data ? JSON.parse(data) : {};
+      } catch (e) {
+        console.error('Error reading notifications:', e);
+        return {};
+      }
+    }
+
+    function saveNotifications(notifications) {
+      try {
+        localStorage.setItem(NOTIFICATIONS_KEY, JSON.stringify(notifications));
+      } catch (e) {
+        console.error('Error saving notifications:', e);
+      }
+    }
+
+    function getSettings() {
+      try {
+        const data = localStorage.getItem(SETTINGS_KEY);
+        return data ? { ...DEFAULT_SETTINGS, ...JSON.parse(data) } : DEFAULT_SETTINGS;
+      } catch (e) {
+        console.error('Error reading settings:', e);
+        return DEFAULT_SETTINGS;
+      }
+    }
+
+    function saveSettings(settings) {
+      try {
+        localStorage.setItem(SETTINGS_KEY, JSON.stringify(settings));
+      } catch (e) {
+        console.error('Error saving settings:', e);
+      }
+    }
+
+    // =====================================================
+    // NOTIFICATION PERMISSION
+    // =====================================================
+    
+    function checkNotificationPermission() {
+      if (!('Notification' in window)) {
+        return 'unsupported';
+      }
+      return Notification.permission;
+    }
+
+    async function requestNotificationPermission() {
+      if (!('Notification' in window)) {
+        showToast('Notifications not supported in this browser');
+        return;
+      }
+
+      try {
+        const permission = await Notification.requestPermission();
+        updatePermissionUI();
+        updateNotificationBanner();
+        
+        if (permission === 'granted') {
+          showToast('Notifications enabled!');
+          updateNotificationSettingsBtn();
+        } else if (permission === 'denied') {
+          showToast('Notifications blocked. Please enable in browser settings.');
+        }
+      } catch (e) {
+        console.error('Error requesting notification permission:', e);
+        showToast('Could not request notification permission');
+      }
+    }
+
+    function updatePermissionUI() {
+      const permission = checkNotificationPermission();
+      const statusEl = document.getElementById('permissionStatus');
+      const labelEl = document.getElementById('permissionLabel');
+      const textEl = document.getElementById('permissionText');
+      const btnEl = document.getElementById('permissionBtn');
+
+      statusEl.classList.remove('granted', 'denied');
+      
+      if (permission === 'granted') {
+        statusEl.classList.add('granted');
+        labelEl.textContent = 'Enabled';
+        textEl.textContent = 'You will receive notifications for your bookmarked events';
+        btnEl.style.display = 'none';
+      } else if (permission === 'denied') {
+        statusEl.classList.add('denied');
+        labelEl.textContent = 'Blocked';
+        textEl.textContent = 'Enable notifications in your browser settings';
+        btnEl.textContent = 'Open Settings';
+        btnEl.style.display = 'block';
+        btnEl.onclick = () => showToast('Please enable notifications in your browser settings');
+      } else if (permission === 'unsupported') {
+        labelEl.textContent = 'Not Supported';
+        textEl.textContent = 'Your browser does not support notifications';
+        btnEl.style.display = 'none';
+      } else {
+        labelEl.textContent = 'Not Enabled';
+        textEl.textContent = 'Click to enable notifications for event reminders';
+        btnEl.textContent = 'Enable';
+        btnEl.style.display = 'block';
+        btnEl.onclick = requestNotificationPermission;
+      }
+    }
+
+    function updateNotificationBanner() {
+      const permission = checkNotificationPermission();
+      const banner = document.getElementById('notificationBanner');
+      const btn = document.getElementById('enableNotificationsBtn');
+
+      banner.classList.remove('granted', 'denied');
+
+      if (permission === 'granted') {
+        banner.classList.add('granted');
+        banner.querySelector('.notification-banner-title').textContent = 'Notifications Enabled';
+        banner.querySelector('.notification-banner-text').textContent = 'You\'ll be reminded before your sessions';
+        btn.style.display = 'none';
+      } else if (permission === 'denied') {
+        banner.classList.add('denied');
+        banner.querySelector('.notification-banner-title').textContent = 'Notifications Blocked';
+        banner.querySelector('.notification-banner-text').textContent = 'Enable in browser settings to get reminders';
+        btn.style.display = 'none';
+      } else {
+        banner.querySelector('.notification-banner-title').textContent = 'Enable Notifications';
+        banner.querySelector('.notification-banner-text').textContent = 'Get reminded before your sessions start';
+        btn.style.display = 'block';
+      }
+    }
+
+    function updateNotificationSettingsBtn() {
+      const btn = document.getElementById('notificationSettingsBtn');
+      const notifications = getNotifications();
+      const hasActiveNotifications = Object.values(notifications).some(n => n.enabled);
+      
+      if (hasActiveNotifications) {
+        btn.classList.add('has-notifications');
+      } else {
+        btn.classList.remove('has-notifications');
+      }
+    }
+
+    // =====================================================
+    // NOTIFICATION SCHEDULING
+    // =====================================================
+    
+    function toggleNotification(id) {
+      const notifications = getNotifications();
+      const bookmarks = getBookmarks();
+      const bookmark = bookmarks[id];
+      
+      if (!bookmark) return;
+
+      if (notifications[id] && notifications[id].enabled) {
+        // Disable notification
+        notifications[id].enabled = false;
+        
+        // Cancel scheduled notification
+        if (scheduledNotifications[id]) {
+          clearTimeout(scheduledNotifications[id]);
+          delete scheduledNotifications[id];
+        }
+        
+        showToast('Notification disabled');
+      } else {
+        // Enable notification with default reminder
+        const settings = getSettings();
+        notifications[id] = {
+          enabled: true,
+          reminderMinutes: settings.defaultReminder,
+          title: bookmark.title,
+          day: bookmark.day,
+          time: bookmark.time
+        };
+        
+        // Schedule the notification
+        scheduleNotification(id, bookmark, settings.defaultReminder);
+        
+        showToast(`Reminder set for ${formatReminderTime(settings.defaultReminder)} before`);
+      }
+
+      saveNotifications(notifications);
+      renderPanelContent();
+      updateBookmarkNotificationIndicators();
+      updateNotificationSettingsBtn();
+    }
+
+    function setReminderTime(id, minutes) {
+      const notifications = getNotifications();
+      const bookmarks = getBookmarks();
+      const bookmark = bookmarks[id];
+      
+      if (!notifications[id]) {
+        notifications[id] = { enabled: true };
+      }
+      
+      notifications[id].reminderMinutes = minutes;
+      notifications[id].enabled = true;
+      
+      // Reschedule with new time
+      if (bookmark) {
+        scheduleNotification(id, bookmark, minutes);
+      }
+      
+      saveNotifications(notifications);
+      renderPanelContent();
+      showToast(`Reminder updated to ${formatReminderTime(minutes)} before`);
+    }
+
+    function formatReminderTime(minutes) {
+      if (minutes >= 1440) return `${minutes / 1440} day`;
+      if (minutes >= 60) return `${minutes / 60} hour`;
+      return `${minutes} min`;
+    }
+
+    function updateBookmarkNotificationIndicators() {
+      const notifications = getNotifications();
+      
+      document.querySelectorAll('[data-id]').forEach(el => {
+        const id = el.dataset.id;
+        const btn = el.querySelector('.bookmark-btn');
+        
+        if (btn && notifications[id] && notifications[id].enabled) {
+          btn.classList.add('has-notification');
+        } else if (btn) {
+          btn.classList.remove('has-notification');
+        }
+      });
+    }
+
+    // =====================================================
+    // AUDIO SYSTEM
+    // =====================================================
+    
+    let audioContext = null;
+    
+    function initAudioContext() {
+      if (!audioContext) {
+        audioContext = new (window.AudioContext || window.webkitAudioContext)();
+      }
+      return audioContext;
+    }
+
+    function playNotificationSound() {
+      const settings = getSettings();
+      if (!settings.sound) return;
+
+      try {
+        const ctx = initAudioContext();
+        
+        // Resume if suspended (required after user interaction)
+        if (ctx.state === 'suspended') {
+          ctx.resume();
+        }
+
+        // Create a pleasant two-tone chime
+        const now = ctx.currentTime;
+        
+        // First tone
+        const osc1 = ctx.createOscillator();
+        const gain1 = ctx.createGain();
+        osc1.connect(gain1);
+        gain1.connect(ctx.destination);
+        osc1.frequency.setValueAtTime(880, now); // A5
+        osc1.type = 'sine';
+        gain1.gain.setValueAtTime(0, now);
+        gain1.gain.linearRampToValueAtTime(0.3, now + 0.05);
+        gain1.gain.exponentialRampToValueAtTime(0.01, now + 0.4);
+        osc1.start(now);
+        osc1.stop(now + 0.4);
+
+        // Second tone (higher, delayed)
+        const osc2 = ctx.createOscillator();
+        const gain2 = ctx.createGain();
+        osc2.connect(gain2);
+        gain2.connect(ctx.destination);
+        osc2.frequency.setValueAtTime(1318.5, now + 0.15); // E6
+        osc2.type = 'sine';
+        gain2.gain.setValueAtTime(0, now + 0.15);
+        gain2.gain.linearRampToValueAtTime(0.25, now + 0.2);
+        gain2.gain.exponentialRampToValueAtTime(0.01, now + 0.6);
+        osc2.start(now + 0.15);
+        osc2.stop(now + 0.6);
+
+        // Third tone (highest, more delayed)
+        const osc3 = ctx.createOscillator();
+        const gain3 = ctx.createGain();
+        osc3.connect(gain3);
+        gain3.connect(ctx.destination);
+        osc3.frequency.setValueAtTime(1760, now + 0.3); // A6
+        osc3.type = 'sine';
+        gain3.gain.setValueAtTime(0, now + 0.3);
+        gain3.gain.linearRampToValueAtTime(0.2, now + 0.35);
+        gain3.gain.exponentialRampToValueAtTime(0.01, now + 0.8);
+        osc3.start(now + 0.3);
+        osc3.stop(now + 0.8);
+
+      } catch (e) {
+        console.error('Error playing notification sound:', e);
+      }
+    }
+
+    // =====================================================
+    // SEND NOTIFICATIONS
+    // =====================================================
+    
+    function sendNotification(title, body, options = {}) {
+      const permission = checkNotificationPermission();
+      if (permission !== 'granted') return;
+
+      const settings = getSettings();
+      
+      // Play custom sound
+      playNotificationSound();
+
+      // Vibrate on mobile
+      if (settings.vibration && 'vibrate' in navigator) {
+        navigator.vibrate([200, 100, 200]);
+      }
+      
+      const notification = new Notification(title, {
+        body: body,
+        icon: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="45" fill="%23c9a962"/><path d="M50 25c-13.8 0-25 11.2-25 25s11.2 25 25 25 25-11.2 25-25-11.2-25-25-25zm-5 37.5l-12.5-12.5 3.5-3.5 9 9 19-19 3.5 3.5-22.5 22.5z" fill="%23040f0b"/></svg>',
+        badge: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="45" fill="%23c9a962"/></svg>',
+        tag: options.tag || 'dscc2026',
+        requireInteraction: true,
+        silent: true // We play our own sound
+      });
+
+      notification.onclick = function() {
+        window.focus();
+        notification.close();
+      };
+
+      return notification;
+    }
+
+    function sendTestNotification() {
+      const permission = checkNotificationPermission();
+      
+      if (permission !== 'granted') {
+        requestNotificationPermission();
+        return;
+      }
+
+      sendNotification(
+        '🔔 Dubai Stem Cell Congress 2026',
+        'This is a test notification. Your reminders are working!',
+        { tag: 'dscc2026-test' }
+      );
+      
+      showToast('Test notification sent!');
+    }
+
+    // =====================================================
+    // NOTIFICATION SCHEDULER
+    // =====================================================
+    
+    const CONFERENCE_YEAR = 2026;
+    const CONFERENCE_MONTH = 1; // February (0-indexed)
+    const DAY1_DATE = 7;
+    const DAY2_DATE = 8;
+    
+    // Store scheduled timeouts
+    let scheduledNotifications = {};
+
+    function parseEventTime(day, timeStr) {
+      // Parse time like "8:40 – 10:20" or "9:00 – 9:50"
+      const startTime = timeStr.split('–')[0].trim();
+      const [hours, minutes] = startTime.split(':').map(n => parseInt(n.trim()));
+      
+      const date = day.includes('1') ? DAY1_DATE : DAY2_DATE;
+      
+      // Create date in local timezone (Dubai is UTC+4)
+      const eventDate = new Date(CONFERENCE_YEAR, CONFERENCE_MONTH, date, hours, minutes, 0, 0);
+      
+      return eventDate;
+    }
+
+    function scheduleNotification(id, bookmark, reminderMinutes) {
+      // Clear existing scheduled notification for this id
+      if (scheduledNotifications[id]) {
+        clearTimeout(scheduledNotifications[id]);
+        delete scheduledNotifications[id];
+      }
+
+      // Skip if no day/time info (like speakers)
+      if (!bookmark.day || !bookmark.time) return;
+
+      const eventTime = parseEventTime(bookmark.day, bookmark.time);
+      const notifyTime = new Date(eventTime.getTime() - (reminderMinutes * 60 * 1000));
+      const now = new Date();
+      
+      const msUntilNotification = notifyTime.getTime() - now.getTime();
+
+      // Debug logging
+      console.log(`Scheduling notification for "${bookmark.title}":`, {
+        eventTime: eventTime.toLocaleString(),
+        notifyTime: notifyTime.toLocaleString(),
+        reminderMinutes,
+        msUntilNotification,
+        willFireIn: msUntilNotification > 0 ? `${Math.round(msUntilNotification / 1000 / 60)} minutes` : 'PAST'
+      });
+
+      // Only schedule if in the future
+      if (msUntilNotification > 0) {
+        scheduledNotifications[id] = setTimeout(() => {
+          sendNotification(
+            `⏰ Starting in ${formatReminderTime(reminderMinutes)}`,
+            bookmark.title,
+            { tag: `dscc2026-${id}` }
+          );
+          console.log(`🔔 Notification fired for: ${bookmark.title}`);
+        }, msUntilNotification);
+        
+        console.log(`✅ Notification scheduled for ${id}`);
+      } else {
+        console.log(`⏭️ Event already passed, not scheduling: ${bookmark.title}`);
+      }
+    }
+
+    function scheduleAllNotifications() {
+      const bookmarks = getBookmarks();
+      const notifications = getNotifications();
+      
+      // Clear all existing scheduled notifications
+      Object.keys(scheduledNotifications).forEach(id => {
+        clearTimeout(scheduledNotifications[id]);
+        delete scheduledNotifications[id];
+      });
+
+      // Schedule new notifications
+      Object.entries(notifications).forEach(([id, notif]) => {
+        if (notif.enabled && bookmarks[id]) {
+          scheduleNotification(id, bookmarks[id], notif.reminderMinutes);
+        }
+      });
+
+      console.log(`📅 Scheduled ${Object.keys(scheduledNotifications).length} notifications`);
+    }
+
+    // =====================================================
+    // DEMO MODE - Test with simulated time
+    // =====================================================
+    
+    let demoMode = false;
+    let demoTimeOffset = 0;
+
+    function enableDemoMode() {
+      demoMode = true;
+      showToast('Demo mode enabled! Notifications will fire in 10 seconds.');
+      
+      // Schedule all enabled notifications to fire in 10 seconds
+      const notifications = getNotifications();
+      const bookmarks = getBookmarks();
+      
+      let delay = 10000; // Start after 10 seconds
+      
+      Object.entries(notifications).forEach(([id, notif]) => {
+        if (notif.enabled && bookmarks[id]) {
+          const bookmark = bookmarks[id];
+          
+          if (scheduledNotifications[id]) {
+            clearTimeout(scheduledNotifications[id]);
+          }
+          
+          scheduledNotifications[id] = setTimeout(() => {
+            sendNotification(
+              `⏰ Demo: Starting in ${formatReminderTime(notif.reminderMinutes)}`,
+              bookmark.title,
+              { tag: `dscc2026-${id}` }
+            );
+          }, delay);
+          
+          delay += 3000; // Stagger by 3 seconds
+        }
+      });
+    }
+
+    // Add demo button to settings
+    function addDemoButton() {
+      const testBtn = document.querySelector('.test-notification-btn');
+      if (testBtn && !document.getElementById('demoBtn')) {
+        const demoBtn = document.createElement('button');
+        demoBtn.id = 'demoBtn';
+        demoBtn.className = 'test-notification-btn';
+        demoBtn.style.marginTop = '10px';
+        demoBtn.innerHTML = `
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+          Test All Event Reminders (Demo)
+        `;
+        demoBtn.onclick = enableDemoMode;
+        testBtn.parentNode.appendChild(demoBtn);
+      }
+    }
+
+    // =====================================================
+    // SETTINGS MODAL
+    // =====================================================
+    
+    function openNotificationSettings() {
+      const overlay = document.getElementById('settingsModalOverlay');
+      overlay.classList.add('open');
+      updatePermissionUI();
+      loadSettingsToUI();
+      addDemoButton();
+    }
+
+    function closeNotificationSettings(event) {
+      if (event && event.target !== event.currentTarget) return;
+      const overlay = document.getElementById('settingsModalOverlay');
+      overlay.classList.remove('open');
+    }
+
+    function loadSettingsToUI() {
+      const settings = getSettings();
+      
+      document.getElementById('soundToggle').checked = settings.sound;
+      document.getElementById('vibrationToggle').checked = settings.vibration;
+      
+      document.querySelectorAll('.default-reminder-option').forEach(option => {
+        option.classList.remove('selected');
+        if (parseInt(option.dataset.value) === settings.defaultReminder) {
+          option.classList.add('selected');
+        }
+      });
+    }
+
+    function updateNotificationSettings() {
+      const settings = {
+        sound: document.getElementById('soundToggle').checked,
+        vibration: document.getElementById('vibrationToggle').checked,
+        defaultReminder: getSettings().defaultReminder
+      };
+      
+      saveSettings(settings);
+    }
+
+    function setDefaultReminder(minutes) {
+      const settings = getSettings();
+      settings.defaultReminder = minutes;
+      saveSettings(settings);
+      
+      document.querySelectorAll('.default-reminder-option').forEach(option => {
+        option.classList.remove('selected');
+        if (parseInt(option.dataset.value) === minutes) {
+          option.classList.add('selected');
+        }
+      });
+      
+      showToast(`Default reminder set to ${formatReminderTime(minutes)}`);
     }
 
     // =====================================================
@@ -2077,17 +3217,22 @@
     function toggleBookmark(id, title, day, time, type) {
       const bookmarks = getBookmarks();
       
-      // Find the bookmark button in the main content (not in panel)
       const mainCard = document.querySelector(`[data-id="${id}"]`);
       const btn = mainCard ? mainCard.querySelector('.bookmark-btn') : null;
       
       if (bookmarks[id]) {
-        // Remove bookmark
         delete bookmarks[id];
-        if (btn) btn.classList.remove('active');
+        // Also remove any notifications for this bookmark
+        const notifications = getNotifications();
+        delete notifications[id];
+        saveNotifications(notifications);
+        
+        if (btn) {
+          btn.classList.remove('active');
+          btn.classList.remove('has-notification');
+        }
         showToast('Removed from schedule');
       } else {
-        // Add bookmark
         bookmarks[id] = { id, title, day, time, type, savedAt: Date.now() };
         if (btn) btn.classList.add('active');
         showToast('Added to your schedule!');
@@ -2096,6 +3241,7 @@
       saveBookmarks(bookmarks);
       updateSavedCount();
       renderPanelContent();
+      updateNotificationSettingsBtn();
     }
 
     // =====================================================
@@ -2107,7 +3253,10 @@
       const overlay = document.getElementById('panelOverlay');
       panel.classList.toggle('open');
       overlay.classList.toggle('open');
-      if (panel.classList.contains('open')) renderPanelContent();
+      if (panel.classList.contains('open')) {
+        renderPanelContent();
+        updateNotificationBanner();
+      }
     }
 
     function switchPanelTab(tab) {
@@ -2119,6 +3268,8 @@
 
     function renderPanelContent() {
       const bookmarks = getBookmarks();
+      const notifications = getNotifications();
+      const settings = getSettings();
       
       ['sessions', 'workshops', 'speakers'].forEach(type => {
         const typeKey = type === 'sessions' ? 'session' : type.slice(0, -1);
@@ -2134,17 +3285,47 @@
           return;
         }
         
-        container.innerHTML = items.map(item => `
-          <div class="saved-item">
-            <button class="remove-btn" onclick="toggleBookmark('${item.id}', '${item.title.replace(/'/g, "\\'")}', '${item.day}', '${item.time}', '${item.type}')">
-              <svg viewBox="0 0 24 24" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-            </button>
-            ${item.day ? `<div class="item-day">${item.day}</div>` : ''}
-            <div class="item-time">${item.time}</div>
-            <div class="item-title">${item.title}</div>
-            <span class="item-type">${item.type}</span>
-          </div>
-        `).join('');
+        container.innerHTML = items.map(item => {
+          const notif = notifications[item.id];
+          const hasNotification = notif && notif.enabled;
+          const reminderMinutes = notif ? notif.reminderMinutes : settings.defaultReminder;
+          
+          return `
+            <div class="saved-item">
+              <div class="item-actions">
+                <button class="notify-btn ${hasNotification ? 'active' : ''}" onclick="toggleNotification('${item.id}')" title="${hasNotification ? 'Disable notification' : 'Enable notification'}">
+                  <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                    <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                  </svg>
+                </button>
+                <button class="remove-btn" onclick="toggleBookmark('${item.id}', '${item.title.replace(/'/g, "\\'")}', '${item.day}', '${item.time}', '${item.type}')">
+                  <svg viewBox="0 0 24 24" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+              </div>
+              ${item.day ? `<div class="item-day">${item.day}</div>` : ''}
+              <div class="item-time">${item.time}</div>
+              <div class="item-title">${item.title}</div>
+              <span class="item-type">${item.type}</span>
+              
+              <div class="notification-controls ${hasNotification ? 'show' : ''}" id="notif-controls-${item.id}">
+                <div class="notification-controls-label">
+                  <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                    <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                  </svg>
+                  Remind me
+                </div>
+                <div class="reminder-options">
+                  <button class="reminder-option ${reminderMinutes === 15 ? 'selected' : ''}" onclick="setReminderTime('${item.id}', 15)">15 min</button>
+                  <button class="reminder-option ${reminderMinutes === 30 ? 'selected' : ''}" onclick="setReminderTime('${item.id}', 30)">30 min</button>
+                  <button class="reminder-option ${reminderMinutes === 60 ? 'selected' : ''}" onclick="setReminderTime('${item.id}', 60)">1 hour</button>
+                  <button class="reminder-option ${reminderMinutes === 1440 ? 'selected' : ''}" onclick="setReminderTime('${item.id}', 1440)">1 day</button>
+                </div>
+              </div>
+            </div>
+          `;
+        }).join('');
       });
     }
 
@@ -2228,24 +3409,49 @@
     
     document.addEventListener('DOMContentLoaded', () => {
       const bookmarks = getBookmarks();
+      const notifications = getNotifications();
       
       // Restore bookmark states from localStorage
       document.querySelectorAll('[data-id]').forEach(el => {
         const id = el.dataset.id;
-        if (bookmarks[id]) {
-          const btn = el.querySelector('.bookmark-btn');
-          if (btn) btn.classList.add('active');
+        const btn = el.querySelector('.bookmark-btn');
+        
+        if (bookmarks[id] && btn) {
+          btn.classList.add('active');
+        }
+        
+        if (notifications[id] && notifications[id].enabled && btn) {
+          btn.classList.add('has-notification');
         }
       });
       
       updateSavedCount();
+      updateNotificationBanner();
+      updateNotificationSettingsBtn();
+      
+      // Schedule all notifications on page load
+      scheduleAllNotifications();
+      
+      // Add demo button after a short delay
+      setTimeout(addDemoButton, 500);
+      
+      // Initialize audio context on first user interaction
+      document.body.addEventListener('click', () => {
+        initAudioContext();
+      }, { once: true });
     });
 
-    // Close panel on Escape
+    // Close modals on Escape
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
         const panel = document.getElementById('schedulePanel');
-        if (panel.classList.contains('open')) togglePanel();
+        const settingsModal = document.getElementById('settingsModalOverlay');
+        
+        if (settingsModal.classList.contains('open')) {
+          closeNotificationSettings();
+        } else if (panel.classList.contains('open')) {
+          togglePanel();
+        }
       }
     });
   </script>
