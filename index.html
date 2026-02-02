@@ -1026,51 +1026,129 @@
     }
 
     /* Floating Navigation */
+    /* Floating Navigation - Premium Redesign */
     .floating-nav {
       position: fixed;
-      right: 30px;
+      right: 24px;
       top: 50%;
       transform: translateY(-50%);
       z-index: 100;
       display: flex;
       flex-direction: column;
-      gap: 15px;
+      gap: 8px;
+      padding: 12px 8px;
+      background: rgba(4, 15, 11, 0.85);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(201, 169, 98, 0.15);
+      border-radius: 24px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
     }
 
     .floating-nav a {
-      width: 12px;
-      height: 12px;
-      background: rgba(201, 169, 98, 0.3);
+      width: 14px;
+      height: 14px;
+      background: rgba(201, 169, 98, 0.25);
+      border: 2px solid transparent;
       border-radius: 50%;
-      transition: all 0.3s ease;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       position: relative;
+      cursor: pointer;
     }
 
-    .floating-nav a:hover,
+    .floating-nav a:hover {
+      background: rgba(201, 169, 98, 0.5);
+      border-color: rgba(201, 169, 98, 0.4);
+      transform: scale(1.2);
+    }
+
     .floating-nav a.active {
       background: var(--gold);
-      transform: scale(1.3);
+      border-color: var(--gold-light);
+      transform: scale(1.15);
+      box-shadow: 0 0 12px rgba(201, 169, 98, 0.5),
+                  0 0 24px rgba(201, 169, 98, 0.2);
     }
 
+    /* Tooltip Label */
     .floating-nav a::before {
       content: attr(data-label);
       position: absolute;
-      right: 25px;
+      right: calc(100% + 16px);
       top: 50%;
-      transform: translateY(-50%);
-      background: var(--emerald);
-      padding: 6px 12px;
-      border-radius: 6px;
-      font-size: 0.75rem;
+      transform: translateY(-50%) translateX(8px);
+      background: linear-gradient(135deg, var(--emerald-dark), var(--emerald));
+      border: 1px solid rgba(201, 169, 98, 0.25);
+      padding: 8px 14px;
+      border-radius: 10px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--gold-light);
       white-space: nowrap;
       opacity: 0;
       pointer-events: none;
-      transition: all 0.3s ease;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+      letter-spacing: 0.5px;
     }
 
-    .floating-nav a:hover::before {
+    /* Tooltip Arrow */
+    .floating-nav a::after {
+      content: '';
+      position: absolute;
+      right: calc(100% + 8px);
+      top: 50%;
+      transform: translateY(-50%) translateX(4px);
+      border: 6px solid transparent;
+      border-left-color: var(--emerald);
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .floating-nav a:hover::before,
+    .floating-nav a:hover::after {
       opacity: 1;
-      right: 30px;
+      transform: translateY(-50%) translateX(0);
+    }
+
+    /* Connector line between dots */
+    .floating-nav a:not(:last-child)::marker {
+      content: '';
+    }
+
+    /* Progress indicator line */
+    .floating-nav::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 20px;
+      bottom: 20px;
+      width: 2px;
+      background: rgba(201, 169, 98, 0.1);
+      transform: translateX(-50%);
+      border-radius: 1px;
+      z-index: -1;
+    }
+
+    /* Mobile adjustments */
+    @media (max-width: 768px) {
+      .floating-nav {
+        right: 12px;
+        padding: 10px 6px;
+        gap: 6px;
+      }
+      
+      .floating-nav a {
+        width: 12px;
+        height: 12px;
+      }
+      
+      .floating-nav a::before {
+        display: none;
+      }
+      
+      .floating-nav a::after {
+        display: none;
+      }
     }
 
     /* Main Content */
@@ -1377,28 +1455,61 @@
       font-weight: 500;
     }
 
-    /* Inline Speaker Photos */
+    /* Speaker Line - Redesigned Card Style */
     .speaker-line {
       display: flex;
       align-items: center;
-      gap: 10px;
-      margin-bottom: 10px;
-      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 12px;
+      padding: 14px 16px;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(201, 169, 98, 0.1);
+      transition: all 0.3s ease;
+      margin-left: -8px;
+      margin-right: -8px;
+      position: relative;
     }
 
     .speaker-line:last-child {
       margin-bottom: 0;
     }
 
+    .speaker-line:hover {
+      background: rgba(201, 169, 98, 0.08);
+      border-color: rgba(201, 169, 98, 0.25);
+      transform: translateX(4px);
+    }
+
+    .speaker-line .time {
+      color: var(--gold);
+      font-weight: 600;
+      font-size: 0.85rem;
+      min-width: 48px;
+      padding: 6px 10px;
+      background: rgba(201, 169, 98, 0.1);
+      border-radius: 8px;
+      text-align: center;
+      flex-shrink: 0;
+    }
+
+    /* Larger Speaker Avatar */
     .speaker-mini-avatar {
-      width: 32px;
-      height: 32px;
+      width: 52px;
+      height: 52px;
       border-radius: 50%;
-      border: 2px solid rgba(201, 169, 98, 0.5);
+      border: 2.5px solid rgba(201, 169, 98, 0.5);
       overflow: visible;
       flex-shrink: 0;
       background: linear-gradient(135deg, rgba(201, 169, 98, 0.2), rgba(201, 169, 98, 0.05));
       position: relative;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
+    }
+
+    .speaker-line:hover .speaker-mini-avatar {
+      border-color: var(--gold);
+      transform: scale(1.05);
     }
 
     .speaker-mini-avatar img {
@@ -1410,18 +1521,18 @@
 
     .speaker-mini-avatar .mini-flag {
       position: absolute;
-      bottom: -3px;
-      right: -3px;
-      width: 14px;
-      height: 14px;
+      bottom: -2px;
+      right: -2px;
+      width: 20px;
+      height: 20px;
       border-radius: 50%;
-      border: 1.5px solid var(--emerald-dark);
+      border: 2px solid var(--emerald-dark);
       overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
       background: var(--emerald-dark);
-      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
     }
 
     .speaker-mini-avatar .mini-flag img {
@@ -1431,15 +1542,97 @@
       border-radius: 50%;
     }
 
-    .speaker-line .time {
-      color: var(--gold);
-      font-weight: 500;
-      min-width: 40px;
+    /* Speaker Info */
+    .speaker-info-wrapper {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
     }
 
     .speaker-line .topic-name {
       flex: 1;
       min-width: 0;
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.9);
+      line-height: 1.4;
+    }
+
+    .speaker-line .speaker-name {
+      font-size: 0.8rem;
+      color: var(--gold-light);
+      opacity: 0.8;
+    }
+
+    /* Individual Talk Bookmark */
+    .talk-bookmark-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(201, 169, 98, 0.15);
+      cursor: pointer;
+      padding: 10px;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: auto;
+      flex-shrink: 0;
+    }
+
+    .talk-bookmark-btn svg {
+      width: 18px;
+      height: 18px;
+      stroke: rgba(255, 255, 255, 0.4);
+      fill: none;
+      transition: all 0.3s ease;
+    }
+
+    .talk-bookmark-btn:hover {
+      background: rgba(201, 169, 98, 0.15);
+      border-color: rgba(201, 169, 98, 0.3);
+    }
+
+    .talk-bookmark-btn:hover svg {
+      stroke: var(--gold);
+    }
+
+    .talk-bookmark-btn.active {
+      background: rgba(201, 169, 98, 0.2);
+      border-color: var(--gold);
+    }
+
+    .talk-bookmark-btn.active svg {
+      stroke: var(--gold);
+      fill: var(--gold);
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 600px) {
+      .speaker-line {
+        padding: 12px;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+      
+      .speaker-mini-avatar {
+        width: 44px;
+        height: 44px;
+      }
+      
+      .speaker-line .time {
+        font-size: 0.75rem;
+        padding: 4px 8px;
+        min-width: 42px;
+      }
+      
+      .speaker-line .topic-name {
+        font-size: 0.85rem;
+      }
+    }
+
+    .speaker-line:last-child {
+      margin-bottom: 0;
     }
 
     /* Workshops Section */
@@ -1447,21 +1640,24 @@
       background: linear-gradient(180deg, var(--emerald-darkest) 0%, var(--emerald-dark) 100%);
     }
 
+    /* Workshop Cards - Premium Redesign */
     .workshops-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 25px;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 24px;
     }
 
     .workshop-card {
-      background: var(--glass);
+      background: linear-gradient(145deg, rgba(10, 61, 46, 0.6) 0%, rgba(4, 15, 11, 0.8) 100%);
       backdrop-filter: blur(20px);
-      border: 1px solid rgba(201, 169, 98, 0.15);
-      border-radius: 20px;
-      padding: 30px;
-      transition: all 0.4s ease;
+      border: 1px solid rgba(201, 169, 98, 0.12);
+      border-radius: 24px;
+      padding: 0;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       position: relative;
       overflow: hidden;
+      display: flex;
+      flex-direction: column;
     }
 
     .workshop-card::before {
@@ -1469,91 +1665,151 @@
       position: absolute;
       top: 0;
       left: 0;
-      width: 4px;
-      height: 100%;
-      background: linear-gradient(180deg, var(--gold), transparent);
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
       opacity: 0;
       transition: opacity 0.4s ease;
     }
 
+    .workshop-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 60%, rgba(201, 169, 98, 0.03) 100%);
+      pointer-events: none;
+    }
+
     .workshop-card:hover {
-      transform: translateY(-5px);
-      border-color: rgba(201, 169, 98, 0.4);
+      transform: translateY(-8px);
+      border-color: rgba(201, 169, 98, 0.35);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3),
+                  0 0 30px rgba(201, 169, 98, 0.08);
     }
 
     .workshop-card:hover::before {
       opacity: 1;
     }
 
+    /* Workshop Card Header */
+    .workshop-card-header {
+      padding: 24px 24px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      position: relative;
+      z-index: 1;
+    }
+
     .workshop-meta {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 18px;
+      gap: 8px;
     }
 
     .workshop-meta span {
-      font-size: 0.75rem;
-      padding: 6px 14px;
-      border-radius: 20px;
-      background: rgba(201, 169, 98, 0.1);
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 6px 12px;
+      border-radius: 8px;
+      background: rgba(201, 169, 98, 0.12);
       color: var(--gold);
       border: 1px solid rgba(201, 169, 98, 0.2);
+      letter-spacing: 0.3px;
+      transition: all 0.3s ease;
+    }
+
+    .workshop-meta span:first-child {
+      background: rgba(201, 169, 98, 0.2);
+      border-color: rgba(201, 169, 98, 0.3);
+    }
+
+    .workshop-card:hover .workshop-meta span {
+      border-color: rgba(201, 169, 98, 0.4);
+    }
+
+    /* Workshop Content */
+    .workshop-card-content {
+      padding: 20px 24px;
+      flex: 1;
+      position: relative;
+      z-index: 1;
     }
 
     .workshop-card h3 {
       font-family: 'Playfair Display', serif;
-      font-size: 1.15rem;
+      font-size: 1.2rem;
       font-weight: 600;
       color: var(--white);
-      margin-bottom: 15px;
-      line-height: 1.4;
+      margin-bottom: 0;
+      line-height: 1.45;
+      transition: color 0.3s ease;
     }
 
+    .workshop-card:hover h3 {
+      color: var(--gold-light);
+    }
+
+    /* Workshop Speaker - Enhanced */
     .workshop-speaker {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 16px;
+      padding: 20px 24px;
+      background: rgba(0, 0, 0, 0.15);
+      border-top: 1px solid rgba(201, 169, 98, 0.08);
+      position: relative;
+      z-index: 1;
+      margin-top: auto;
     }
 
     .workshop-speaker .avatar {
-      width: 40px;
-      height: 40px;
+      width: 56px;
+      height: 56px;
       background: linear-gradient(135deg, var(--gold), var(--gold-dark));
-      border-radius: 50%;
+      border-radius: 16px;
       display: flex;
       align-items: center;
       justify-content: center;
       font-family: 'Playfair Display', serif;
-      font-size: 0.9rem;
+      font-size: 1rem;
       color: var(--emerald-darkest);
       font-weight: 600;
       position: relative;
       overflow: visible;
-      border: 2px solid rgba(201, 169, 98, 0.5);
+      border: 2px solid rgba(201, 169, 98, 0.4);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+    }
+
+    .workshop-card:hover .workshop-speaker .avatar {
+      border-color: var(--gold);
+      transform: scale(1.05);
+      box-shadow: 0 6px 20px rgba(201, 169, 98, 0.25);
     }
 
     .workshop-speaker .avatar img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      border-radius: 50%;
+      border-radius: 14px;
     }
 
     .workshop-speaker .avatar .workshop-flag {
       position: absolute;
-      bottom: -3px;
-      right: -3px;
-      width: 16px;
-      height: 16px;
+      bottom: -4px;
+      right: -4px;
+      width: 22px;
+      height: 22px;
       border-radius: 50%;
-      border: 1.5px solid var(--emerald-dark);
+      border: 2px solid var(--emerald-dark);
       overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
       background: var(--emerald-dark);
-      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
     }
 
     .workshop-speaker .avatar .workshop-flag img {
@@ -1563,9 +1819,74 @@
       border-radius: 50%;
     }
 
+    .workshop-speaker .speaker-details {
+      flex: 1;
+      min-width: 0;
+    }
+
     .workshop-speaker .name {
-      color: rgba(255,255,255,0.7);
-      font-size: 0.9rem;
+      color: var(--white);
+      font-size: 0.95rem;
+      font-weight: 500;
+      margin-bottom: 2px;
+    }
+
+    .workshop-speaker .role {
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 0.8rem;
+    }
+
+    /* Workshop Card Bookmark Button */
+    .workshop-card .bookmark-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 44px;
+      height: 44px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(201, 169, 98, 0.2);
+      border-radius: 12px;
+      z-index: 2;
+    }
+
+    .workshop-card .bookmark-btn:hover {
+      background: rgba(201, 169, 98, 0.15);
+      border-color: rgba(201, 169, 98, 0.4);
+    }
+
+    .workshop-card .bookmark-btn.active {
+      background: rgba(201, 169, 98, 0.2);
+      border-color: var(--gold);
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 600px) {
+      .workshops-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+      
+      .workshop-card-header {
+        padding: 20px 20px 0;
+      }
+      
+      .workshop-card-content {
+        padding: 16px 20px;
+      }
+      
+      .workshop-speaker {
+        padding: 16px 20px;
+        gap: 14px;
+      }
+      
+      .workshop-speaker .avatar {
+        width: 48px;
+        height: 48px;
+      }
+      
+      .workshop-card h3 {
+        font-size: 1.1rem;
+      }
     }
 
     /* Workshop Timeline Items */
@@ -1666,34 +1987,52 @@
     }
 
     /* Workshops Grid in Schedule */
+    /* Schedule Workshops Header - Enhanced */
     .schedule-workshops-header {
       display: flex;
       align-items: center;
-      gap: 12px;
-      margin: 40px 0 25px;
-      padding: 20px 0;
-      border-top: 1px solid rgba(201, 169, 98, 0.2);
+      gap: 16px;
+      margin: 50px 0 30px;
+      padding: 24px;
+      background: linear-gradient(135deg, rgba(201, 169, 98, 0.08) 0%, rgba(10, 61, 46, 0.3) 100%);
+      border: 1px solid rgba(201, 169, 98, 0.15);
+      border-radius: 16px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .schedule-workshops-header::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: linear-gradient(180deg, var(--gold), var(--gold-dark));
     }
 
     .schedule-workshops-header h3 {
       font-family: 'Playfair Display', serif;
-      font-size: 1.3rem;
+      font-size: 1.4rem;
       color: var(--gold);
+      margin: 0;
     }
 
     .schedule-workshops-header .icon {
-      width: 40px;
-      height: 40px;
-      background: rgba(201, 169, 98, 0.15);
-      border-radius: 50%;
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, rgba(201, 169, 98, 0.2), rgba(201, 169, 98, 0.1));
+      border: 1px solid rgba(201, 169, 98, 0.25);
+      border-radius: 14px;
       display: flex;
       align-items: center;
       justify-content: center;
+      flex-shrink: 0;
     }
 
     .schedule-workshops-header .icon svg {
-      width: 20px;
-      height: 20px;
+      width: 24px;
+      height: 24px;
       stroke: var(--gold);
       fill: none;
     }
@@ -2034,6 +2373,24 @@
         grid-template-columns: repeat(2, 1fr);
       }
 
+      .floating-nav {
+        right: 12px;
+        padding: 10px 6px;
+        gap: 6px;
+      }
+      
+      .floating-nav a {
+        width: 12px;
+        height: 12px;
+      }
+      
+      .floating-nav a::before,
+      .floating-nav a::after {
+        display: none;
+      }
+    }
+
+    @media (max-width: 500px) {
       .floating-nav {
         display: none;
       }
@@ -2381,7 +2738,14 @@
                       <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/11/Dr.-Anna-Bigas-PhD.webp" alt="Prof. Anna Bigas">
                       <span class="mini-flag"><img src="https://flagcdn.com/w40/es.png" alt="Spain"></span>
                     </span>
-                    <span class="topic-name">New Approaches to Blood Stem Cell Generation — Prof. Anna Bigas</span>
+                    <span class="speaker-info-wrapper">
+                      <span class="topic-name">New Approaches to Blood Stem Cell Generation</span>
+                      <span class="speaker-name">Prof. Anna Bigas</span>
+                    </span>
+                  
+                    <button class="talk-bookmark-btn" onclick="event.stopPropagation(); toggleBookmark('talk-profannabigas-840', 'New Approaches to Blood Stem Cell Generation', 'Day 1', '8:40', 'talk')">
+                      <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+                    </button>
                   </div>
                   <div class="speaker-line">
                     <span class="time">9:05</span>
@@ -2389,7 +2753,14 @@
                       <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/11/Prof.-Dr.-Nina-Cabezas-Wallscheid.webp" alt="Prof. Nina Cabezas-Wallscheid">
                       <span class="mini-flag"><img src="https://flagcdn.com/w40/ch.png" alt="Switzerland"></span>
                     </span>
-                    <span class="topic-name">Bone Marrow Stem Cell Modulation After MI — Prof. Nina Cabezas-Wallscheid</span>
+                    <span class="speaker-info-wrapper">
+                      <span class="topic-name">Bone Marrow Stem Cell Modulation After MI</span>
+                      <span class="speaker-name">Prof. Nina Cabezas-Wallscheid</span>
+                    </span>
+                  
+                    <button class="talk-bookmark-btn" onclick="event.stopPropagation(); toggleBookmark('talk-profninacabezas-905', 'Bone Marrow Stem Cell Modulation After MI', 'Day 1', '9:05', 'talk')">
+                      <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+                    </button>
                   </div>
                   <div class="speaker-line">
                     <span class="time">9:30</span>
@@ -2397,7 +2768,14 @@
                       <img src="https://ui-avatars.com/api/?name=Raef+Albugami&background=0a3d2e&color=c9a962&size=64&font-size=0.4" alt="Dr. Raef Almarzouqi Albugami">
                       <span class="mini-flag"><img src="https://flagcdn.com/w40/ae.png" alt="UAE"></span>
                     </span>
-                    <span class="topic-name">Cellular Therapy Excellence — Dr. Raef Almarzouqi Albugami</span>
+                    <span class="speaker-info-wrapper">
+                      <span class="topic-name">Cellular Therapy Excellence</span>
+                      <span class="speaker-name">Dr. Raef Almarzouqi Albugami</span>
+                    </span>
+                  
+                    <button class="talk-bookmark-btn" onclick="event.stopPropagation(); toggleBookmark('talk-drraefalmarzouq-930', 'Cellular Therapy Excellence', 'Day 1', '9:30', 'talk')">
+                      <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+                    </button>
                   </div>
                   <div class="speaker-line">
                     <span class="time">9:55</span>
@@ -2405,7 +2783,14 @@
                       <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/11/Emmanouil-Nikolousis.webp" alt="Dr. Emmanouil Nikolousis">
                       <span class="mini-flag"><img src="https://flagcdn.com/w40/ae.png" alt="UAE"></span>
                     </span>
-                    <span class="topic-name">Novel Conditioning in Allogeneic Transplants — Dr. Emmanouil Nikolousis</span>
+                    <span class="speaker-info-wrapper">
+                      <span class="topic-name">Novel Conditioning in Allogeneic Transplants</span>
+                      <span class="speaker-name">Dr. Emmanouil Nikolousis</span>
+                    </span>
+                  
+                    <button class="talk-bookmark-btn" onclick="event.stopPropagation(); toggleBookmark('talk-dremmanouilniko-955', 'Novel Conditioning in Allogeneic Transplants', 'Day 1', '9:55', 'talk')">
+                      <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+                    </button>
                   </div>
                 </div>
               </div>
@@ -2447,7 +2832,14 @@
                       <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/11/Dr.-Hidetoshi-Sakurai-MD-PhD.webp" alt="Prof. Hidetoshi Sakurai">
                       <span class="mini-flag"><img src="https://flagcdn.com/w40/jp.png" alt="Japan"></span>
                     </span>
-                    <span class="topic-name">iPS Cell Therapy for Muscular Disorders — Prof. Hidetoshi Sakurai</span>
+                    <span class="speaker-info-wrapper">
+                      <span class="topic-name">iPS Cell Therapy for Muscular Disorders</span>
+                      <span class="speaker-name">Prof. Hidetoshi Sakurai</span>
+                    </span>
+                  
+                    <button class="talk-bookmark-btn" onclick="event.stopPropagation(); toggleBookmark('talk-profhidetoshisa-1105', 'iPS Cell Therapy for Muscular Disorders', 'Day 1', '11:05', 'talk')">
+                      <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+                    </button>
                   </div>
                   <div class="speaker-line">
                     <span class="time">11:30</span>
@@ -2455,7 +2847,14 @@
                       <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/11/Dr.-Sarkawt-Hamad.webp" alt="Dr. Sarkawt Hamad">
                       <span class="mini-flag"><img src="https://flagcdn.com/w40/de.png" alt="Germany"></span>
                     </span>
-                    <span class="topic-name">hiPSCs Cardiac Organoids for Reducing AMI — Dr. Sarkawt Hamad</span>
+                    <span class="speaker-info-wrapper">
+                      <span class="topic-name">hiPSCs Cardiac Organoids for Reducing AMI</span>
+                      <span class="speaker-name">Dr. Sarkawt Hamad</span>
+                    </span>
+                  
+                    <button class="talk-bookmark-btn" onclick="event.stopPropagation(); toggleBookmark('talk-drsarkawthamad-1130', 'hiPSCs Cardiac Organoids for Reducing AMI', 'Day 1', '11:30', 'talk')">
+                      <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+                    </button>
                   </div>
                 </div>
               </div>
@@ -2532,7 +2931,14 @@
                       <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/11/Dr.-Heli-Skottman.webp" alt="Dr. Heli Skottman">
                       <span class="mini-flag"><img src="https://flagcdn.com/w40/fi.png" alt="Finland"></span>
                     </span>
-                    <span class="topic-name">Eye Regeneration with iPSCs and Bioprinting — Dr. Heli Skottman</span>
+                    <span class="speaker-info-wrapper">
+                      <span class="topic-name">Eye Regeneration with iPSCs and Bioprinting</span>
+                      <span class="speaker-name">Dr. Heli Skottman</span>
+                    </span>
+                  
+                    <button class="talk-bookmark-btn" onclick="event.stopPropagation(); toggleBookmark('talk-drheliskottman-1435', 'Eye Regeneration with iPSCs and Bioprinting', 'Day 1', '14:35', 'talk')">
+                      <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+                    </button>
                   </div>
                   <div class="speaker-line">
                     <span class="time">15:00</span>
@@ -2540,7 +2946,14 @@
                       <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/11/Dr.-Essam-Abdelalim.webp" alt="Dr. Essam Abdelalim">
                       <span class="mini-flag"><img src="https://flagcdn.com/w40/qa.png" alt="Qatar"></span>
                     </span>
-                    <span class="topic-name">Modeling Monogenic Diabetes with iPSC-Derived Islets — Dr. Essam Abdelalim</span>
+                    <span class="speaker-info-wrapper">
+                      <span class="topic-name">Modeling Monogenic Diabetes with iPSC-Derived Islets</span>
+                      <span class="speaker-name">Dr. Essam Abdelalim</span>
+                    </span>
+                  
+                    <button class="talk-bookmark-btn" onclick="event.stopPropagation(); toggleBookmark('talk-dressamabdelali-1500', 'Modeling Monogenic Diabetes with iPSC-Derived Islets', 'Day 1', '15:00', 'talk')">
+                      <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+                    </button>
                   </div>
                   <div class="speaker-line">
                     <span class="time">15:25</span>
@@ -2548,7 +2961,14 @@
                       <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/12/dscc-2026-speakers-dr-khaled-alsayegh.webp" alt="Dr. Khaled Alsayegh">
                       <span class="mini-flag"><img src="https://flagcdn.com/w40/sa.png" alt="Saudi Arabia"></span>
                     </span>
-                    <span class="topic-name">The Saudi Bank of iPSCs (SBiPSCs) — Dr. Khaled Alsayegh</span>
+                    <span class="speaker-info-wrapper">
+                      <span class="topic-name">The Saudi Bank of iPSCs (SBiPSCs)</span>
+                      <span class="speaker-name">Dr. Khaled Alsayegh</span>
+                    </span>
+                  
+                    <button class="talk-bookmark-btn" onclick="event.stopPropagation(); toggleBookmark('talk-drkhaledalsayeg-1525', 'The Saudi Bank of iPSCs (SBiPSCs)', 'Day 1', '15:25', 'talk')">
+                      <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+                    </button>
                   </div>
                 </div>
               </div>
@@ -2576,7 +2996,14 @@
                       <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/11/Daniel-Besser.webp" alt="Dr. Daniel Besser">
                       <span class="mini-flag"><img src="https://flagcdn.com/w40/de.png" alt="Germany"></span>
                     </span>
-                    <span class="topic-name">Introduction — Dr. Daniel Besser (German Stem Cell Network)</span>
+                    <span class="speaker-info-wrapper">
+                      <span class="topic-name">Introduction</span>
+                      <span class="speaker-name">Dr. Daniel Besser (German Stem Cell Network)</span>
+                    </span>
+                  
+                    <button class="talk-bookmark-btn" onclick="event.stopPropagation(); toggleBookmark('talk-drdanielbesserg-1550', 'Introduction', 'Day 1', '15:50', 'talk')">
+                      <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+                    </button>
                   </div>
                   <div class="speaker-line">
                     <span class="time">16:00</span>
@@ -2584,7 +3011,14 @@
                       <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/11/Prof.-Dr.-Sina-Bartfeld.webp" alt="Dr. Sina Bartfeld">
                       <span class="mini-flag"><img src="https://flagcdn.com/w40/de.png" alt="Germany"></span>
                     </span>
-                    <span class="topic-name">Infection, Innate Immunity & Cancer: Organoids as Model — Dr. Sina Bartfeld</span>
+                    <span class="speaker-info-wrapper">
+                      <span class="topic-name">Infection, Innate Immunity & Cancer: Organoids as Model</span>
+                      <span class="speaker-name">Dr. Sina Bartfeld</span>
+                    </span>
+                  
+                    <button class="talk-bookmark-btn" onclick="event.stopPropagation(); toggleBookmark('talk-drsinabartfeld-1600', 'Infection, Innate Immunity & Cancer: Organoids as Model', 'Day 1', '16:00', 'talk')">
+                      <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+                    </button>
                   </div>
                   <div class="speaker-line">
                     <span class="time">16:25</span>
@@ -2592,7 +3026,14 @@
                       <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/11/Prof.-Dr.-Andreas-Trumpp-PhD.webp" alt="Prof. Andreas Trumpp">
                       <span class="mini-flag"><img src="https://flagcdn.com/w40/de.png" alt="Germany"></span>
                     </span>
-                    <span class="topic-name">Malignant Stem Cells — Prof. Andreas Trumpp</span>
+                    <span class="speaker-info-wrapper">
+                      <span class="topic-name">Malignant Stem Cells</span>
+                      <span class="speaker-name">Prof. Andreas Trumpp</span>
+                    </span>
+                  
+                    <button class="talk-bookmark-btn" onclick="event.stopPropagation(); toggleBookmark('talk-profandreastrum-1625', 'Malignant Stem Cells', 'Day 1', '16:25', 'talk')">
+                      <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+                    </button>
                   </div>
                   <div class="speaker-line">
                     <span class="time">16:50</span>
@@ -2600,7 +3041,14 @@
                       <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/11/Ludovic-Vallier.webp" alt="Prof. Ludovic Vallier">
                       <span class="mini-flag"><img src="https://flagcdn.com/w40/de.png" alt="Germany"></span>
                     </span>
-                    <span class="topic-name">Cell Based Therapy Against Liver Diseases — Prof. Ludovic Vallier</span>
+                    <span class="speaker-info-wrapper">
+                      <span class="topic-name">Cell Based Therapy Against Liver Diseases</span>
+                      <span class="speaker-name">Prof. Ludovic Vallier</span>
+                    </span>
+                  
+                    <button class="talk-bookmark-btn" onclick="event.stopPropagation(); toggleBookmark('talk-profludovicvall-1650', 'Cell Based Therapy Against Liver Diseases', 'Day 1', '16:50', 'talk')">
+                      <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+                    </button>
                   </div>
                 </div>
               </div>
@@ -2628,7 +3076,14 @@
                       <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/11/Prof.-Antoni-Bayes-Genis-MD-PhD-FESC.webp" alt="Prof. Antoni Bayes Genis">
                       <span class="mini-flag"><img src="https://flagcdn.com/w40/es.png" alt="Spain"></span>
                     </span>
-                    <span class="topic-name">UCB-MSCs Tissue Engineering and Cardiac Repair — Prof. Antoni Bayes Genis</span>
+                    <span class="speaker-info-wrapper">
+                      <span class="topic-name">UCB-MSCs Tissue Engineering and Cardiac Repair</span>
+                      <span class="speaker-name">Prof. Antoni Bayes Genis</span>
+                    </span>
+                  
+                    <button class="talk-bookmark-btn" onclick="event.stopPropagation(); toggleBookmark('talk-profantonibayes-1715', 'UCB-MSCs Tissue Engineering and Cardiac Repair', 'Day 1', '17:15', 'talk')">
+                      <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+                    </button>
                   </div>
                   <div class="speaker-line">
                     <span class="time">17:40</span>
@@ -2636,7 +3091,14 @@
                       <img src="https://ui-avatars.com/api/?name=Carolina+Galvez+Monton&background=0a3d2e&color=c9a962&size=64&font-size=0.4" alt="Prof. Carolina Galvez Monton">
                       <span class="mini-flag"><img src="https://flagcdn.com/w40/es.png" alt="Spain"></span>
                     </span>
-                    <span class="topic-name">New Tissue-Engineered Vascular Graft (VasCraft) — Prof. Carolina Galvez Monton</span>
+                    <span class="speaker-info-wrapper">
+                      <span class="topic-name">New Tissue-Engineered Vascular Graft (VasCraft)</span>
+                      <span class="speaker-name">Prof. Carolina Galvez Monton</span>
+                    </span>
+                  
+                    <button class="talk-bookmark-btn" onclick="event.stopPropagation(); toggleBookmark('talk-profcarolinagal-1740', 'New Tissue-Engineered Vascular Graft (VasCraft)', 'Day 1', '17:40', 'talk')">
+                      <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+                    </button>
                   </div>
                 </div>
               </div>
@@ -2675,17 +3137,24 @@
                 <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
                 <span class="notification-dot"></span>
               </button>
-              <div class="workshop-meta">
-                <span>Day 1</span>
-                <span>15:15 – 16:30</span>
+              <div class="workshop-card-header">
+                <div class="workshop-meta">
+                  <span>Day 1</span>
+                  <span>15:15 – 16:30</span>
+                </div>
               </div>
-              <h3>How to Establish a Scientific Career?</h3>
+              <div class="workshop-card-content">
+                <h3>How to Establish a Scientific Career?</h3>
+              </div>
               <div class="workshop-speaker">
                 <div class="avatar">
                   <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/11/Prof.-Dr.-Kurt-Pfannkuche.webp" alt="Prof. Dr. Kurt Pfannkuche">
                   <span class="workshop-flag"><img src="https://flagcdn.com/w40/de.png" alt="Germany"></span>
                 </div>
-                <div class="name">Prof. Dr. Kurt Pfannkuche</div>
+                <div class="speaker-details">
+                  <div class="name">Prof. Dr. Kurt Pfannkuche</div>
+                  <div class="role">Workshop Instructor</div>
+                </div>
               </div>
             </div>
 
@@ -2694,17 +3163,24 @@
                 <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
                 <span class="notification-dot"></span>
               </button>
-              <div class="workshop-meta">
-                <span>Day 1</span>
-                <span>16:30 – 17:45</span>
+              <div class="workshop-card-header">
+                <div class="workshop-meta">
+                  <span>Day 1</span>
+                  <span>16:30 – 17:45</span>
+                </div>
               </div>
-              <h3>Decoding Stem Cell Biology with scverse Tools</h3>
+              <div class="workshop-card-content">
+                <h3>Decoding Stem Cell Biology with scverse Tools</h3>
+              </div>
               <div class="workshop-speaker">
                 <div class="avatar">
                   <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/11/DSCC-2026-Workshop-Speakers-Ms.-Sara-Jimenez.webp" alt="Ms. Sara Jimenez">
                   <span class="workshop-flag"><img src="https://flagcdn.com/w40/de.png" alt="Germany"></span>
                 </div>
-                <div class="name">Ms. Sara Jimenez</div>
+                <div class="speaker-details">
+                  <div class="name">Ms. Sara Jimenez</div>
+                  <div class="role">Workshop Instructor</div>
+                </div>
               </div>
             </div>
           </div>
@@ -2750,7 +3226,14 @@
                       <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/11/Dr.-Khulood-Mohamed-Alsayegh.webp" alt="Dr. Khulood Mohamed Alsayegh">
                       <span class="mini-flag"><img src="https://flagcdn.com/w40/ae.png" alt="UAE"></span>
                     </span>
-                    <span class="topic-name">DHA Standards for Stem Cell Services — Dr. Khulood Mohamed Alsayegh</span>
+                    <span class="speaker-info-wrapper">
+                      <span class="topic-name">DHA Standards for Stem Cell Services</span>
+                      <span class="speaker-name">Dr. Khulood Mohamed Alsayegh</span>
+                    </span>
+                  
+                    <button class="talk-bookmark-btn" onclick="event.stopPropagation(); toggleBookmark('talk-drkhuloodmohame-900', 'DHA Standards for Stem Cell Services', 'Day 2', '9:00', 'talk')">
+                      <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+                    </button>
                   </div>
                   <div class="speaker-line">
                     <span class="time">9:25</span>
@@ -2758,7 +3241,14 @@
                       <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/11/Attorney-Dr.-Hayathem-H.-Bin-Hasher.webp" alt="Dr. Haythem Bin Hashr">
                       <span class="mini-flag"><img src="https://flagcdn.com/w40/sa.png" alt="Saudi Arabia"></span>
                     </span>
-                    <span class="topic-name">From Bench to Policy: Navigating Regulation — Dr. Haythem Bin Hashr</span>
+                    <span class="speaker-info-wrapper">
+                      <span class="topic-name">From Bench to Policy: Navigating Regulation</span>
+                      <span class="speaker-name">Dr. Haythem Bin Hashr</span>
+                    </span>
+                  
+                    <button class="talk-bookmark-btn" onclick="event.stopPropagation(); toggleBookmark('talk-drhaythembinhas-925', 'From Bench to Policy: Navigating Regulation', 'Day 2', '9:25', 'talk')">
+                      <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+                    </button>
                   </div>
                 </div>
               </div>
@@ -2786,7 +3276,14 @@
                       <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/11/Prof.-Dr.-Emad-Mahmoud-Ibrahim-Elzayat-PhD.webp" alt="Dr. Emad Elzayed">
                       <span class="mini-flag"><img src="https://flagcdn.com/w40/eg.png" alt="Egypt"></span>
                     </span>
-                    <span class="topic-name">Multipotent Solutions: Tackling Complex Chronic Diseases — Dr. Emad Elzayed</span>
+                    <span class="speaker-info-wrapper">
+                      <span class="topic-name">Multipotent Solutions: Tackling Complex Chronic Diseases</span>
+                      <span class="speaker-name">Dr. Emad Elzayed</span>
+                    </span>
+                  
+                    <button class="talk-bookmark-btn" onclick="event.stopPropagation(); toggleBookmark('talk-dremadelzayed-950', 'Multipotent Solutions: Tackling Complex Chronic Diseases', 'Day 2', '9:50', 'talk')">
+                      <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+                    </button>
                   </div>
                   <div class="speaker-line">
                     <span class="time">10:15</span>
@@ -2794,7 +3291,14 @@
                       <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/12/dscc-2026-speakers-prof-ayman-al-hendy.webp" alt="Dr. Ayman Hendy">
                       <span class="mini-flag"><img src="https://flagcdn.com/w40/ae.png" alt="UAE"></span>
                     </span>
-                    <span class="topic-name">Stem Cell Based Fertility Restoration and Protection — Dr. Ayman Hendy</span>
+                    <span class="speaker-info-wrapper">
+                      <span class="topic-name">Stem Cell Based Fertility Restoration and Protection</span>
+                      <span class="speaker-name">Dr. Ayman Hendy</span>
+                    </span>
+                  
+                    <button class="talk-bookmark-btn" onclick="event.stopPropagation(); toggleBookmark('talk-draymanhendy-1015', 'Stem Cell Based Fertility Restoration and Protection', 'Day 2', '10:15', 'talk')">
+                      <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+                    </button>
                   </div>
                 </div>
               </div>
@@ -2836,7 +3340,14 @@
                       <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/11/Dr.-Ralf-Jauch.webp" alt="Dr. Ralf Jauch">
                       <span class="mini-flag"><img src="https://flagcdn.com/w40/hk.png" alt="Hong Kong"></span>
                     </span>
-                    <span class="topic-name">Direct Somatic to Neural Stem Cell Conversion — Dr. Ralf Jauch</span>
+                    <span class="speaker-info-wrapper">
+                      <span class="topic-name">Direct Somatic to Neural Stem Cell Conversion</span>
+                      <span class="speaker-name">Dr. Ralf Jauch</span>
+                    </span>
+                  
+                    <button class="talk-bookmark-btn" onclick="event.stopPropagation(); toggleBookmark('talk-drralfjauch-1125', 'Direct Somatic to Neural Stem Cell Conversion', 'Day 2', '11:25', 'talk')">
+                      <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+                    </button>
                   </div>
                   <div class="speaker-line">
                     <span class="time">11:50</span>
@@ -2844,7 +3355,14 @@
                       <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/11/Dr.-Vincent-R.-Knight-Schrijver.webp" alt="Dr. Vincent Knight-Schrijver">
                       <span class="mini-flag"><img src="https://flagcdn.com/w40/gb.png" alt="United Kingdom"></span>
                     </span>
-                    <span class="topic-name">Whole-Organ Atlases to Benchmark Cardiomyocytes — Dr. Vincent Knight-Schrijver</span>
+                    <span class="speaker-info-wrapper">
+                      <span class="topic-name">Whole-Organ Atlases to Benchmark Cardiomyocytes</span>
+                      <span class="speaker-name">Dr. Vincent Knight-Schrijver</span>
+                    </span>
+                  
+                    <button class="talk-bookmark-btn" onclick="event.stopPropagation(); toggleBookmark('talk-drvincentknight-1150', 'Whole-Organ Atlases to Benchmark Cardiomyocytes', 'Day 2', '11:50', 'talk')">
+                      <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+                    </button>
                   </div>
                   <div class="speaker-line">
                     <span class="time">12:15</span>
@@ -2852,7 +3370,14 @@
                       <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/11/Dr.-Clemens-Dannheim.webp" alt="Dr. Clemens Dannheim">
                       <span class="mini-flag"><img src="https://flagcdn.com/w40/de.png" alt="Germany"></span>
                     </span>
-                    <span class="topic-name">AI-Driven Imaging and Analytics in Stem Cell Research — Dr. Clemens Dannheim</span>
+                    <span class="speaker-info-wrapper">
+                      <span class="topic-name">AI-Driven Imaging and Analytics in Stem Cell Research</span>
+                      <span class="speaker-name">Dr. Clemens Dannheim</span>
+                    </span>
+                  
+                    <button class="talk-bookmark-btn" onclick="event.stopPropagation(); toggleBookmark('talk-drclemensdannhe-1215', 'AI-Driven Imaging and Analytics in Stem Cell Research', 'Day 2', '12:15', 'talk')">
+                      <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+                    </button>
                   </div>
                 </div>
               </div>
@@ -2892,7 +3417,14 @@
                       <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/12/DSCC-2026-Speakers-Dr.-Ulf-Grawunder.webp" alt="Dr. Ulf Grawunder">
                       <span class="mini-flag"><img src="https://flagcdn.com/w40/de.png" alt="Germany"></span>
                     </span>
-                    <span class="topic-name">Advances in In Vivo CAR-T Cell Therapy — Dr. Ulf Grawunder</span>
+                    <span class="speaker-info-wrapper">
+                      <span class="topic-name">Advances in In Vivo CAR-T Cell Therapy</span>
+                      <span class="speaker-name">Dr. Ulf Grawunder</span>
+                    </span>
+                  
+                    <button class="talk-bookmark-btn" onclick="event.stopPropagation(); toggleBookmark('talk-drulfgrawunder-1340', 'Advances in In Vivo CAR-T Cell Therapy', 'Day 2', '13:40', 'talk')">
+                      <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+                    </button>
                   </div>
                   <div class="speaker-line">
                     <span class="time">14:05</span>
@@ -2900,7 +3432,14 @@
                       <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/11/Dr.-Riikka-Martikainen.webp" alt="Dr. Riikka Martikainen">
                       <span class="mini-flag"><img src="https://flagcdn.com/w40/fi.png" alt="Finland"></span>
                     </span>
-                    <span class="topic-name">Stem Cell Models for Mitochondrial Disease — Dr. Riikka Martikainen</span>
+                    <span class="speaker-info-wrapper">
+                      <span class="topic-name">Stem Cell Models for Mitochondrial Disease</span>
+                      <span class="speaker-name">Dr. Riikka Martikainen</span>
+                    </span>
+                  
+                    <button class="talk-bookmark-btn" onclick="event.stopPropagation(); toggleBookmark('talk-drriikkamartika-1405', 'Stem Cell Models for Mitochondrial Disease', 'Day 2', '14:05', 'talk')">
+                      <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+                    </button>
                   </div>
                   <div class="speaker-line">
                     <span class="time">14:30</span>
@@ -2908,7 +3447,14 @@
                       <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/10/Prof.-Margherita-Maioli.png" alt="Prof. Margherita Maioli">
                       <span class="mini-flag"><img src="https://flagcdn.com/w40/it.png" alt="Italy"></span>
                     </span>
-                    <span class="topic-name">Stemness, Senescence & Space Biology: REAC Technology — Prof. Margherita Maioli</span>
+                    <span class="speaker-info-wrapper">
+                      <span class="topic-name">Stemness, Senescence & Space Biology: REAC Technology</span>
+                      <span class="speaker-name">Prof. Margherita Maioli</span>
+                    </span>
+                  
+                    <button class="talk-bookmark-btn" onclick="event.stopPropagation(); toggleBookmark('talk-profmargheritam-1430', 'Stemness, Senescence & Space Biology: REAC Technology', 'Day 2', '14:30', 'talk')">
+                      <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+                    </button>
                   </div>
                   <div class="speaker-line">
                     <span class="time">14:55</span>
@@ -2916,7 +3462,14 @@
                       <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/12/DSCC-2026-Speakers-Prof.-Mingxia-Gu.webp" alt="Prof. Mingxia Gu">
                       <span class="mini-flag"><img src="https://flagcdn.com/w40/us.png" alt="USA"></span>
                     </span>
-                    <span class="topic-name">Vascular Development with Advanced Organoid Models — Prof. Mingxia Gu</span>
+                    <span class="speaker-info-wrapper">
+                      <span class="topic-name">Vascular Development with Advanced Organoid Models</span>
+                      <span class="speaker-name">Prof. Mingxia Gu</span>
+                    </span>
+                  
+                    <button class="talk-bookmark-btn" onclick="event.stopPropagation(); toggleBookmark('talk-profmingxiagu-1455', 'Vascular Development with Advanced Organoid Models', 'Day 2', '14:55', 'talk')">
+                      <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+                    </button>
                   </div>
                 </div>
               </div>
@@ -2972,17 +3525,24 @@
                 <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
                 <span class="notification-dot"></span>
               </button>
-              <div class="workshop-meta">
-                <span>Day 2</span>
-                <span>9:30 – 10:45</span>
+              <div class="workshop-card-header">
+                <div class="workshop-meta">
+                  <span>Day 2</span>
+                  <span>9:30 – 10:45</span>
+                </div>
               </div>
-              <h3>Harvesting Hope: Science and Skills for Optimal Cord Blood Collections</h3>
+              <div class="workshop-card-content">
+                <h3>Harvesting Hope: Science and Skills for Optimal Cord Blood Collections</h3>
+              </div>
               <div class="workshop-speaker">
                 <div class="avatar">
                   <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/11/DSCC-2026-Workshop-Speakers.webp" alt="Mrs. Kim Petrella">
                   <span class="workshop-flag"><img src="https://flagcdn.com/w40/us.png" alt="USA"></span>
                 </div>
-                <div class="name">Mrs. Kim Petrella</div>
+                <div class="speaker-details">
+                  <div class="name">Mrs. Kim Petrella</div>
+                  <div class="role">Workshop Instructor</div>
+                </div>
               </div>
             </div>
 
@@ -2991,17 +3551,24 @@
                 <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
                 <span class="notification-dot"></span>
               </button>
-              <div class="workshop-meta">
-                <span>Day 2</span>
-                <span>11:15 – 12:30</span>
+              <div class="workshop-card-header">
+                <div class="workshop-meta">
+                  <span>Day 2</span>
+                  <span>11:15 – 12:30</span>
+                </div>
               </div>
-              <h3>Unlocking Immune Power: Why PBMCs Matter</h3>
+              <div class="workshop-card-content">
+                <h3>Unlocking Immune Power: Why PBMCs Matter</h3>
+              </div>
               <div class="workshop-speaker">
                 <div class="avatar">
                   <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/11/Dr.-Sarkawt-Hamad.webp" alt="Dr. Sarkawt Hamad">
                   <span class="workshop-flag"><img src="https://flagcdn.com/w40/de.png" alt="Germany"></span>
                 </div>
-                <div class="name">Dr. Sarkawt Hamad</div>
+                <div class="speaker-details">
+                  <div class="name">Dr. Sarkawt Hamad</div>
+                  <div class="role">Workshop Instructor</div>
+                </div>
               </div>
             </div>
 
@@ -3010,17 +3577,24 @@
                 <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
                 <span class="notification-dot"></span>
               </button>
-              <div class="workshop-meta">
-                <span>Day 2</span>
-                <span>15:30 – 16:45</span>
+              <div class="workshop-card-header">
+                <div class="workshop-meta">
+                  <span>Day 2</span>
+                  <span>15:30 – 16:45</span>
+                </div>
               </div>
-              <h3>Exploring the Value of MSCs from Adipose, Cord and Placental Sources</h3>
+              <div class="workshop-card-content">
+                <h3>Exploring the Value of MSCs from Adipose, Cord and Placental Sources</h3>
+              </div>
               <div class="workshop-speaker">
                 <div class="avatar">
                   <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/11/DSCC-2026-Workshop-Speakers-Dr.-Shadab-1.webp" alt="Mr. Mustafa Tareq">
                   <span class="workshop-flag"><img src="https://flagcdn.com/w40/ae.png" alt="UAE"></span>
                 </div>
-                <div class="name">Mr. Mustafa Tareq & Dr. Shadab Anjum</div>
+                <div class="speaker-details">
+                  <div class="name">Mr. Mustafa Tareq & Dr. Shadab Anjum</div>
+                  <div class="role">Workshop Instructors</div>
+                </div>
               </div>
             </div>
           </div>
@@ -3626,8 +4200,20 @@
       const bookmarks = getBookmarks();
       const notifications = getNotifications();
       
+      // Find the button - for talks, we need to search differently
+      let btn = null;
       const mainCard = document.querySelector(`[data-id="${id}"]`);
-      const btn = mainCard ? mainCard.querySelector('.bookmark-btn') : null;
+      if (mainCard) {
+        btn = mainCard.querySelector('.bookmark-btn');
+      } else if (type === 'talk') {
+        // For talks, find the button by matching the onclick attribute
+        document.querySelectorAll('.talk-bookmark-btn').forEach(talkBtn => {
+          const onclickAttr = talkBtn.getAttribute('onclick');
+          if (onclickAttr && onclickAttr.includes(`'${id}'`)) {
+            btn = talkBtn;
+          }
+        });
+      }
       
       if (bookmarks[id]) {
         delete bookmarks[id];
@@ -3711,8 +4297,9 @@
       const settings = getSettings();
       
       ['sessions', 'workshops', 'speakers'].forEach(type => {
-        const typeKey = type === 'sessions' ? 'session' : type.slice(0, -1);
-        const items = Object.values(bookmarks).filter(b => b.type === typeKey);
+        // Include 'talk' type with sessions
+        const typeKeys = type === 'sessions' ? ['session', 'talk'] : [type.slice(0, -1)];
+        const items = Object.values(bookmarks).filter(b => typeKeys.includes(b.type));
         const container = document.getElementById(`panel-${type}`);
         
         if (items.length === 0) {
@@ -3892,7 +4479,7 @@
       const bookmarks = getBookmarks();
       const notifications = getNotifications();
       
-      // Restore bookmark states from localStorage
+      // Restore bookmark states from localStorage for session/workshop bookmarks
       document.querySelectorAll('[data-id]').forEach(el => {
         const id = el.dataset.id;
         const btn = el.querySelector('.bookmark-btn');
@@ -3903,6 +4490,21 @@
         
         if (notifications[id] && notifications[id].enabled && btn) {
           btn.classList.add('has-notification');
+        }
+      });
+      
+      // Restore talk bookmark button states
+      document.querySelectorAll('.talk-bookmark-btn').forEach(btn => {
+        const onclickAttr = btn.getAttribute('onclick');
+        if (onclickAttr) {
+          // Extract the talk ID from the onclick attribute
+          const match = onclickAttr.match(/toggleBookmark\('([^']+)'/);
+          if (match) {
+            const talkId = match[1];
+            if (bookmarks[talkId]) {
+              btn.classList.add('active');
+            }
+          }
         }
       });
       
