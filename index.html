@@ -1607,32 +1607,118 @@
       fill: var(--gold);
     }
 
-    /* Mobile Responsive */
+    .speaker-line:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Mobile Responsive - Speaker Lines */
     @media (max-width: 600px) {
       .speaker-line {
-        padding: 12px;
-        gap: 12px;
-        flex-wrap: wrap;
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        grid-template-rows: auto auto;
+        gap: 8px 12px;
+        padding: 14px;
+        margin-left: 0;
+        margin-right: 0;
+        align-items: center;
       }
       
+      /* Time badge - top left */
+      .speaker-line .time {
+        grid-column: 1;
+        grid-row: 1;
+        font-size: 0.75rem;
+        padding: 5px 10px;
+        min-width: auto;
+      }
+      
+      /* Avatar - spans both rows on left */
       .speaker-mini-avatar {
+        grid-column: 1;
+        grid-row: 2;
         width: 44px;
         height: 44px;
       }
       
-      .speaker-line .time {
-        font-size: 0.75rem;
-        padding: 4px 8px;
-        min-width: 42px;
+      .speaker-mini-avatar .mini-flag {
+        width: 18px;
+        height: 18px;
+      }
+      
+      /* Speaker info wrapper - takes up remaining space */
+      .speaker-info-wrapper {
+        grid-column: 2;
+        grid-row: 1 / 3;
+        align-self: center;
       }
       
       .speaker-line .topic-name {
         font-size: 0.85rem;
+        line-height: 1.4;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+      
+      .speaker-line .speaker-name {
+        font-size: 0.75rem;
+        margin-top: 2px;
+      }
+      
+      /* Bookmark button - right side, centered */
+      .talk-bookmark-btn {
+        grid-column: 3;
+        grid-row: 1 / 3;
+        align-self: center;
+        padding: 10px;
+      }
+      
+      .talk-bookmark-btn svg {
+        width: 16px;
+        height: 16px;
+      }
+      
+      /* Hover effects off on mobile */
+      .speaker-line:hover {
+        transform: none;
       }
     }
-
-    .speaker-line:last-child {
-      margin-bottom: 0;
+    
+    /* Extra small screens */
+    @media (max-width: 380px) {
+      .speaker-line {
+        padding: 12px;
+        gap: 6px 10px;
+      }
+      
+      .speaker-mini-avatar {
+        width: 40px;
+        height: 40px;
+      }
+      
+      .speaker-line .topic-name {
+        font-size: 0.8rem;
+      }
+      
+      .speaker-line .speaker-name {
+        font-size: 0.7rem;
+      }
+      
+      .speaker-line .time {
+        font-size: 0.7rem;
+        padding: 4px 8px;
+      }
+      
+      .talk-bookmark-btn {
+        padding: 8px;
+      }
+      
+      .talk-bookmark-btn svg {
+        width: 14px;
+        height: 14px;
+      }
     }
 
     /* Workshops Section */
@@ -1693,7 +1779,7 @@
 
     /* Workshop Card Header */
     .workshop-card-header {
-      padding: 24px 24px 0;
+      padding: 24px 70px 0 24px;
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
@@ -1859,7 +1945,7 @@
       border-color: var(--gold);
     }
 
-    /* Mobile Responsive */
+    /* Mobile Responsive - Workshop Cards */
     @media (max-width: 600px) {
       .workshops-grid {
         grid-template-columns: 1fr;
@@ -1867,25 +1953,99 @@
       }
       
       .workshop-card-header {
-        padding: 20px 20px 0;
+        padding: 18px 60px 0 18px;
+      }
+      
+      .workshop-card .bookmark-btn {
+        top: 14px;
+        right: 14px;
+        width: 38px;
+        height: 38px;
+        border-radius: 10px;
+      }
+      
+      .workshop-card .bookmark-btn svg {
+        width: 16px;
+        height: 16px;
       }
       
       .workshop-card-content {
-        padding: 16px 20px;
+        padding: 14px 18px;
       }
       
       .workshop-speaker {
-        padding: 16px 20px;
-        gap: 14px;
+        padding: 14px 18px;
+        gap: 12px;
       }
       
       .workshop-speaker .avatar {
-        width: 48px;
-        height: 48px;
+        width: 46px;
+        height: 46px;
+        border-radius: 12px;
+      }
+      
+      .workshop-speaker .avatar img {
+        border-radius: 10px;
+      }
+      
+      .workshop-speaker .avatar .workshop-flag {
+        width: 18px;
+        height: 18px;
       }
       
       .workshop-card h3 {
-        font-size: 1.1rem;
+        font-size: 1.05rem;
+        line-height: 1.4;
+      }
+      
+      .workshop-meta span {
+        font-size: 0.65rem;
+        padding: 5px 10px;
+      }
+      
+      .workshop-speaker .name {
+        font-size: 0.9rem;
+      }
+      
+      .workshop-speaker .role {
+        font-size: 0.75rem;
+      }
+    }
+    
+    /* Extra small screens */
+    @media (max-width: 380px) {
+      .workshop-card-header {
+        padding: 14px 54px 0 14px;
+      }
+      
+      .workshop-card .bookmark-btn {
+        top: 12px;
+        right: 12px;
+        width: 34px;
+        height: 34px;
+      }
+      
+      .workshop-card .bookmark-btn svg {
+        width: 14px;
+        height: 14px;
+      }
+      
+      .workshop-card-content {
+        padding: 12px 14px;
+      }
+      
+      .workshop-speaker {
+        padding: 12px 14px;
+        gap: 10px;
+      }
+      
+      .workshop-speaker .avatar {
+        width: 40px;
+        height: 40px;
+      }
+      
+      .workshop-card h3 {
+        font-size: 0.95rem;
       }
     }
 
@@ -2421,15 +2581,52 @@
       }
 
       .timeline {
-        padding-left: 30px;
+        padding-left: 20px;
       }
 
       .timeline-item {
-        padding-left: 30px;
+        padding-left: 20px;
+      }
+      
+      .timeline-item::before {
+        left: -23px;
       }
 
       .timeline-card {
-        padding: 20px;
+        padding: 16px;
+      }
+      
+      .timeline-title {
+        font-size: 1.1rem;
+        line-height: 1.35;
+      }
+      
+      .timeline-subtitle {
+        font-size: 0.85rem;
+        margin-bottom: 8px;
+      }
+      
+      .timeline-time {
+        font-size: 0.8rem;
+        margin-bottom: 8px;
+      }
+
+      /* Timeline speakers on mobile */
+      .timeline-speakers {
+        margin-top: 12px;
+      }
+      
+      /* Session bookmark button on mobile */
+      .timeline-card .bookmark-btn {
+        top: 12px;
+        right: 12px;
+        width: 36px;
+        height: 36px;
+      }
+      
+      .timeline-card .bookmark-btn svg {
+        width: 16px;
+        height: 16px;
       }
 
       .hero-info {
@@ -2443,6 +2640,32 @@
 
       .default-reminder-select {
         grid-template-columns: 1fr;
+      }
+      
+      /* Workshops grid on mobile */
+      .workshops-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+      
+      /* Schedule workshops header on mobile */
+      .schedule-workshops-header {
+        margin: 30px 0 20px;
+        padding: 16px;
+      }
+      
+      .schedule-workshops-header .icon {
+        width: 40px;
+        height: 40px;
+      }
+      
+      .schedule-workshops-header .icon svg {
+        width: 20px;
+        height: 20px;
+      }
+      
+      .schedule-workshops-header h3 {
+        font-size: 1.15rem;
       }
     }
 
