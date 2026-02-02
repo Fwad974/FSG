@@ -805,15 +805,25 @@
     .timeline-card { position: relative; }
     .timeline-item:not(.break) .timeline-card { padding-right: 70px; }
     .workshop-card { position: relative; padding-right: 70px; }
-    .speaker-card { position: relative; }
-    .speaker-card .bookmark-btn { top: 12px; right: 12px; width: 34px; height: 34px; }
 
     @media (max-width: 768px) {
       .my-schedule-panel { width: 100%; right: -100%; }
       .my-schedule-fab { bottom: 20px; right: 20px; padding: 14px 20px; }
-      .timeline-item:not(.break) .timeline-card { padding-right: 20px; }
-      .workshop-card { padding-right: 30px; }
-      .bookmark-btn { position: relative; top: auto; right: auto; margin-top: 15px; display: inline-flex; }
+      .timeline-item:not(.break) .timeline-card { padding-right: 20px; padding-top: 50px; }
+      .workshop-card { padding-right: 20px; padding-top: 50px; }
+      .workshop-card .bookmark-btn {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        margin-top: 0;
+      }
+      .timeline-item:not(.break) .bookmark-btn {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+      }
+      .speaker-card { padding-top: 50px; }
+      .speaker-card .bookmark-btn { top: 10px; right: 10px; }
       .bookmark-btn .notification-dot { top: -4px; right: -4px; }
       .saved-item .item-actions { opacity: 1; }
     }
@@ -1367,6 +1377,46 @@
       font-weight: 500;
     }
 
+    /* Inline Speaker Photos */
+    .speaker-line {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+
+    .speaker-line:last-child {
+      margin-bottom: 0;
+    }
+
+    .speaker-mini-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 2px solid rgba(201, 169, 98, 0.5);
+      overflow: hidden;
+      flex-shrink: 0;
+      background: linear-gradient(135deg, rgba(201, 169, 98, 0.2), rgba(201, 169, 98, 0.05));
+    }
+
+    .speaker-mini-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .speaker-line .time {
+      color: var(--gold);
+      font-weight: 500;
+      min-width: 40px;
+    }
+
+    .speaker-line .topic-name {
+      flex: 1;
+      min-width: 0;
+    }
+
     /* Workshops Section */
     .workshops-section {
       background: linear-gradient(180deg, var(--emerald-darkest) 0%, var(--emerald-dark) 100%);
@@ -1479,10 +1529,12 @@
       border: 1px solid rgba(201, 169, 98, 0.15);
       border-radius: 16px;
       padding: 25px;
+      padding-top: 45px;
       transition: all 0.4s ease;
       display: flex;
       gap: 18px;
       align-items: flex-start;
+      position: relative;
     }
 
     .speaker-card:hover {
@@ -1490,11 +1542,23 @@
       border-color: rgba(201, 169, 98, 0.4);
     }
 
+    .speaker-card .bookmark-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 32px;
+      height: 32px;
+    }
+
+    .speaker-card .bookmark-btn svg {
+      width: 16px;
+      height: 16px;
+    }
+
     .speaker-avatar {
-      width: 55px;
-      height: 55px;
-      background: linear-gradient(135deg, rgba(201, 169, 98, 0.2), rgba(201, 169, 98, 0.05));
-      border: 2px solid rgba(201, 169, 98, 0.3);
+      width: 65px;
+      height: 65px;
+      border: 3px solid rgba(201, 169, 98, 0.4);
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -1503,6 +1567,45 @@
       font-size: 1.1rem;
       color: var(--gold);
       flex-shrink: 0;
+      position: relative;
+      overflow: visible;
+      background: linear-gradient(135deg, rgba(201, 169, 98, 0.2), rgba(201, 169, 98, 0.05));
+    }
+
+    .speaker-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+    .speaker-avatar .flag {
+      position: absolute;
+      bottom: -4px;
+      right: -4px;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      border: 2px solid var(--emerald-dark);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      background: var(--emerald-dark);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .speaker-avatar .flag img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+    .speaker-info {
+      flex: 1;
+      min-width: 0;
     }
 
     .speaker-info h3 {
@@ -1511,12 +1614,87 @@
       font-weight: 600;
       color: var(--white);
       margin-bottom: 6px;
+      word-wrap: break-word;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
     }
 
     .speaker-info .topic {
       color: rgba(255,255,255,0.5);
       font-size: 0.8rem;
       line-height: 1.5;
+    }
+
+    .speaker-country {
+      font-size: 0.7rem;
+      color: var(--gold);
+      opacity: 0.8;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-bottom: 4px;
+    }
+
+    /* Keynote Speaker Card */
+    .speaker-card.keynote-speaker {
+      grid-column: span 2;
+      background: linear-gradient(135deg, rgba(201, 169, 98, 0.15), rgba(10, 61, 46, 0.6));
+      border: 2px solid rgba(201, 169, 98, 0.4);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .speaker-card.keynote-speaker::before {
+      content: 'KEYNOTE';
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      color: var(--emerald-darkest);
+      font-size: 0.65rem;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 20px;
+      letter-spacing: 1px;
+    }
+
+    .speaker-card.keynote-speaker .speaker-avatar {
+      width: 80px;
+      height: 80px;
+      border-width: 4px;
+      border-color: var(--gold);
+    }
+
+    .speaker-card.keynote-speaker .speaker-info h3 {
+      font-size: 1.2rem;
+    }
+
+    /* Workshop Speaker Card */
+    .speaker-card.workshop-speaker {
+      background: linear-gradient(135deg, rgba(15, 92, 69, 0.3), rgba(10, 61, 46, 0.4));
+      border: 1px solid rgba(15, 92, 69, 0.5);
+    }
+
+    .speaker-card.workshop-speaker::before {
+      content: 'WORKSHOP';
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      background: var(--emerald-light);
+      color: var(--white);
+      font-size: 0.6rem;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 15px;
+      letter-spacing: 0.5px;
+    }
+
+    @media (max-width: 768px) {
+      .speaker-card.keynote-speaker {
+        grid-column: span 1;
+      }
     }
 
     /* Venue Section */
@@ -1966,6 +2144,7 @@
   </section>
 
   <main>
+
     <!-- Schedule Section -->
     <section class="schedule-section" id="schedule">
       <div class="container">
@@ -2012,10 +2191,26 @@
                 <div class="timeline-title">Session 1: Hematopoietic Power</div>
                 <div class="timeline-subtitle">Stem Cells In Blood, Immunity & Oncology</div>
                 <div class="timeline-speakers">
-                  <strong>8:40</strong> New Approaches to Blood Stem Cell Generation — Prof. Anna Bigas<br>
-                  <strong>9:05</strong> Bone Marrow Stem Cell Modulation After MI — Prof. Nina Cabezas-Wallscheid<br>
-                  <strong>9:30</strong> Cellular Therapy Excellence — Dr. Raef Almarzouqi Albugami<br>
-                  <strong>9:55</strong> Novel Conditioning in Allogeneic Transplants — Dr. Emmanouil Nikolousis
+                  <div class="speaker-line">
+                    <span class="time">8:40</span>
+                    <span class="speaker-mini-avatar"><img src="https://ui-avatars.com/api/?name=Anna+Bigas&background=0a3d2e&color=c9a962&size=64&font-size=0.4" alt="Prof. Anna Bigas"></span>
+                    <span class="topic-name">New Approaches to Blood Stem Cell Generation — Prof. Anna Bigas</span>
+                  </div>
+                  <div class="speaker-line">
+                    <span class="time">9:05</span>
+                    <span class="speaker-mini-avatar"><img src="https://ui-avatars.com/api/?name=Nina+Cabezas-Wallscheid&background=0a3d2e&color=c9a962&size=64&font-size=0.4" alt="Prof. Nina Cabezas-Wallscheid"></span>
+                    <span class="topic-name">Bone Marrow Stem Cell Modulation After MI — Prof. Nina Cabezas-Wallscheid</span>
+                  </div>
+                  <div class="speaker-line">
+                    <span class="time">9:30</span>
+                    <span class="speaker-mini-avatar"><img src="https://ui-avatars.com/api/?name=Raef+Albugami&background=0a3d2e&color=c9a962&size=64&font-size=0.4" alt="Dr. Raef Almarzouqi Albugami"></span>
+                    <span class="topic-name">Cellular Therapy Excellence — Dr. Raef Almarzouqi Albugami</span>
+                  </div>
+                  <div class="speaker-line">
+                    <span class="time">9:55</span>
+                    <span class="speaker-mini-avatar"><img src="https://ui-avatars.com/api/?name=Emmanouil+Nikolousis&background=0a3d2e&color=c9a962&size=64&font-size=0.4" alt="Dr. Emmanouil Nikolousis"></span>
+                    <span class="topic-name">Novel Conditioning in Allogeneic Transplants — Dr. Emmanouil Nikolousis</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -2050,8 +2245,16 @@
                 <div class="timeline-title">Session 2: Mastering Cell Fate</div>
                 <div class="timeline-subtitle">Innovations in Stem Cell Reprogramming</div>
                 <div class="timeline-speakers">
-                  <strong>11:05</strong> iPS Cell Therapy for Muscular Disorders — Prof. Hidetoshi Sakurai<br>
-                  <strong>11:30</strong> hiPSCs Cardiac Organoids for Reducing AMI — Dr. Sarkawt Hamad
+                  <div class="speaker-line">
+                    <span class="time">11:05</span>
+                    <span class="speaker-mini-avatar"><img src="https://ui-avatars.com/api/?name=Hidetoshi+Sakurai&background=0a3d2e&color=c9a962&size=64&font-size=0.4" alt="Prof. Hidetoshi Sakurai"></span>
+                    <span class="topic-name">iPS Cell Therapy for Muscular Disorders — Prof. Hidetoshi Sakurai</span>
+                  </div>
+                  <div class="speaker-line">
+                    <span class="time">11:30</span>
+                    <span class="speaker-mini-avatar"><img src="https://ui-avatars.com/api/?name=Sarkawt+Hamad&background=0a3d2e&color=c9a962&size=64&font-size=0.4" alt="Dr. Sarkawt Hamad"></span>
+                    <span class="topic-name">hiPSCs Cardiac Organoids for Reducing AMI — Dr. Sarkawt Hamad</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -2099,7 +2302,10 @@
                 <div class="timeline-title">Curing Diabetes with Stem Cells</div>
                 <div class="timeline-subtitle">Chemical Reprogramming for Regenerative Medicine: From CiPSCs to Functional Cure of Type 1 Diabetes</div>
                 <div class="timeline-speakers">
-                  <strong>Prof. Hongkui Deng</strong>
+                  <div class="speaker-line">
+                    <span class="speaker-mini-avatar"><img src="https://ui-avatars.com/api/?name=Hongkui+Deng&background=0a3d2e&color=c9a962&size=64&font-size=0.4" alt="Prof. Hongkui Deng"></span>
+                    <span class="topic-name"><strong>Prof. Hongkui Deng</strong></span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -2115,9 +2321,21 @@
                 </div>
                 <div class="timeline-title">Session 2 Continued: Mastering Cell Fate</div>
                 <div class="timeline-speakers">
-                  <strong>14:35</strong> Eye Regeneration with iPSCs and Bioprinting — Dr. Heli Skottman<br>
-                  <strong>15:00</strong> Modeling Monogenic Diabetes with iPSC-Derived Islets — Dr. Essam Abdelalim<br>
-                  <strong>15:25</strong> The Saudi Bank of iPSCs (SBiPSCs) — Dr. Khaled Alsayegh
+                  <div class="speaker-line">
+                    <span class="time">14:35</span>
+                    <span class="speaker-mini-avatar"><img src="https://ui-avatars.com/api/?name=Heli+Skottman&background=0a3d2e&color=c9a962&size=64&font-size=0.4" alt="Dr. Heli Skottman"></span>
+                    <span class="topic-name">Eye Regeneration with iPSCs and Bioprinting — Dr. Heli Skottman</span>
+                  </div>
+                  <div class="speaker-line">
+                    <span class="time">15:00</span>
+                    <span class="speaker-mini-avatar"><img src="https://ui-avatars.com/api/?name=Essam+Abdelalim&background=0a3d2e&color=c9a962&size=64&font-size=0.4" alt="Dr. Essam Abdelalim"></span>
+                    <span class="topic-name">Modeling Monogenic Diabetes with iPSC-Derived Islets — Dr. Essam Abdelalim</span>
+                  </div>
+                  <div class="speaker-line">
+                    <span class="time">15:25</span>
+                    <span class="speaker-mini-avatar"><img src="https://ui-avatars.com/api/?name=Khaled+Alsayegh&background=0a3d2e&color=c9a962&size=64&font-size=0.4" alt="Dr. Khaled Alsayegh"></span>
+                    <span class="topic-name">The Saudi Bank of iPSCs (SBiPSCs) — Dr. Khaled Alsayegh</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -2138,10 +2356,26 @@
                 <div class="timeline-title">Session 3: Global Regeneration</div>
                 <div class="timeline-subtitle">A Dubai-Germany Alliance In Stem Cell Innovation</div>
                 <div class="timeline-speakers">
-                  <strong>15:50</strong> Introduction — Dr. Daniel Besser (German Stem Cell Network)<br>
-                  <strong>16:00</strong> Infection, Innate Immunity & Cancer: Organoids as Model — Dr. Sina Bartfeld<br>
-                  <strong>16:25</strong> Malignant Stem Cells — Prof. Andreas Trumpp<br>
-                  <strong>16:50</strong> Cell Based Therapy Against Liver Diseases — Prof. Ludovic Vallier
+                  <div class="speaker-line">
+                    <span class="time">15:50</span>
+                    <span class="speaker-mini-avatar"><img src="https://ui-avatars.com/api/?name=Daniel+Besser&background=0a3d2e&color=c9a962&size=64&font-size=0.4" alt="Dr. Daniel Besser"></span>
+                    <span class="topic-name">Introduction — Dr. Daniel Besser (German Stem Cell Network)</span>
+                  </div>
+                  <div class="speaker-line">
+                    <span class="time">16:00</span>
+                    <span class="speaker-mini-avatar"><img src="https://ui-avatars.com/api/?name=Sina+Bartfeld&background=0a3d2e&color=c9a962&size=64&font-size=0.4" alt="Dr. Sina Bartfeld"></span>
+                    <span class="topic-name">Infection, Innate Immunity & Cancer: Organoids as Model — Dr. Sina Bartfeld</span>
+                  </div>
+                  <div class="speaker-line">
+                    <span class="time">16:25</span>
+                    <span class="speaker-mini-avatar"><img src="https://ui-avatars.com/api/?name=Andreas+Trumpp&background=0a3d2e&color=c9a962&size=64&font-size=0.4" alt="Prof. Andreas Trumpp"></span>
+                    <span class="topic-name">Malignant Stem Cells — Prof. Andreas Trumpp</span>
+                  </div>
+                  <div class="speaker-line">
+                    <span class="time">16:50</span>
+                    <span class="speaker-mini-avatar"><img src="https://ui-avatars.com/api/?name=Ludovic+Vallier&background=0a3d2e&color=c9a962&size=64&font-size=0.4" alt="Prof. Ludovic Vallier"></span>
+                    <span class="topic-name">Cell Based Therapy Against Liver Diseases — Prof. Ludovic Vallier</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -2162,8 +2396,16 @@
                 <div class="timeline-title">Session 4: Cardiac Regeneration</div>
                 <div class="timeline-subtitle">New Frontiers In Heart Repair</div>
                 <div class="timeline-speakers">
-                  <strong>17:15</strong> UCB-MSCs Tissue Engineering and Cardiac Repair — Prof. Antoni Bayes Genis<br>
-                  <strong>17:40</strong> New Tissue-Engineered Vascular Graft (VasCraft) — Prof. Carolina Galvez Monton
+                  <div class="speaker-line">
+                    <span class="time">17:15</span>
+                    <span class="speaker-mini-avatar"><img src="https://ui-avatars.com/api/?name=Antoni+Bayes+Genis&background=0a3d2e&color=c9a962&size=64&font-size=0.4" alt="Prof. Antoni Bayes Genis"></span>
+                    <span class="topic-name">UCB-MSCs Tissue Engineering and Cardiac Repair — Prof. Antoni Bayes Genis</span>
+                  </div>
+                  <div class="speaker-line">
+                    <span class="time">17:40</span>
+                    <span class="speaker-mini-avatar"><img src="https://ui-avatars.com/api/?name=Carolina+Galvez+Monton&background=0a3d2e&color=c9a962&size=64&font-size=0.4" alt="Prof. Carolina Galvez Monton"></span>
+                    <span class="topic-name">New Tissue-Engineered Vascular Graft (VasCraft) — Prof. Carolina Galvez Monton</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -2218,8 +2460,16 @@
                 <div class="timeline-title">Session 5: Stem Cell Regulation</div>
                 <div class="timeline-subtitle">Current Concepts and Future Directions</div>
                 <div class="timeline-speakers">
-                  <strong>9:00</strong> DHA Standards for Stem Cell Services — Dr. Khulood Mohamed Alsayegh<br>
-                  <strong>9:25</strong> From Bench to Policy: Navigating Regulation — Dr. Haythem Bin Hashr
+                  <div class="speaker-line">
+                    <span class="time">9:00</span>
+                    <span class="speaker-mini-avatar"><img src="https://ui-avatars.com/api/?name=Khulood+Alsayegh&background=0a3d2e&color=c9a962&size=64&font-size=0.4" alt="Dr. Khulood Mohamed Alsayegh"></span>
+                    <span class="topic-name">DHA Standards for Stem Cell Services — Dr. Khulood Mohamed Alsayegh</span>
+                  </div>
+                  <div class="speaker-line">
+                    <span class="time">9:25</span>
+                    <span class="speaker-mini-avatar"><img src="https://ui-avatars.com/api/?name=Haythem+Bin+Hashr&background=0a3d2e&color=c9a962&size=64&font-size=0.4" alt="Dr. Haythem Bin Hashr"></span>
+                    <span class="topic-name">From Bench to Policy: Navigating Regulation — Dr. Haythem Bin Hashr</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -2240,8 +2490,16 @@
                 <div class="timeline-title">Session 6: From Source to Solution</div>
                 <div class="timeline-subtitle">Stem Cell Origins and Clinical Applications</div>
                 <div class="timeline-speakers">
-                  <strong>9:50</strong> Multipotent Solutions: Tackling Complex Chronic Diseases — Dr. Emad Elzayed<br>
-                  <strong>10:15</strong> Stem Cell Based Fertility Restoration and Protection — Dr. Ayman Hendy
+                  <div class="speaker-line">
+                    <span class="time">9:50</span>
+                    <span class="speaker-mini-avatar"><img src="https://ui-avatars.com/api/?name=Emad+Elzayed&background=0a3d2e&color=c9a962&size=64&font-size=0.4" alt="Dr. Emad Elzayed"></span>
+                    <span class="topic-name">Multipotent Solutions: Tackling Complex Chronic Diseases — Dr. Emad Elzayed</span>
+                  </div>
+                  <div class="speaker-line">
+                    <span class="time">10:15</span>
+                    <span class="speaker-mini-avatar"><img src="https://ui-avatars.com/api/?name=Ayman+Hendy&background=0a3d2e&color=c9a962&size=64&font-size=0.4" alt="Dr. Ayman Hendy"></span>
+                    <span class="topic-name">Stem Cell Based Fertility Restoration and Protection — Dr. Ayman Hendy</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -2276,9 +2534,21 @@
                 <div class="timeline-title">Session 7: Novel Approaches</div>
                 <div class="timeline-subtitle">Stem Cell Therapies & Regenerative Medicine</div>
                 <div class="timeline-speakers">
-                  <strong>11:25</strong> Direct Somatic to Neural Stem Cell Conversion — Dr. Ralf Jauch<br>
-                  <strong>11:50</strong> Whole-Organ Atlases to Benchmark Cardiomyocytes — Dr. Vincent Knight-Schrijver<br>
-                  <strong>12:15</strong> AI-Driven Imaging and Analytics in Stem Cell Research — Dr. Clemens Dannheim
+                  <div class="speaker-line">
+                    <span class="time">11:25</span>
+                    <span class="speaker-mini-avatar"><img src="https://ui-avatars.com/api/?name=Ralf+Jauch&background=0a3d2e&color=c9a962&size=64&font-size=0.4" alt="Dr. Ralf Jauch"></span>
+                    <span class="topic-name">Direct Somatic to Neural Stem Cell Conversion — Dr. Ralf Jauch</span>
+                  </div>
+                  <div class="speaker-line">
+                    <span class="time">11:50</span>
+                    <span class="speaker-mini-avatar"><img src="https://ui-avatars.com/api/?name=Vincent+Knight-Schrijver&background=0a3d2e&color=c9a962&size=64&font-size=0.4" alt="Dr. Vincent Knight-Schrijver"></span>
+                    <span class="topic-name">Whole-Organ Atlases to Benchmark Cardiomyocytes — Dr. Vincent Knight-Schrijver</span>
+                  </div>
+                  <div class="speaker-line">
+                    <span class="time">12:15</span>
+                    <span class="speaker-mini-avatar"><img src="https://ui-avatars.com/api/?name=Clemens+Dannheim&background=0a3d2e&color=c9a962&size=64&font-size=0.4" alt="Dr. Clemens Dannheim"></span>
+                    <span class="topic-name">AI-Driven Imaging and Analytics in Stem Cell Research — Dr. Clemens Dannheim</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -2311,10 +2581,26 @@
                 </div>
                 <div class="timeline-title">Session 7 Continued: Novel Approaches</div>
                 <div class="timeline-speakers">
-                  <strong>13:40</strong> Advances in In Vivo CAR-T Cell Therapy — Dr. Ulf Grawunder<br>
-                  <strong>14:05</strong> Stem Cell Models for Mitochondrial Disease — Dr. Riikka Martikainen<br>
-                  <strong>14:30</strong> Stemness, Senescence & Space Biology: REAC Technology — Prof. Margherita Maioli<br>
-                  <strong>14:55</strong> Vascular Development with Advanced Organoid Models — Prof. Mingxia Gu
+                  <div class="speaker-line">
+                    <span class="time">13:40</span>
+                    <span class="speaker-mini-avatar"><img src="https://ui-avatars.com/api/?name=Ulf+Grawunder&background=0a3d2e&color=c9a962&size=64&font-size=0.4" alt="Dr. Ulf Grawunder"></span>
+                    <span class="topic-name">Advances in In Vivo CAR-T Cell Therapy — Dr. Ulf Grawunder</span>
+                  </div>
+                  <div class="speaker-line">
+                    <span class="time">14:05</span>
+                    <span class="speaker-mini-avatar"><img src="https://ui-avatars.com/api/?name=Riikka+Martikainen&background=0a3d2e&color=c9a962&size=64&font-size=0.4" alt="Dr. Riikka Martikainen"></span>
+                    <span class="topic-name">Stem Cell Models for Mitochondrial Disease — Dr. Riikka Martikainen</span>
+                  </div>
+                  <div class="speaker-line">
+                    <span class="time">14:30</span>
+                    <span class="speaker-mini-avatar"><img src="https://ui-avatars.com/api/?name=Margherita+Maioli&background=0a3d2e&color=c9a962&size=64&font-size=0.4" alt="Prof. Margherita Maioli"></span>
+                    <span class="topic-name">Stemness, Senescence & Space Biology: REAC Technology — Prof. Margherita Maioli</span>
+                  </div>
+                  <div class="speaker-line">
+                    <span class="time">14:55</span>
+                    <span class="speaker-mini-avatar"><img src="https://ui-avatars.com/api/?name=Mingxia+Gu&background=0a3d2e&color=c9a962&size=64&font-size=0.4" alt="Prof. Mingxia Gu"></span>
+                    <span class="topic-name">Vascular Development with Advanced Organoid Models — Prof. Mingxia Gu</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -2452,31 +2738,41 @@
       <div class="container">
         <div class="section-header">
           <span class="overline">World-Class Experts</span>
-          <h2>Featured Speakers</h2>
+          <h2>Congress Speakers</h2>
         </div>
         
         <div class="speakers-grid">
-          <div class="speaker-card" data-id="sp-hd">
+          <!-- Keynote Speaker -->
+          <div class="speaker-card keynote-speaker" data-id="sp-hd">
             <button class="bookmark-btn" onclick="toggleBookmark('sp-hd', 'Prof. Hongkui Deng', '', 'Keynote: Chemical Reprogramming', 'speaker')">
               <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
               <span class="notification-dot"></span>
             </button>
-            <div class="speaker-avatar">HD</div>
+            <div class="speaker-avatar">
+              <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/12/DSCC-2026-Speakers-Prof.-Hongkui-Deng.webp" alt="Prof. Hongkui Deng">
+              <span class="flag"><img src="https://flagcdn.com/w40/cn.png" alt="China"></span>
+            </div>
             <div class="speaker-info">
-              <h3>Prof. Hongkui Deng</h3>
+              <span class="speaker-country">🇨🇳 China</span>
+              <h3>Prof. Hongkui Deng, Ph.D</h3>
               <p class="topic">Keynote: Chemical Reprogramming for Type 1 Diabetes Cure</p>
             </div>
           </div>
 
+          <!-- Session 1: Hematopoietic Power -->
           <div class="speaker-card" data-id="sp-ab">
-            <button class="bookmark-btn" onclick="toggleBookmark('sp-ab', 'Prof. Anna Bigas', '', 'Blood Stem Cell Generation', 'speaker')">
+            <button class="bookmark-btn" onclick="toggleBookmark('sp-ab', 'Dr. Anna Bigas', '', 'Blood Stem Cell Generation', 'speaker')">
               <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
               <span class="notification-dot"></span>
             </button>
-            <div class="speaker-avatar">AB</div>
+            <div class="speaker-avatar">
+              <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/11/Dr.-Anna-Bigas-PhD.webp" alt="Dr. Anna Bigas">
+              <span class="flag"><img src="https://flagcdn.com/w40/es.png" alt="Spain"></span>
+            </div>
             <div class="speaker-info">
-              <h3>Prof. Anna Bigas</h3>
-              <p class="topic">Blood Stem Cell Generation from Pluripotent Cells</p>
+              <span class="speaker-country">🇪🇸 Spain</span>
+              <h3>Dr. Anna Bigas, PhD</h3>
+              <p class="topic">New Approaches to Blood Stem Cell Generation from Pluripotent Cells</p>
             </div>
           </div>
 
@@ -2485,33 +2781,159 @@
               <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
               <span class="notification-dot"></span>
             </button>
-            <div class="speaker-avatar">NC</div>
+            <div class="speaker-avatar">
+              <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/11/Prof.-Dr.-Nina-Cabezas-Wallscheid.webp" alt="Prof. Nina Cabezas-Wallscheid">
+              <span class="flag"><img src="https://flagcdn.com/w40/ch.png" alt="Switzerland"></span>
+            </div>
             <div class="speaker-info">
-              <h3>Prof. Nina Cabezas-Wallscheid</h3>
-              <p class="topic">Bone Marrow Stem Cell Modulation</p>
+              <span class="speaker-country">🇨🇭 Switzerland</span>
+              <h3>Prof. Dr. Nina Cabezas-Wallscheid</h3>
+              <p class="topic">Bone Marrow Haematopoietic Stem Cell Activity After Myocardial Infarction</p>
             </div>
           </div>
 
-          <div class="speaker-card" data-id="sp-hs">
-            <button class="bookmark-btn" onclick="toggleBookmark('sp-hs', 'Prof. Hidetoshi Sakurai', '', 'iPS Cell Therapy for Muscular Disorders', 'speaker')">
+          <div class="speaker-card" data-id="sp-en">
+            <button class="bookmark-btn" onclick="toggleBookmark('sp-en', 'Dr. Emmanouil Nikolousis', '', 'Allogeneic Stem Cell Transplants', 'speaker')">
               <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
               <span class="notification-dot"></span>
             </button>
-            <div class="speaker-avatar">HS</div>
+            <div class="speaker-avatar">
+              <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/11/Emmanouil-Nikolousis.webp" alt="Dr. Emmanouil Nikolousis">
+              <span class="flag"><img src="https://flagcdn.com/w40/ae.png" alt="UAE"></span>
+            </div>
             <div class="speaker-info">
-              <h3>Prof. Hidetoshi Sakurai</h3>
-              <p class="topic">iPS Cell Therapy for Muscular Disorders</p>
+              <span class="speaker-country">🇦🇪 United Arab Emirates</span>
+              <h3>Dr. Emmanouil Nikolousis</h3>
+              <p class="topic">Novel Conditioning Regimen in Allogeneic Stem Cell Transplants</p>
+            </div>
+          </div>
+
+          <!-- Session 2: Mastering Cell Fate -->
+          <div class="speaker-card" data-id="sp-hs">
+            <button class="bookmark-btn" onclick="toggleBookmark('sp-hs', 'Dr. Hidetoshi Sakurai', '', 'iPS Cell Therapy', 'speaker')">
+              <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+              <span class="notification-dot"></span>
+            </button>
+            <div class="speaker-avatar">
+              <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/11/Dr.-Hidetoshi-Sakurai-MD-PhD.webp" alt="Dr. Hidetoshi Sakurai">
+              <span class="flag"><img src="https://flagcdn.com/w40/jp.png" alt="Japan"></span>
+            </div>
+            <div class="speaker-info">
+              <span class="speaker-country">🇯🇵 Japan</span>
+              <h3>Dr. Hidetoshi Sakurai, MD, PhD</h3>
+              <p class="topic">iPS Cell Based Therapy for Muscular Disorders</p>
+            </div>
+          </div>
+
+          <div class="speaker-card" data-id="sp-sh">
+            <button class="bookmark-btn" onclick="toggleBookmark('sp-sh', 'Dr. Sarkawt Hamad', '', 'hiPSCs Cardiac Organoids', 'speaker')">
+              <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+              <span class="notification-dot"></span>
+            </button>
+            <div class="speaker-avatar">
+              <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/11/Dr.-Sarkawt-Hamad.webp" alt="Dr. Sarkawt Hamad">
+              <span class="flag"><img src="https://flagcdn.com/w40/de.png" alt="Germany"></span>
+            </div>
+            <div class="speaker-info">
+              <span class="speaker-country">🇩🇪 Germany</span>
+              <h3>Dr. Sarkawt Hamad</h3>
+              <p class="topic">hiPSCs Cardiac Organoids for Reducing Acute Myocardial Infarction</p>
+            </div>
+          </div>
+
+          <div class="speaker-card" data-id="sp-hsk">
+            <button class="bookmark-btn" onclick="toggleBookmark('sp-hsk', 'Dr. Heli Skottman', '', 'Eye Regeneration with iPSCs', 'speaker')">
+              <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+              <span class="notification-dot"></span>
+            </button>
+            <div class="speaker-avatar">
+              <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/11/Dr.-Heli-Skottman.webp" alt="Dr. Heli Skottman">
+              <span class="flag"><img src="https://flagcdn.com/w40/fi.png" alt="Finland"></span>
+            </div>
+            <div class="speaker-info">
+              <span class="speaker-country">🇫🇮 Finland</span>
+              <h3>Dr. Heli Skottman</h3>
+              <p class="topic">Building the Future of Eye Regeneration with iPSCs and Bioprinting</p>
+            </div>
+          </div>
+
+          <div class="speaker-card" data-id="sp-ea">
+            <button class="bookmark-btn" onclick="toggleBookmark('sp-ea', 'Dr. Essam Abdelalim', '', 'Monogenic Diabetes Mechanisms', 'speaker')">
+              <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+              <span class="notification-dot"></span>
+            </button>
+            <div class="speaker-avatar">
+              <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/11/Dr.-Essam-Abdelalim.webp" alt="Dr. Essam Abdelalim">
+              <span class="flag"><img src="https://flagcdn.com/w40/qa.png" alt="Qatar"></span>
+            </div>
+            <div class="speaker-info">
+              <span class="speaker-country">🇶🇦 Qatar</span>
+              <h3>Dr. Essam Abdelalim</h3>
+              <p class="topic">Modeling Monogenic Diabetes Mechanisms Using iPSC-Derived Islets</p>
+            </div>
+          </div>
+
+          <div class="speaker-card" data-id="sp-ka">
+            <button class="bookmark-btn" onclick="toggleBookmark('sp-ka', 'Dr. Khaled Alsayegh', '', 'Saudi Bank of iPSCs', 'speaker')">
+              <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+              <span class="notification-dot"></span>
+            </button>
+            <div class="speaker-avatar">
+              <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/12/dscc-2026-speakers-dr-khaled-alsayegh.webp" alt="Dr. Khaled Alsayegh">
+              <span class="flag"><img src="https://flagcdn.com/w40/sa.png" alt="Saudi Arabia"></span>
+            </div>
+            <div class="speaker-info">
+              <span class="speaker-country">🇸🇦 Saudi Arabia</span>
+              <h3>Dr. Khaled Alsayegh</h3>
+              <p class="topic">The Saudi Bank of Induced Pluripotent Stem Cells (SBiPSCs)</p>
+            </div>
+          </div>
+
+          <!-- Session 3: Dubai-Germany Alliance -->
+          <div class="speaker-card" data-id="sp-db">
+            <button class="bookmark-btn" onclick="toggleBookmark('sp-db', 'Dr. Daniel Besser', '', 'German Stem Cell Network', 'speaker')">
+              <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+              <span class="notification-dot"></span>
+            </button>
+            <div class="speaker-avatar">
+              <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/11/Daniel-Besser.webp" alt="Dr. Daniel Besser">
+              <span class="flag"><img src="https://flagcdn.com/w40/de.png" alt="Germany"></span>
+            </div>
+            <div class="speaker-info">
+              <span class="speaker-country">🇩🇪 Germany</span>
+              <h3>Dr. Daniel Besser</h3>
+              <p class="topic">German Stem Cell Network - Introduction Remarks</p>
+            </div>
+          </div>
+
+          <div class="speaker-card" data-id="sp-sb">
+            <button class="bookmark-btn" onclick="toggleBookmark('sp-sb', 'Prof. Dr. Sina Bartfeld', '', 'Organoids as Model', 'speaker')">
+              <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+              <span class="notification-dot"></span>
+            </button>
+            <div class="speaker-avatar">
+              <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/11/Prof.-Dr.-Sina-Bartfeld.webp" alt="Prof. Dr. Sina Bartfeld">
+              <span class="flag"><img src="https://flagcdn.com/w40/de.png" alt="Germany"></span>
+            </div>
+            <div class="speaker-info">
+              <span class="speaker-country">🇩🇪 Germany</span>
+              <h3>Prof. Dr. Sina Bartfeld</h3>
+              <p class="topic">Infection, Innate Immunity and Cancer in the Gut - Organoids as Model</p>
             </div>
           </div>
 
           <div class="speaker-card" data-id="sp-at">
-            <button class="bookmark-btn" onclick="toggleBookmark('sp-at', 'Prof. Andreas Trumpp', '', 'Malignant Stem Cells', 'speaker')">
+            <button class="bookmark-btn" onclick="toggleBookmark('sp-at', 'Prof. Dr. Andreas Trumpp', '', 'Malignant Stem Cells', 'speaker')">
               <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
               <span class="notification-dot"></span>
             </button>
-            <div class="speaker-avatar">AT</div>
+            <div class="speaker-avatar">
+              <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/11/Prof.-Dr.-Andreas-Trumpp-PhD.webp" alt="Prof. Dr. Andreas Trumpp">
+              <span class="flag"><img src="https://flagcdn.com/w40/de.png" alt="Germany"></span>
+            </div>
             <div class="speaker-info">
-              <h3>Prof. Andreas Trumpp</h3>
+              <span class="speaker-country">🇩🇪 Germany</span>
+              <h3>Prof. Dr. Andreas Trumpp, PhD</h3>
               <p class="topic">Malignant Stem Cells</p>
             </div>
           </div>
@@ -2521,34 +2943,146 @@
               <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
               <span class="notification-dot"></span>
             </button>
-            <div class="speaker-avatar">LV</div>
+            <div class="speaker-avatar">
+              <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/11/Ludovic-Vallier.webp" alt="Prof. Ludovic Vallier">
+              <span class="flag"><img src="https://flagcdn.com/w40/de.png" alt="Germany"></span>
+            </div>
             <div class="speaker-info">
+              <span class="speaker-country">🇩🇪 Germany</span>
               <h3>Prof. Ludovic Vallier</h3>
-              <p class="topic">Cell Based Therapy for Liver Diseases</p>
+              <p class="topic">Cell Based Therapy Against Liver Diseases</p>
             </div>
           </div>
 
+          <!-- Session 4: Cardiac Regeneration -->
           <div class="speaker-card" data-id="sp-ag">
-            <button class="bookmark-btn" onclick="toggleBookmark('sp-ag', 'Prof. Antoni Bayes Genis', '', 'UCB-MSCs & Cardiac Repair', 'speaker')">
+            <button class="bookmark-btn" onclick="toggleBookmark('sp-ag', 'Prof. Antoni Bayés-Genís', '', 'UCB-MSCs Cardiac Repair', 'speaker')">
               <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
               <span class="notification-dot"></span>
             </button>
-            <div class="speaker-avatar">AG</div>
+            <div class="speaker-avatar">
+              <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/11/Prof.-Antoni-Bayes-Genis-MD-PhD-FESC.webp" alt="Prof. Antoni Bayés-Genís">
+              <span class="flag"><img src="https://flagcdn.com/w40/es.png" alt="Spain"></span>
+            </div>
             <div class="speaker-info">
-              <h3>Prof. Antoni Bayes Genis</h3>
-              <p class="topic">UCB-MSCs & Cardiac Repair</p>
+              <span class="speaker-country">🇪🇸 Spain</span>
+              <h3>Prof. Antoni Bayés-Genís, MD, PhD, FESC</h3>
+              <p class="topic">UCB-MSCs Tissue Engineering and Cardiac Repair</p>
             </div>
           </div>
 
-          <div class="speaker-card" data-id="sp-hsk">
-            <button class="bookmark-btn" onclick="toggleBookmark('sp-hsk', 'Dr. Heli Skottman', '', 'Eye Regeneration with iPSCs', 'speaker')">
+          <!-- Session 5: Stem Cell Regulation -->
+          <div class="speaker-card" data-id="sp-kma">
+            <button class="bookmark-btn" onclick="toggleBookmark('sp-kma', 'Dr. Khulood Mohamed Alsayegh', '', 'DHA Standards', 'speaker')">
               <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
               <span class="notification-dot"></span>
             </button>
-            <div class="speaker-avatar">HS</div>
+            <div class="speaker-avatar">
+              <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/11/Dr.-Khulood-Mohamed-Alsayegh.webp" alt="Dr. Khulood Mohamed Alsayegh">
+              <span class="flag"><img src="https://flagcdn.com/w40/ae.png" alt="UAE"></span>
+            </div>
             <div class="speaker-info">
-              <h3>Dr. Heli Skottman</h3>
-              <p class="topic">Eye Regeneration with iPSCs</p>
+              <span class="speaker-country">🇦🇪 United Arab Emirates</span>
+              <h3>Dr. Khulood Mohamed Alsayegh</h3>
+              <p class="topic">DHA Standards for Stem Cell Services</p>
+            </div>
+          </div>
+
+          <div class="speaker-card" data-id="sp-hbh">
+            <button class="bookmark-btn" onclick="toggleBookmark('sp-hbh', 'Attorney Dr. Hayathem H. Bin Hasher', '', 'Stem Cell Regulation', 'speaker')">
+              <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+              <span class="notification-dot"></span>
+            </button>
+            <div class="speaker-avatar">
+              <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/11/Attorney-Dr.-Hayathem-H.-Bin-Hasher.webp" alt="Attorney Dr. Hayathem H. Bin Hasher">
+              <span class="flag"><img src="https://flagcdn.com/w40/sa.png" alt="Saudi Arabia"></span>
+            </div>
+            <div class="speaker-info">
+              <span class="speaker-country">🇸🇦 Kingdom of Saudi Arabia</span>
+              <h3>Attorney Dr. Hayathem H. Bin Hasher</h3>
+              <p class="topic">From Bench to Policy: Navigating Stem Cell Regulation</p>
+            </div>
+          </div>
+
+          <!-- Session 6: Stem Cell Origins -->
+          <div class="speaker-card" data-id="sp-ee">
+            <button class="bookmark-btn" onclick="toggleBookmark('sp-ee', 'Prof. Dr. Emad Elzayat', '', 'Multipotent Solutions', 'speaker')">
+              <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+              <span class="notification-dot"></span>
+            </button>
+            <div class="speaker-avatar">
+              <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/11/Prof.-Dr.-Emad-Mahmoud-Ibrahim-Elzayat-PhD.webp" alt="Prof. Dr. Emad Elzayat">
+              <span class="flag"><img src="https://flagcdn.com/w40/eg.png" alt="Egypt"></span>
+            </div>
+            <div class="speaker-info">
+              <span class="speaker-country">🇪🇬 Egypt</span>
+              <h3>Prof. Dr. Emad Mahmoud Ibrahim Elzayat, PhD</h3>
+              <p class="topic">Multipotent Solutions: Stem Cells Tackling Complex Chronic Diseases</p>
+            </div>
+          </div>
+
+          <div class="speaker-card" data-id="sp-ah">
+            <button class="bookmark-btn" onclick="toggleBookmark('sp-ah', 'Prof. Ayman Al Hendy', '', 'Fertility Restoration', 'speaker')">
+              <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+              <span class="notification-dot"></span>
+            </button>
+            <div class="speaker-avatar">
+              <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/12/dscc-2026-speakers-prof-ayman-al-hendy.webp" alt="Prof. Ayman Al Hendy">
+              <span class="flag"><img src="https://flagcdn.com/w40/ae.png" alt="UAE"></span>
+            </div>
+            <div class="speaker-info">
+              <span class="speaker-country">🇦🇪 United Arab Emirates</span>
+              <h3>Prof. Ayman Al Hendy</h3>
+              <p class="topic">Stem Cell Based Fertility Restoration and Protection</p>
+            </div>
+          </div>
+
+          <!-- Session 7: Novel Approaches -->
+          <div class="speaker-card" data-id="sp-rj">
+            <button class="bookmark-btn" onclick="toggleBookmark('sp-rj', 'Prof. Dr. Ralf Jauch', '', 'Neural Stem Cell Conversion', 'speaker')">
+              <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+              <span class="notification-dot"></span>
+            </button>
+            <div class="speaker-avatar">
+              <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/11/Dr.-Ralf-Jauch.webp" alt="Prof. Dr. Ralf Jauch">
+              <span class="flag"><img src="https://flagcdn.com/w40/hk.png" alt="Hong Kong"></span>
+            </div>
+            <div class="speaker-info">
+              <span class="speaker-country">🇭🇰 Hong Kong</span>
+              <h3>Prof. Dr. Ralf Jauch, PhD</h3>
+              <p class="topic">Direct Somatic to Neural Stem Cell Conversion</p>
+            </div>
+          </div>
+
+          <div class="speaker-card" data-id="sp-vks">
+            <button class="bookmark-btn" onclick="toggleBookmark('sp-vks', 'Dr. Vincent R. Knight-Schrijver', '', 'Whole-Organ Atlases', 'speaker')">
+              <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+              <span class="notification-dot"></span>
+            </button>
+            <div class="speaker-avatar">
+              <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/11/Dr.-Vincent-R.-Knight-Schrijver.webp" alt="Dr. Vincent R. Knight-Schrijver">
+              <span class="flag"><img src="https://flagcdn.com/w40/gb.png" alt="United Kingdom"></span>
+            </div>
+            <div class="speaker-info">
+              <span class="speaker-country">🇬🇧 United Kingdom</span>
+              <h3>Dr. Vincent R. Knight-Schrijver</h3>
+              <p class="topic">Whole-Organ Atlases to Benchmark Stem Cell Cardiomyocytes</p>
+            </div>
+          </div>
+
+          <div class="speaker-card" data-id="sp-cd">
+            <button class="bookmark-btn" onclick="toggleBookmark('sp-cd', 'Dr. Clemens Dannheim', '', 'AI-Driven Imaging', 'speaker')">
+              <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+              <span class="notification-dot"></span>
+            </button>
+            <div class="speaker-avatar">
+              <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/11/Dr.-Clemens-Dannheim.webp" alt="Dr. Clemens Dannheim">
+              <span class="flag"><img src="https://flagcdn.com/w40/de.png" alt="Germany"></span>
+            </div>
+            <div class="speaker-info">
+              <span class="speaker-country">🇩🇪 Germany</span>
+              <h3>Dr. Clemens Dannheim</h3>
+              <p class="topic">Transforming Stem Cell Research with AI-Driven Imaging and Analytics</p>
             </div>
           </div>
 
@@ -2557,10 +3091,30 @@
               <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
               <span class="notification-dot"></span>
             </button>
-            <div class="speaker-avatar">UG</div>
+            <div class="speaker-avatar">
+              <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/12/DSCC-2026-Speakers-Dr.-Ulf-Grawunder.webp" alt="Dr. Ulf Grawunder">
+              <span class="flag"><img src="https://flagcdn.com/w40/de.png" alt="Germany"></span>
+            </div>
             <div class="speaker-info">
-              <h3>Dr. Ulf Grawunder</h3>
-              <p class="topic">In Vivo CAR-T Cell Therapy</p>
+              <span class="speaker-country">🇩🇪 Germany</span>
+              <h3>Dr. Ulf Grawunder, PhD</h3>
+              <p class="topic">From Concept to Clinic: Advances in In Vivo CAR-T Cell Therapy</p>
+            </div>
+          </div>
+
+          <div class="speaker-card" data-id="sp-rm">
+            <button class="bookmark-btn" onclick="toggleBookmark('sp-rm', 'Dr. Riikka Martikainen', '', 'Mitochondrial Disease', 'speaker')">
+              <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+              <span class="notification-dot"></span>
+            </button>
+            <div class="speaker-avatar">
+              <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/11/Dr.-Riikka-Martikainen.webp" alt="Dr. Riikka Martikainen">
+              <span class="flag"><img src="https://flagcdn.com/w40/fi.png" alt="Finland"></span>
+            </div>
+            <div class="speaker-info">
+              <span class="speaker-country">🇫🇮 Finland</span>
+              <h3>Dr. Riikka Martikainen</h3>
+              <p class="topic">Stem Cell-Based Models for Studying Mitochondrial Disease Heterogeneity</p>
             </div>
           </div>
 
@@ -2569,10 +3123,14 @@
               <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
               <span class="notification-dot"></span>
             </button>
-            <div class="speaker-avatar">MM</div>
+            <div class="speaker-avatar">
+              <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/10/Prof.-Margherita-Maioli.png" alt="Prof. Margherita Maioli">
+              <span class="flag"><img src="https://flagcdn.com/w40/it.png" alt="Italy"></span>
+            </div>
             <div class="speaker-info">
+              <span class="speaker-country">🇮🇹 Italy</span>
               <h3>Prof. Margherita Maioli</h3>
-              <p class="topic">Stemness & Space Biology</p>
+              <p class="topic">Stemness, Senescence and Space Biology in Regenerative Medicine</p>
             </div>
           </div>
 
@@ -2581,27 +3139,101 @@
               <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
               <span class="notification-dot"></span>
             </button>
-            <div class="speaker-avatar">MG</div>
+            <div class="speaker-avatar">
+              <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/12/DSCC-2026-Speakers-Prof.-Mingxia-Gu.webp" alt="Prof. Mingxia Gu">
+              <span class="flag"><img src="https://flagcdn.com/w40/us.png" alt="USA"></span>
+            </div>
             <div class="speaker-info">
-              <h3>Prof. Mingxia Gu</h3>
-              <p class="topic">Vascular Organoid Models</p>
+              <span class="speaker-country">🇺🇸 USA</span>
+              <h3>Prof. Mingxia Gu, M.D., Ph.D., FAHA</h3>
+              <p class="topic">Vascular Development and Regeneration with Advanced Human Organoid Models</p>
             </div>
           </div>
 
-          <div class="speaker-card" data-id="sp-sb">
-            <button class="bookmark-btn" onclick="toggleBookmark('sp-sb', 'Dr. Sina Bartfeld', '', 'Organoids for Cancer Research', 'speaker')">
+          <!-- Workshop Speakers -->
+          <div class="speaker-card workshop-speaker" data-id="sp-kp">
+            <button class="bookmark-btn" onclick="toggleBookmark('sp-kp', 'Prof. Dr. Kurt Pfannkuche', '', 'Scientific Career Workshop', 'speaker')">
               <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
               <span class="notification-dot"></span>
             </button>
-            <div class="speaker-avatar">SB</div>
+            <div class="speaker-avatar">
+              <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/11/Prof.-Dr.-Kurt-Pfannkuche.webp" alt="Prof. Dr. Kurt Pfannkuche">
+              <span class="flag"><img src="https://flagcdn.com/w40/de.png" alt="Germany"></span>
+            </div>
             <div class="speaker-info">
-              <h3>Dr. Sina Bartfeld</h3>
-              <p class="topic">Organoids for Cancer Research</p>
+              <span class="speaker-country">🇩🇪 Germany</span>
+              <h3>Prof. Dr. Kurt Pfannkuche</h3>
+              <p class="topic">Workshop: How to Establish a Scientific Career?</p>
+            </div>
+          </div>
+
+          <div class="speaker-card workshop-speaker" data-id="sp-sj">
+            <button class="bookmark-btn" onclick="toggleBookmark('sp-sj', 'Ms. Sara Jimenez', '', 'scverse Tools Workshop', 'speaker')">
+              <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+              <span class="notification-dot"></span>
+            </button>
+            <div class="speaker-avatar">
+              <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/11/DSCC-2026-Workshop-Speakers-Ms.-Sara-Jimenez.webp" alt="Ms. Sara Jimenez">
+              <span class="flag"><img src="https://flagcdn.com/w40/de.png" alt="Germany"></span>
+            </div>
+            <div class="speaker-info">
+              <span class="speaker-country">🇩🇪 Germany</span>
+              <h3>Ms. Sara Jimenez</h3>
+              <p class="topic">Workshop: Decoding Stem Cell Biology with scverse Tools</p>
+            </div>
+          </div>
+
+          <div class="speaker-card workshop-speaker" data-id="sp-kpe">
+            <button class="bookmark-btn" onclick="toggleBookmark('sp-kpe', 'Mrs. Kim Petrella', '', 'Cord Blood Collections Workshop', 'speaker')">
+              <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+              <span class="notification-dot"></span>
+            </button>
+            <div class="speaker-avatar">
+              <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/11/DSCC-2026-Workshop-Speakers.webp" alt="Mrs. Kim Petrella">
+              <span class="flag"><img src="https://flagcdn.com/w40/us.png" alt="USA"></span>
+            </div>
+            <div class="speaker-info">
+              <span class="speaker-country">🇺🇸 USA</span>
+              <h3>Mrs. Kim Petrella</h3>
+              <p class="topic">Workshop: Harvesting Hope - Optimal Cord Blood Collections</p>
+            </div>
+          </div>
+
+          <div class="speaker-card workshop-speaker" data-id="sp-mt">
+            <button class="bookmark-btn" onclick="toggleBookmark('sp-mt', 'Mr. Mustafa Tareq', '', 'MSCs Value Workshop', 'speaker')">
+              <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+              <span class="notification-dot"></span>
+            </button>
+            <div class="speaker-avatar">
+              <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/11/DSCC-2026-Workshop-Speakers-Dr.-Shadab-1.webp" alt="Mr. Mustafa Tareq">
+              <span class="flag"><img src="https://flagcdn.com/w40/ae.png" alt="UAE"></span>
+            </div>
+            <div class="speaker-info">
+              <span class="speaker-country">🇦🇪 UAE</span>
+              <h3>Mr. Mustafa Tareq</h3>
+              <p class="topic">Workshop: Exploring the Value of MSCs from Adipose, Cord and Placental Sources</p>
+            </div>
+          </div>
+
+          <div class="speaker-card workshop-speaker" data-id="sp-sa">
+            <button class="bookmark-btn" onclick="toggleBookmark('sp-sa', 'Dr. Shadab Anjum', '', 'MSCs Value Workshop', 'speaker')">
+              <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+              <span class="notification-dot"></span>
+            </button>
+            <div class="speaker-avatar">
+              <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/11/DSCC-2026-Workshop-Speakers-Dr.-Shadab.webp" alt="Dr. Shadab Anjum">
+              <span class="flag"><img src="https://flagcdn.com/w40/ae.png" alt="UAE"></span>
+            </div>
+            <div class="speaker-info">
+              <span class="speaker-country">🇦🇪 UAE</span>
+              <h3>Dr. Shadab Anjum</h3>
+              <p class="topic">Workshop: Exploring the Value of MSCs from Adipose, Cord and Placental Sources</p>
             </div>
           </div>
         </div>
       </div>
     </section>
+
 
   </main>
 
@@ -3216,6 +3848,7 @@
     
     function toggleBookmark(id, title, day, time, type) {
       const bookmarks = getBookmarks();
+      const notifications = getNotifications();
       
       const mainCard = document.querySelector(`[data-id="${id}"]`);
       const btn = mainCard ? mainCard.querySelector('.bookmark-btn') : null;
@@ -3223,9 +3856,14 @@
       if (bookmarks[id]) {
         delete bookmarks[id];
         // Also remove any notifications for this bookmark
-        const notifications = getNotifications();
         delete notifications[id];
         saveNotifications(notifications);
+        
+        // Cancel scheduled notification
+        if (scheduledNotifications[id]) {
+          clearTimeout(scheduledNotifications[id]);
+          delete scheduledNotifications[id];
+        }
         
         if (btn) {
           btn.classList.remove('active');
@@ -3235,7 +3873,32 @@
       } else {
         bookmarks[id] = { id, title, day, time, type, savedAt: Date.now() };
         if (btn) btn.classList.add('active');
-        showToast('Added to your schedule!');
+        
+        // AUTO-ENABLE NOTIFICATIONS by default
+        const settings = getSettings();
+        notifications[id] = {
+          enabled: true,
+          reminderMinutes: settings.defaultReminder,
+          title: title,
+          day: day,
+          time: time
+        };
+        saveNotifications(notifications);
+        
+        // Schedule the notification
+        scheduleNotification(id, bookmarks[id], settings.defaultReminder);
+        
+        if (btn) btn.classList.add('has-notification');
+        
+        // Check if we have notification permission
+        const permission = checkNotificationPermission();
+        if (permission === 'granted') {
+          showToast(`Added with ${formatReminderTime(settings.defaultReminder)} reminder!`);
+        } else if (permission === 'default') {
+          showToast('Added! Enable notifications for reminders.');
+        } else {
+          showToast('Added to your schedule!');
+        }
       }
       
       saveBookmarks(bookmarks);
