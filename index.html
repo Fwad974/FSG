@@ -1568,6 +1568,136 @@
       font-size: 0.9rem;
     }
 
+    /* Workshop Timeline Items */
+    .timeline-item.workshop .timeline-card {
+      background: linear-gradient(135deg, rgba(201, 169, 98, 0.08) 0%, rgba(10, 61, 46, 0.4) 100%);
+      border-color: rgba(201, 169, 98, 0.25);
+    }
+
+    .timeline-item.workshop .timeline-card::before {
+      background: linear-gradient(180deg, var(--gold), var(--gold-dark));
+      opacity: 1;
+    }
+
+    .workshop-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.7rem;
+      padding: 4px 10px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      color: var(--emerald-darkest);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 10px;
+    }
+
+    .workshop-badge svg {
+      width: 12px;
+      height: 12px;
+      stroke: var(--emerald-darkest);
+      fill: none;
+    }
+
+    .timeline-workshop-speaker {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 15px;
+      padding-top: 15px;
+      border-top: 1px solid rgba(201, 169, 98, 0.15);
+    }
+
+    .timeline-workshop-speaker .avatar {
+      width: 44px;
+      height: 44px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: visible;
+      border: 2px solid rgba(201, 169, 98, 0.5);
+      flex-shrink: 0;
+    }
+
+    .timeline-workshop-speaker .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+    .timeline-workshop-speaker .avatar .workshop-flag {
+      position: absolute;
+      bottom: -3px;
+      right: -3px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      border: 1.5px solid var(--emerald-dark);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--emerald-dark);
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .timeline-workshop-speaker .avatar .workshop-flag img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+    .timeline-workshop-speaker .speaker-info .name {
+      color: var(--white);
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .timeline-workshop-speaker .speaker-info .role {
+      color: rgba(255,255,255,0.5);
+      font-size: 0.75rem;
+    }
+
+    /* Workshops Grid in Schedule */
+    .schedule-workshops-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 40px 0 25px;
+      padding: 20px 0;
+      border-top: 1px solid rgba(201, 169, 98, 0.2);
+    }
+
+    .schedule-workshops-header h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      color: var(--gold);
+    }
+
+    .schedule-workshops-header .icon {
+      width: 40px;
+      height: 40px;
+      background: rgba(201, 169, 98, 0.15);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .schedule-workshops-header .icon svg {
+      width: 20px;
+      height: 20px;
+      stroke: var(--gold);
+      fill: none;
+    }
+
     /* Speakers Section */
     .speakers-section {
       background: 
@@ -2136,14 +2266,13 @@
 
   <!-- Floating Navigation -->
   <nav class="floating-nav">
-    <a href="#overview" data-label="Overview" class="active"></a>
-    <a href="#day1" data-label="Day 1"></a>
-    <a href="#day2" data-label="Day 2"></a>
-    <a href="#workshops" data-label="Workshops"></a>
+    <a href="#hero" data-label="Overview" class="active"></a>
+    <a href="#schedule" data-label="Day 1" data-day="1"></a>
+    <a href="#schedule" data-label="Day 2" data-day="2"></a>
   </nav>
 
   <!-- Hero Section -->
-  <section class="hero">
+  <section class="hero" id="hero">
     <div class="dna-helix"></div>
     
     <div class="hero-content">
@@ -2528,6 +2657,58 @@
             </div>
 
           </div>
+
+          <!-- Day 1 Workshops -->
+          <div class="schedule-workshops-header">
+            <div class="icon">
+              <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"></path>
+                <circle cx="12" cy="13" r="3"></circle>
+              </svg>
+            </div>
+            <h3>Hands-On Workshops</h3>
+          </div>
+
+          <div class="workshops-grid">
+            <div class="workshop-card" data-id="w1">
+              <button class="bookmark-btn" onclick="toggleBookmark('w1', 'How to Establish a Scientific Career?', 'Day 1', '15:15 – 16:30', 'workshop')">
+                <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+                <span class="notification-dot"></span>
+              </button>
+              <div class="workshop-meta">
+                <span>Day 1</span>
+                <span>15:15 – 16:30</span>
+              </div>
+              <h3>How to Establish a Scientific Career?</h3>
+              <div class="workshop-speaker">
+                <div class="avatar">
+                  <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/11/Prof.-Dr.-Kurt-Pfannkuche.webp" alt="Prof. Dr. Kurt Pfannkuche">
+                  <span class="workshop-flag"><img src="https://flagcdn.com/w40/de.png" alt="Germany"></span>
+                </div>
+                <div class="name">Prof. Dr. Kurt Pfannkuche</div>
+              </div>
+            </div>
+
+            <div class="workshop-card" data-id="w2">
+              <button class="bookmark-btn" onclick="toggleBookmark('w2', 'Decoding Stem Cell Biology with scverse Tools', 'Day 1', '16:30 – 17:45', 'workshop')">
+                <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+                <span class="notification-dot"></span>
+              </button>
+              <div class="workshop-meta">
+                <span>Day 1</span>
+                <span>16:30 – 17:45</span>
+              </div>
+              <h3>Decoding Stem Cell Biology with scverse Tools</h3>
+              <div class="workshop-speaker">
+                <div class="avatar">
+                  <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/11/DSCC-2026-Workshop-Speakers-Ms.-Sara-Jimenez.webp" alt="Ms. Sara Jimenez">
+                  <span class="workshop-flag"><img src="https://flagcdn.com/w40/de.png" alt="Germany"></span>
+                </div>
+                <div class="name">Ms. Sara Jimenez</div>
+              </div>
+            </div>
+          </div>
+
         </div>
 
         <!-- Day 2 -->
@@ -2773,113 +2954,77 @@
             </div>
 
           </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- Workshops Section -->
-    <section class="workshops-section" id="workshops">
-      <div class="container">
-        <div class="section-header">
-          <span class="overline">Hands-On Learning</span>
-          <h2>Workshop Program</h2>
-        </div>
-        
-        <div class="workshops-grid">
-          <div class="workshop-card" data-id="w1">
-            <button class="bookmark-btn" onclick="toggleBookmark('w1', 'How to Establish a Scientific Career?', 'Day 1', '15:15 – 16:30', 'workshop')">
-              <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
-              <span class="notification-dot"></span>
-            </button>
-            <div class="workshop-meta">
-              <span>Day 1</span>
-              <span>15:15 – 16:30</span>
+          <!-- Day 2 Workshops -->
+          <div class="schedule-workshops-header">
+            <div class="icon">
+              <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"></path>
+                <circle cx="12" cy="13" r="3"></circle>
+              </svg>
             </div>
-            <h3>How to Establish a Scientific Career?</h3>
-            <div class="workshop-speaker">
-              <div class="avatar">
-                <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/11/Prof.-Dr.-Kurt-Pfannkuche.webp" alt="Prof. Dr. Kurt Pfannkuche">
-                <span class="workshop-flag"><img src="https://flagcdn.com/w40/de.png" alt="Germany"></span>
+            <h3>Hands-On Workshops</h3>
+          </div>
+
+          <div class="workshops-grid">
+            <div class="workshop-card" data-id="w3">
+              <button class="bookmark-btn" onclick="toggleBookmark('w3', 'Harvesting Hope: Cord Blood Collections', 'Day 2', '9:30 – 10:45', 'workshop')">
+                <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+                <span class="notification-dot"></span>
+              </button>
+              <div class="workshop-meta">
+                <span>Day 2</span>
+                <span>9:30 – 10:45</span>
               </div>
-              <div class="name">Prof. Dr. Kurt Pfannkuche</div>
+              <h3>Harvesting Hope: Science and Skills for Optimal Cord Blood Collections</h3>
+              <div class="workshop-speaker">
+                <div class="avatar">
+                  <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/11/DSCC-2026-Workshop-Speakers.webp" alt="Mrs. Kim Petrella">
+                  <span class="workshop-flag"><img src="https://flagcdn.com/w40/us.png" alt="USA"></span>
+                </div>
+                <div class="name">Mrs. Kim Petrella</div>
+              </div>
+            </div>
+
+            <div class="workshop-card" data-id="w4">
+              <button class="bookmark-btn" onclick="toggleBookmark('w4', 'Unlocking Immune Power: Why PBMCs Matter', 'Day 2', '11:15 – 12:30', 'workshop')">
+                <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+                <span class="notification-dot"></span>
+              </button>
+              <div class="workshop-meta">
+                <span>Day 2</span>
+                <span>11:15 – 12:30</span>
+              </div>
+              <h3>Unlocking Immune Power: Why PBMCs Matter</h3>
+              <div class="workshop-speaker">
+                <div class="avatar">
+                  <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/11/Dr.-Sarkawt-Hamad.webp" alt="Dr. Sarkawt Hamad">
+                  <span class="workshop-flag"><img src="https://flagcdn.com/w40/de.png" alt="Germany"></span>
+                </div>
+                <div class="name">Dr. Sarkawt Hamad</div>
+              </div>
+            </div>
+
+            <div class="workshop-card" data-id="w5">
+              <button class="bookmark-btn" onclick="toggleBookmark('w5', 'Exploring the Value of MSCs', 'Day 2', '15:30 – 16:45', 'workshop')">
+                <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+                <span class="notification-dot"></span>
+              </button>
+              <div class="workshop-meta">
+                <span>Day 2</span>
+                <span>15:30 – 16:45</span>
+              </div>
+              <h3>Exploring the Value of MSCs from Adipose, Cord and Placental Sources</h3>
+              <div class="workshop-speaker">
+                <div class="avatar">
+                  <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/11/DSCC-2026-Workshop-Speakers-Dr.-Shadab-1.webp" alt="Mr. Mustafa Tareq">
+                  <span class="workshop-flag"><img src="https://flagcdn.com/w40/ae.png" alt="UAE"></span>
+                </div>
+                <div class="name">Mr. Mustafa Tareq & Dr. Shadab Anjum</div>
+              </div>
             </div>
           </div>
 
-          <div class="workshop-card" data-id="w2">
-            <button class="bookmark-btn" onclick="toggleBookmark('w2', 'Decoding Stem Cell Biology with scverse Tools', 'Day 1', '16:30 – 17:45', 'workshop')">
-              <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
-              <span class="notification-dot"></span>
-            </button>
-            <div class="workshop-meta">
-              <span>Day 1</span>
-              <span>16:30 – 17:45</span>
-            </div>
-            <h3>Decoding Stem Cell Biology with scverse Tools</h3>
-            <div class="workshop-speaker">
-              <div class="avatar">
-                <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/11/DSCC-2026-Workshop-Speakers-Ms.-Sara-Jimenez.webp" alt="Ms. Sara Jimenez">
-                <span class="workshop-flag"><img src="https://flagcdn.com/w40/de.png" alt="Germany"></span>
-              </div>
-              <div class="name">Ms. Sara Jimenez</div>
-            </div>
-          </div>
-
-          <div class="workshop-card" data-id="w3">
-            <button class="bookmark-btn" onclick="toggleBookmark('w3', 'Harvesting Hope: Cord Blood Collections', 'Day 2', '9:30 – 10:45', 'workshop')">
-              <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
-              <span class="notification-dot"></span>
-            </button>
-            <div class="workshop-meta">
-              <span>Day 2</span>
-              <span>9:30 – 10:45</span>
-            </div>
-            <h3>Harvesting Hope: Science and Skills for Optimal Cord Blood Collections</h3>
-            <div class="workshop-speaker">
-              <div class="avatar">
-                <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/11/DSCC-2026-Workshop-Speakers.webp" alt="Mrs. Kim Petrella">
-                <span class="workshop-flag"><img src="https://flagcdn.com/w40/us.png" alt="USA"></span>
-              </div>
-              <div class="name">Mrs. Kim Petrella</div>
-            </div>
-          </div>
-
-          <div class="workshop-card" data-id="w4">
-            <button class="bookmark-btn" onclick="toggleBookmark('w4', 'Unlocking Immune Power: Why PBMCs Matter', 'Day 2', '11:15 – 12:30', 'workshop')">
-              <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
-              <span class="notification-dot"></span>
-            </button>
-            <div class="workshop-meta">
-              <span>Day 2</span>
-              <span>11:15 – 12:30</span>
-            </div>
-            <h3>Unlocking Immune Power: Why PBMCs Matter</h3>
-            <div class="workshop-speaker">
-              <div class="avatar">
-                <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/11/Dr.-Sarkawt-Hamad.webp" alt="Dr. Sarkawt Hamad">
-                <span class="workshop-flag"><img src="https://flagcdn.com/w40/de.png" alt="Germany"></span>
-              </div>
-              <div class="name">Dr. Sarkawt Hamad</div>
-            </div>
-          </div>
-
-          <div class="workshop-card" data-id="w5">
-            <button class="bookmark-btn" onclick="toggleBookmark('w5', 'Exploring the Value of MSCs', 'Day 2', '15:30 – 16:45', 'workshop')">
-              <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
-              <span class="notification-dot"></span>
-            </button>
-            <div class="workshop-meta">
-              <span>Day 2</span>
-              <span>15:30 – 16:45</span>
-            </div>
-            <h3>Exploring the Value of MSCs from Adipose, Cord and Placental Sources</h3>
-            <div class="workshop-speaker">
-              <div class="avatar">
-                <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/11/DSCC-2026-Workshop-Speakers-Dr.-Shadab-1.webp" alt="Mr. Mustafa Tareq">
-                <span class="workshop-flag"><img src="https://flagcdn.com/w40/ae.png" alt="UAE"></span>
-              </div>
-              <div class="name">Mr. Mustafa Tareq & Dr. Shadab Anjum</div>
-            </div>
-          </div>
         </div>
       </div>
     </section>
@@ -3650,6 +3795,11 @@
       document.querySelectorAll('.day-content').forEach((content, index) => {
         content.classList.toggle('active', index === day - 1);
       });
+      // Update tracked active day for floating nav
+      if (typeof currentActiveDay !== 'undefined') {
+        currentActiveDay = day;
+        updateFloatingNavActive('schedule', day);
+      }
     }
 
     // =====================================================
@@ -3665,6 +3815,48 @@
 
     const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('.floating-nav a');
+    
+    // Track which day is currently active for the floating nav
+    let currentActiveDay = 1;
+
+    // Handle floating nav clicks - switch day tabs when clicking Day 1/Day 2
+    navLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        const dayAttr = link.getAttribute('data-day');
+        if (dayAttr) {
+          e.preventDefault();
+          const dayNum = parseInt(dayAttr);
+          switchDay(dayNum);
+          currentActiveDay = dayNum;
+          
+          // Scroll to schedule section
+          const scheduleSection = document.getElementById('schedule');
+          if (scheduleSection) {
+            scheduleSection.scrollIntoView({ behavior: 'smooth' });
+          }
+          
+          // Update active state on nav links
+          updateFloatingNavActive('schedule', dayNum);
+        }
+      });
+    });
+
+    function updateFloatingNavActive(sectionId, dayNum = null) {
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        const href = link.getAttribute('href');
+        const linkDay = link.getAttribute('data-day');
+        
+        if (sectionId === 'schedule' && linkDay) {
+          // For schedule section, highlight the correct day link
+          if (parseInt(linkDay) === (dayNum || currentActiveDay)) {
+            link.classList.add('active');
+          }
+        } else if (href === '#' + sectionId && !linkDay) {
+          link.classList.add('active');
+        }
+      });
+    }
 
     window.addEventListener('scroll', () => {
       let current = '';
@@ -3675,12 +3867,7 @@
         }
       });
 
-      navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === '#' + current) {
-          link.classList.add('active');
-        }
-      });
+      updateFloatingNavActive(current);
     });
 
     const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
