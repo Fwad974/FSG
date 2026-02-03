@@ -1523,10 +1523,10 @@
       position: absolute;
       bottom: -2px;
       right: -2px;
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      border: 2px solid var(--emerald-dark);
+      width: 22px;
+      height: 15px;
+      border-radius: 2px;
+      border: 1.5px solid var(--emerald-dark);
       overflow: hidden;
       display: flex;
       align-items: center;
@@ -1539,7 +1539,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      border-radius: 50%;
+      border-radius: 1px;
     }
 
     /* Speaker Info */
@@ -1642,8 +1642,8 @@
       }
       
       .speaker-mini-avatar .mini-flag {
-        width: 18px;
-        height: 18px;
+        width: 20px;
+        height: 14px;
       }
       
       /* Speaker info wrapper - takes up remaining space */
@@ -1886,10 +1886,10 @@
       position: absolute;
       bottom: -4px;
       right: -4px;
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-      border: 2px solid var(--emerald-dark);
+      width: 26px;
+      height: 18px;
+      border-radius: 2px;
+      border: 1.5px solid var(--emerald-dark);
       overflow: hidden;
       display: flex;
       align-items: center;
@@ -1902,7 +1902,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      border-radius: 50%;
+      border-radius: 1px;
     }
 
     .workshop-speaker .speaker-details {
@@ -1920,6 +1920,28 @@
     .workshop-speaker .role {
       color: rgba(255, 255, 255, 0.5);
       font-size: 0.8rem;
+    }
+
+    /* Dual Avatar Styles for Multiple Speakers */
+    .workshop-speaker .dual-avatars {
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+
+    .workshop-speaker .dual-avatars .avatar {
+      margin-right: -18px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .workshop-speaker .dual-avatars .avatar:last-child {
+      margin-right: 0;
+      z-index: 1;
+    }
+
+    .workshop-speaker .dual-avatars .avatar:first-child {
+      z-index: 2;
     }
 
     /* Workshop Card Bookmark Button */
@@ -1989,8 +2011,8 @@
       }
       
       .workshop-speaker .avatar .workshop-flag {
-        width: 18px;
-        height: 18px;
+        width: 22px;
+        height: 15px;
       }
       
       .workshop-card h3 {
@@ -2116,9 +2138,9 @@
       position: absolute;
       bottom: -3px;
       right: -3px;
-      width: 16px;
-      height: 16px;
-      border-radius: 50%;
+      width: 20px;
+      height: 14px;
+      border-radius: 2px;
       border: 1.5px solid var(--emerald-dark);
       overflow: hidden;
       display: flex;
@@ -2132,7 +2154,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      border-radius: 50%;
+      border-radius: 1px;
     }
 
     .timeline-workshop-speaker .speaker-info .name {
@@ -2270,10 +2292,10 @@
       position: absolute;
       bottom: -4px;
       right: -4px;
-      width: 24px;
-      height: 24px;
-      border-radius: 50%;
-      border: 2px solid var(--emerald-dark);
+      width: 28px;
+      height: 19px;
+      border-radius: 2px;
+      border: 1.5px solid var(--emerald-dark);
       overflow: hidden;
       display: flex;
       align-items: center;
@@ -2287,7 +2309,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      border-radius: 50%;
+      border-radius: 1px;
     }
 
     .speaker-info {
@@ -3810,9 +3832,15 @@
                 <h3>Exploring the Value of MSCs from Adipose, Cord and Placental Sources</h3>
               </div>
               <div class="workshop-speaker">
-                <div class="avatar">
-                  <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/11/DSCC-2026-Workshop-Speakers-Dr.-Shadab-1.webp" alt="Mr. Mustafa Tareq">
-                  <span class="workshop-flag"><img src="https://flagcdn.com/w40/ae.png" alt="UAE"></span>
+                <div class="dual-avatars">
+                  <div class="avatar">
+                    <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/11/DSCC-2026-Workshop-Speakers-Dr.-Shadab-1.webp" alt="Mr. Mustafa Tareq">
+                    <span class="workshop-flag"><img src="https://flagcdn.com/w40/ae.png" alt="UAE"></span>
+                  </div>
+                  <div class="avatar">
+                    <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/11/DSCC-2026-Workshop-Speakers-Dr.-Shadab.webp" alt="Dr. Shadab Anjum">
+                    <span class="workshop-flag"><img src="https://flagcdn.com/w40/ae.png" alt="India"></span>
+                  </div>
                 </div>
                 <div class="speaker-details">
                   <div class="name">Mr. Mustafa Tareq & Dr. Shadab Anjum</div>
