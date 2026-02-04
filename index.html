@@ -1909,11 +1909,15 @@
       position: relative;
     }
 
-    .workshop-speaker .dual-avatars .avatar {
-      margin-right: -18px;
-      position: relative;
-      z-index: 2;
-    }
+    .workshop-speaker .dual-avatars {
+	  display: flex;
+	  align-items: center;
+	  gap: 12px;  /* Added proper spacing between avatars */
+	}
+
+	.workshop-speaker .dual-avatars .avatar {
+	  margin-right: 0;  /* Removed the negative margin */
+	}
 
     .workshop-speaker .dual-avatars .avatar:last-child {
       margin-right: 0;
@@ -2010,7 +2014,12 @@
       .workshop-speaker .role {
         font-size: 0.75rem;
       }
+      .workshop-speaker .dual-avatars .avatar {
+        width: 42px;
+        height: 42px;
+      }
     }
+
     
     @media (max-width: 380px) {
       .workshop-card-header {
@@ -2659,78 +2668,7 @@
       }
     }
     
-    /* Dual Avatars - Non-Overlapping with Shared Flag */
-.workshop-speaker .dual-avatars-separate {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  position: relative;
-}
-
-.workshop-speaker .dual-avatars-separate .avatar {
-  width: 48px;
-  height: 48px;
-  background: linear-gradient(135deg, var(--gold), var(--gold-dark));
-  border-radius: 14px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  overflow: hidden;
-  border: 2px solid rgba(201, 169, 98, 0.4);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  transition: all 0.3s ease;
-  flex-shrink: 0;
-}
-
-.workshop-speaker .dual-avatars-separate .avatar img {
-  width: 115%;
-  height: 115%;
-  object-fit: cover;
-  border-radius: 12px;
-}
-
-.workshop-speaker .dual-avatars-separate .shared-flag {
-  position: absolute;
-  bottom: -4px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 26px;
-  height: 18px;
-  border-radius: 3px;
-  border: 1.5px solid var(--emerald-dark);
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--emerald-dark);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-}
-
-.workshop-speaker .dual-avatars-separate .shared-flag img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 2px;
-}
-
-.workshop-card:hover .dual-avatars-separate .avatar {
-  border-color: var(--gold);
-  transform: scale(1.03);
-}
-
-@media (max-width: 600px) {
-  .workshop-speaker .dual-avatars-separate .avatar {
-    width: 40px;
-    height: 40px;
-  }
-  
-  .workshop-speaker .dual-avatars-separate .shared-flag {
-    width: 22px;
-    height: 15px;
-  }
-}
-
+    
     /* Print */
     @media print {
       body { background: white; color: black; }
@@ -3846,9 +3784,8 @@
                 </div>
               </div>
             </div>
-
-            <div class="workshop-card" data-id="w5">
-              <button class="bookmark-btn" onclick="toggleBookmark('w5', 'Exploring Mesenchymal Stem Cells: Isolation, Culture and Characterization', 'Day 2', '15:30 – 16:45', 'workshop')">
+<div class="workshop-card" data-id="w5">
+              <button class="bookmark-btn" onclick="toggleBookmark('w5', 'Exploring the Value of MSCs', 'Day 2', '15:30 – 16:45', 'workshop')">
                 <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
                 <span class="notification-dot"></span>
               </button>
@@ -3859,26 +3796,26 @@
                 </div>
               </div>
               <div class="workshop-card-content">
-                <h3>Exploring Mesenchymal Stem Cells: Isolation, Culture and Characterization</h3>
+                <h3>Exploring the Value of MSCs from Adipose, Cord and Placental Sources</h3>
               </div>
               <div class="workshop-speaker">
-                <div class="dual-avatars-separate">
+                <div class="dual-avatars">
                   <div class="avatar">
-                           <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/11/DSCC-2026-Workshop-Speakers-Dr.-Shadab-1.webp" alt="Mr. Mustafa Tareq">
-
+                    <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/11/DSCC-2026-Workshop-Speakers-Dr.-Shadab-1.webp
+" alt="Mr. Mustafa Tareq">
+                    <span class="workshop-flag"><img src="https://flagcdn.com/w40/ae.png" alt="Egypt"></span>
                   </div>
                   <div class="avatar">
-                            <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/11/DSCC-2026-Workshop-Speakers-Dr.-Shadab.webp" alt="Dr. Shadab Anjum">
+                    <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/11/DSCC-2026-Workshop-Speakers-Dr.-Shadab.webp" alt="Dr. Shadab Anjum">
+                    <span class="workshop-flag"><img src="https://flagcdn.com/w40/in.png" alt="India"></span>
                   </div>
-                  <span class="shared-flag"><img src="https://flagcdn.com/w40/ae.png" alt="UAE"></span>
                 </div>
                 <div class="speaker-details">
-                  <div class="name">Mr. Mohammad Tareq & Ms. Noora Anjum</div>
+                  <div class="name">Mr. Mustafa Tareq & Dr. Shadab Anjum</div>
                   <div class="role">Workshop Instructors</div>
                 </div>
               </div>
             </div>
-          </div>
 
         </div>
 
