@@ -4,6 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dubai Stem Cell Congress 2026 - Program Guide</title>
+    <!-- Favicon -->
+
+  <link rel="icon" href="FSG_LOGO_svg-13.svg" type="image/png">
+  
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -1026,7 +1030,6 @@
     }
 
     /* Floating Navigation */
-    /* Floating Navigation - Premium Redesign */
     .floating-nav {
       position: fixed;
       right: 24px;
@@ -1069,7 +1072,6 @@
                   0 0 24px rgba(201, 169, 98, 0.2);
     }
 
-    /* Tooltip Label */
     .floating-nav a::before {
       content: attr(data-label);
       position: absolute;
@@ -1091,7 +1093,6 @@
       letter-spacing: 0.5px;
     }
 
-    /* Tooltip Arrow */
     .floating-nav a::after {
       content: '';
       position: absolute;
@@ -1110,12 +1111,6 @@
       transform: translateY(-50%) translateX(0);
     }
 
-    /* Connector line between dots */
-    .floating-nav a:not(:last-child)::marker {
-      content: '';
-    }
-
-    /* Progress indicator line */
     .floating-nav::before {
       content: '';
       position: absolute;
@@ -1129,7 +1124,6 @@
       z-index: -1;
     }
 
-    /* Mobile adjustments */
     @media (max-width: 768px) {
       .floating-nav {
         right: 12px;
@@ -1624,7 +1618,6 @@
         align-items: center;
       }
       
-      /* Time badge - top left */
       .speaker-line .time {
         grid-column: 1;
         grid-row: 1;
@@ -1633,7 +1626,6 @@
         min-width: auto;
       }
       
-      /* Avatar - spans both rows on left */
       .speaker-mini-avatar {
         grid-column: 1;
         grid-row: 2;
@@ -1646,7 +1638,6 @@
         height: 14px;
       }
       
-      /* Speaker info wrapper - takes up remaining space */
       .speaker-info-wrapper {
         grid-column: 2;
         grid-row: 1 / 3;
@@ -1667,7 +1658,6 @@
         margin-top: 2px;
       }
       
-      /* Bookmark button - right side, centered */
       .talk-bookmark-btn {
         grid-column: 3;
         grid-row: 1 / 3;
@@ -1680,13 +1670,11 @@
         height: 16px;
       }
       
-      /* Hover effects off on mobile */
       .speaker-line:hover {
         transform: none;
       }
     }
     
-    /* Extra small screens */
     @media (max-width: 380px) {
       .speaker-line {
         padding: 12px;
@@ -1726,7 +1714,7 @@
       background: linear-gradient(180deg, var(--emerald-darkest) 0%, var(--emerald-dark) 100%);
     }
 
-    /* Workshop Cards - Premium Redesign */
+    /* Workshop Cards */
     .workshops-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
@@ -1777,7 +1765,6 @@
       opacity: 1;
     }
 
-    /* Workshop Card Header */
     .workshop-card-header {
       padding: 24px 70px 0 24px;
       display: flex;
@@ -1814,7 +1801,6 @@
       border-color: rgba(201, 169, 98, 0.4);
     }
 
-    /* Workshop Content */
     .workshop-card-content {
       padding: 20px 24px;
       flex: 1;
@@ -1836,7 +1822,6 @@
       color: var(--gold-light);
     }
 
-    /* Workshop Speaker - Enhanced */
     .workshop-speaker {
       display: flex;
       align-items: center;
@@ -1922,7 +1907,6 @@
       font-size: 0.8rem;
     }
 
-    /* Dual Avatar Styles for Multiple Speakers */
     .workshop-speaker .dual-avatars {
       display: flex;
       align-items: center;
@@ -1944,7 +1928,6 @@
       z-index: 2;
     }
 
-    /* Workshop Card Bookmark Button */
     .workshop-card .bookmark-btn {
       position: absolute;
       top: 20px;
@@ -1967,7 +1950,6 @@
       border-color: var(--gold);
     }
 
-    /* Mobile Responsive - Workshop Cards */
     @media (max-width: 600px) {
       .workshops-grid {
         grid-template-columns: 1fr;
@@ -2034,7 +2016,6 @@
       }
     }
     
-    /* Extra small screens */
     @media (max-width: 380px) {
       .workshop-card-header {
         padding: 14px 54px 0 14px;
@@ -2071,7 +2052,6 @@
       }
     }
 
-    /* Workshop Timeline Items */
     .timeline-item.workshop .timeline-card {
       background: linear-gradient(135deg, rgba(201, 169, 98, 0.08) 0%, rgba(10, 61, 46, 0.4) 100%);
       border-color: rgba(201, 169, 98, 0.25);
@@ -2168,8 +2148,6 @@
       font-size: 0.75rem;
     }
 
-    /* Workshops Grid in Schedule */
-    /* Schedule Workshops Header - Enhanced */
     .schedule-workshops-header {
       display: flex;
       align-items: center;
@@ -2346,7 +2324,6 @@
       margin-bottom: 4px;
     }
 
-    /* Keynote Speaker Card */
     .speaker-card.keynote-speaker {
       grid-column: span 2;
       background: linear-gradient(135deg, rgba(201, 169, 98, 0.15), rgba(10, 61, 46, 0.6));
@@ -2380,7 +2357,6 @@
       font-size: 1.2rem;
     }
 
-    /* Workshop Speaker Card */
     .speaker-card.workshop-speaker {
       background: linear-gradient(135deg, rgba(15, 92, 69, 0.3), rgba(10, 61, 46, 0.4));
       border: 1px solid rgba(15, 92, 69, 0.5);
@@ -2633,12 +2609,10 @@
         margin-bottom: 8px;
       }
 
-      /* Timeline speakers on mobile */
       .timeline-speakers {
         margin-top: 12px;
       }
       
-      /* Session bookmark button on mobile */
       .timeline-card .bookmark-btn {
         top: 12px;
         right: 12px;
@@ -2664,13 +2638,11 @@
         grid-template-columns: 1fr;
       }
       
-      /* Workshops grid on mobile */
       .workshops-grid {
         grid-template-columns: 1fr;
         gap: 16px;
       }
       
-      /* Schedule workshops header on mobile */
       .schedule-workshops-header {
         margin: 30px 0 20px;
         padding: 16px;
@@ -2690,6 +2662,78 @@
         font-size: 1.15rem;
       }
     }
+    
+    /* Dual Avatars - Non-Overlapping with Shared Flag */
+.workshop-speaker .dual-avatars-separate {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+}
+
+.workshop-speaker .dual-avatars-separate .avatar {
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  border: 2px solid rgba(201, 169, 98, 0.4);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.workshop-speaker .dual-avatars-separate .avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.workshop-speaker .dual-avatars-separate .shared-flag {
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 26px;
+  height: 18px;
+  border-radius: 3px;
+  border: 1.5px solid var(--emerald-dark);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--emerald-dark);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.workshop-speaker .dual-avatars-separate .shared-flag img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 2px;
+}
+
+.workshop-card:hover .dual-avatars-separate .avatar {
+  border-color: var(--gold);
+  transform: scale(1.03);
+}
+
+@media (max-width: 600px) {
+  .workshop-speaker .dual-avatars-separate .avatar {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .workshop-speaker .dual-avatars-separate .shared-flag {
+    width: 22px;
+    height: 15px;
+  }
+}
 
     /* Print */
     @media print {
@@ -2777,7 +2821,6 @@
         </button>
       </div>
       <div class="settings-modal-body">
-        <!-- Permission Status -->
         <div class="settings-section">
           <div class="settings-section-title">Permission Status</div>
           <div class="permission-status" id="permissionStatus">
@@ -2794,8 +2837,6 @@
             <button class="permission-btn" id="permissionBtn" onclick="requestNotificationPermission()">Enable</button>
           </div>
         </div>
-
-        <!-- Global Settings -->
         <div class="settings-section">
           <div class="settings-section-title">Preferences</div>
           <div class="settings-option">
@@ -2819,8 +2860,6 @@
             </label>
           </div>
         </div>
-
-        <!-- Default Reminder Time -->
         <div class="settings-section">
           <div class="settings-section-title">Default Reminder Time</div>
           <div class="default-reminder-select" id="defaultReminderSelect">
@@ -2842,8 +2881,6 @@
             </div>
           </div>
         </div>
-
-        <!-- Test Notification -->
         <div class="settings-section">
           <button class="test-notification-btn" onclick="sendTestNotification()">
             <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -2963,7 +3000,7 @@
 
             <div class="timeline-item" data-id="d1-s1">
               <div class="timeline-card">
-                <button class="bookmark-btn" onclick="toggleBookmark('d1-s1', 'Session 1: Hematopoietic Power', 'Day 1', '8:40 – 10:20', 'session')">
+                <button class="bookmark-btn" onclick="toggleBookmark('d1-s1', 'Session 1: Hematopoietic Power', 'Day 1', '8:40 – 9:55', 'session')">
                   <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
                   <span class="notification-dot"></span>
                 </button>
@@ -2972,7 +3009,7 @@
                     <circle cx="12" cy="12" r="10"></circle>
                     <polyline points="12 6 12 12 16 14"></polyline>
                   </svg>
-                  8:40 – 10:20
+                  8:40 – 9:55
                 </div>
                 <div class="timeline-title">Session 1: Hematopoietic Power</div>
                 <div class="timeline-subtitle">Stem Cells In Blood, Immunity & Oncology</div>
@@ -2980,15 +3017,14 @@
                   <div class="speaker-line">
                     <span class="time">8:40</span>
                     <span class="speaker-mini-avatar">
-                      <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/11/Dr.-Anna-Bigas-PhD.webp" alt="Prof. Anna Bigas">
+                      <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/11/Dr.-Anna-Bigas-PhD.webp" alt="Dr. Anna Bigas">
                       <span class="mini-flag"><img src="https://flagcdn.com/w40/es.png" alt="Spain"></span>
                     </span>
                     <span class="speaker-info-wrapper">
-                      <span class="topic-name">New Approaches to Blood Stem Cell Generation</span>
-                      <span class="speaker-name">Prof. Anna Bigas</span>
+                      <span class="topic-name">New Approaches to Blood Stem Cell Generation from Pluripotent Cells</span>
+                      <span class="speaker-name">Dr. Anna Bigas</span>
                     </span>
-                  
-                    <button class="talk-bookmark-btn" onclick="event.stopPropagation(); toggleBookmark('talk-profannabigas-840', 'New Approaches to Blood Stem Cell Generation', 'Day 1', '8:40', 'talk')">
+                    <button class="talk-bookmark-btn" onclick="event.stopPropagation(); toggleBookmark('talk-profannabigas-840', 'New Approaches to Blood Stem Cell Generation from Pluripotent Cells', 'Day 1', '8:40', 'talk')">
                       <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
                     </button>
                   </div>
@@ -2999,10 +3035,9 @@
                       <span class="mini-flag"><img src="https://flagcdn.com/w40/ch.png" alt="Switzerland"></span>
                     </span>
                     <span class="speaker-info-wrapper">
-                      <span class="topic-name">Bone Marrow Stem Cell Modulation After MI</span>
+                      <span class="topic-name">Modulation of bone marrow haematopoietic stem cell activity as a therapeutic strategy after myocardial infarction</span>
                       <span class="speaker-name">Prof. Nina Cabezas-Wallscheid</span>
                     </span>
-                  
                     <button class="talk-bookmark-btn" onclick="event.stopPropagation(); toggleBookmark('talk-profninacabezas-905', 'Bone Marrow Stem Cell Modulation After MI', 'Day 1', '9:05', 'talk')">
                       <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
                     </button>
@@ -3010,34 +3045,32 @@
                   <div class="speaker-line">
                     <span class="time">9:30</span>
                     <span class="speaker-mini-avatar">
-                      <img src="https://ui-avatars.com/api/?name=Raef+Albugami&background=0a3d2e&color=c9a962&size=64&font-size=0.4" alt="Dr. Raef Almarzouqi Albugami">
-                      <span class="mini-flag"><img src="https://flagcdn.com/w40/ae.png" alt="UAE"></span>
-                    </span>
-                    <span class="speaker-info-wrapper">
-                      <span class="topic-name">Cellular Therapy Excellence</span>
-                      <span class="speaker-name">Dr. Raef Almarzouqi Albugami</span>
-                    </span>
-                  
-                    <button class="talk-bookmark-btn" onclick="event.stopPropagation(); toggleBookmark('talk-drraefalmarzouq-930', 'Cellular Therapy Excellence', 'Day 1', '9:30', 'talk')">
-                      <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
-                    </button>
-                  </div>
-                  <div class="speaker-line">
-                    <span class="time">9:55</span>
-                    <span class="speaker-mini-avatar">
                       <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/11/Emmanouil-Nikolousis.webp" alt="Dr. Emmanouil Nikolousis">
                       <span class="mini-flag"><img src="https://flagcdn.com/w40/ae.png" alt="UAE"></span>
                     </span>
                     <span class="speaker-info-wrapper">
-                      <span class="topic-name">Novel Conditioning in Allogeneic Transplants</span>
+                      <span class="topic-name">Incorporating novel conditioning regimen in allogeneic stem cell transplants: the American Hospital of Dubai experience</span>
                       <span class="speaker-name">Dr. Emmanouil Nikolousis</span>
                     </span>
-                  
-                    <button class="talk-bookmark-btn" onclick="event.stopPropagation(); toggleBookmark('talk-dremmanouilniko-955', 'Novel Conditioning in Allogeneic Transplants', 'Day 1', '9:55', 'talk')">
+                    <button class="talk-bookmark-btn" onclick="event.stopPropagation(); toggleBookmark('talk-dremmanouilniko-930', 'Novel Conditioning in Allogeneic Transplants', 'Day 1', '9:30', 'talk')">
                       <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
                     </button>
                   </div>
                 </div>
+              </div>
+            </div>
+
+            <!-- Industry Symposiums -->
+            <div class="timeline-item break">
+              <div class="timeline-card">
+                <div class="timeline-time">
+                  <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                  </svg>
+                  9:55 – 10:15
+                </div>
+                <div class="timeline-title">Industry Symposium by Eppendorf</div>
               </div>
             </div>
 
@@ -3048,16 +3081,42 @@
                     <circle cx="12" cy="12" r="10"></circle>
                     <polyline points="12 6 12 12 16 14"></polyline>
                   </svg>
-                  10:20 – 11:05
+                  10:15 – 10:25
+                </div>
+                <div class="timeline-title">Industry Symposium by Opubor - Miracell</div>
+              </div>
+            </div>
+
+            <div class="timeline-item break">
+              <div class="timeline-card">
+                <div class="timeline-time">
+                  <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                  </svg>
+                  10:25 – 10:35
+                </div>
+                <div class="timeline-title">Industry Symposium by Medselect</div>
+              </div>
+            </div>
+
+            <div class="timeline-item break">
+              <div class="timeline-card">
+                <div class="timeline-time">
+                  <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                  </svg>
+                  10:35 – 11:15
                 </div>
                 <div class="timeline-title">Innovation Exchange</div>
-                <div class="timeline-subtitle">Exhibitor Sessions, Poster Presentations & Coffee</div>
+                <div class="timeline-subtitle">Exhibitor Sessions, Poster Presentations & Coffee Connect</div>
               </div>
             </div>
 
             <div class="timeline-item" data-id="d1-s2">
               <div class="timeline-card">
-                <button class="bookmark-btn" onclick="toggleBookmark('d1-s2', 'Session 2: Mastering Cell Fate', 'Day 1', '11:05 – 11:55', 'session')">
+                <button class="bookmark-btn" onclick="toggleBookmark('d1-s2', 'Session 2: Mastering Cell Fate', 'Day 1', '11:15 – 12:05', 'session')">
                   <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
                   <span class="notification-dot"></span>
                 </button>
@@ -3066,38 +3125,36 @@
                     <circle cx="12" cy="12" r="10"></circle>
                     <polyline points="12 6 12 12 16 14"></polyline>
                   </svg>
-                  11:05 – 11:55
+                  11:15 – 12:05
                 </div>
                 <div class="timeline-title">Session 2: Mastering Cell Fate</div>
                 <div class="timeline-subtitle">Innovations in Stem Cell Reprogramming</div>
                 <div class="timeline-speakers">
                   <div class="speaker-line">
-                    <span class="time">11:05</span>
+                    <span class="time">11:15</span>
                     <span class="speaker-mini-avatar">
                       <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/11/Dr.-Hidetoshi-Sakurai-MD-PhD.webp" alt="Prof. Hidetoshi Sakurai">
                       <span class="mini-flag"><img src="https://flagcdn.com/w40/jp.png" alt="Japan"></span>
                     </span>
                     <span class="speaker-info-wrapper">
-                      <span class="topic-name">iPS Cell Therapy for Muscular Disorders</span>
+                      <span class="topic-name">iPS cell based therapy for muscular disorders</span>
                       <span class="speaker-name">Prof. Hidetoshi Sakurai</span>
                     </span>
-                  
-                    <button class="talk-bookmark-btn" onclick="event.stopPropagation(); toggleBookmark('talk-profhidetoshisa-1105', 'iPS Cell Therapy for Muscular Disorders', 'Day 1', '11:05', 'talk')">
+                    <button class="talk-bookmark-btn" onclick="event.stopPropagation(); toggleBookmark('talk-profhidetoshisa-1115', 'iPS Cell Therapy for Muscular Disorders', 'Day 1', '11:15', 'talk')">
                       <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
                     </button>
                   </div>
                   <div class="speaker-line">
-                    <span class="time">11:30</span>
+                    <span class="time">11:40</span>
                     <span class="speaker-mini-avatar">
                       <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/11/Dr.-Sarkawt-Hamad.webp" alt="Dr. Sarkawt Hamad">
                       <span class="mini-flag"><img src="https://flagcdn.com/w40/de.png" alt="Germany"></span>
                     </span>
                     <span class="speaker-info-wrapper">
-                      <span class="topic-name">hiPSCs Cardiac Organoids for Reducing AMI</span>
+                      <span class="topic-name">hiPSCs Cardiac Organoids for Reducing Acute Myocardial Infarction</span>
                       <span class="speaker-name">Dr. Sarkawt Hamad</span>
                     </span>
-                  
-                    <button class="talk-bookmark-btn" onclick="event.stopPropagation(); toggleBookmark('talk-drsarkawthamad-1130', 'hiPSCs Cardiac Organoids for Reducing AMI', 'Day 1', '11:30', 'talk')">
+                    <button class="talk-bookmark-btn" onclick="event.stopPropagation(); toggleBookmark('talk-drsarkawthamad-1140', 'hiPSCs Cardiac Organoids for Reducing AMI', 'Day 1', '11:40', 'talk')">
                       <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
                     </button>
                   </div>
@@ -3112,7 +3169,7 @@
                     <circle cx="12" cy="12" r="10"></circle>
                     <polyline points="12 6 12 12 16 14"></polyline>
                   </svg>
-                  11:55 – 12:55
+                  12:05 – 13:05
                 </div>
                 <div class="timeline-title">Opening Ceremony</div>
               </div>
@@ -3125,7 +3182,7 @@
                     <circle cx="12" cy="12" r="10"></circle>
                     <polyline points="12 6 12 12 16 14"></polyline>
                   </svg>
-                  12:55 – 13:55
+                  13:05 – 14:05
                 </div>
                 <div class="timeline-title">Lunch Break</div>
               </div>
@@ -3133,7 +3190,7 @@
 
             <div class="timeline-item keynote" data-id="d1-keynote">
               <div class="timeline-card">
-                <button class="bookmark-btn" onclick="toggleBookmark('d1-keynote', 'Keynote: Curing Diabetes with Stem Cells', 'Day 1', '13:55 – 14:35', 'session')">
+                <button class="bookmark-btn" onclick="toggleBookmark('d1-keynote', 'Keynote: Curing Diabetes with Stem Cells', 'Day 1', '14:05 – 14:45', 'session')">
                   <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
                   <span class="notification-dot"></span>
                 </button>
@@ -3143,7 +3200,7 @@
                     <circle cx="12" cy="12" r="10"></circle>
                     <polyline points="12 6 12 12 16 14"></polyline>
                   </svg>
-                  13:55 – 14:35
+                  14:05 – 14:45
                 </div>
                 <div class="timeline-title">Curing Diabetes with Stem Cells</div>
                 <div class="timeline-subtitle">Chemical Reprogramming for Regenerative Medicine: From CiPSCs to Functional Cure of Type 1 Diabetes</div>
@@ -3159,59 +3216,60 @@
               </div>
             </div>
 
-            <div class="timeline-item">
+            <div class="timeline-item" data-id="d1-s2cont">
               <div class="timeline-card">
+                <button class="bookmark-btn" onclick="toggleBookmark('d1-s2cont', 'Session 2 Continued: Mastering Cell Fate', 'Day 1', '14:45 – 16:00', 'session')">
+                  <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+                  <span class="notification-dot"></span>
+                </button>
                 <div class="timeline-time">
                   <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <circle cx="12" cy="12" r="10"></circle>
                     <polyline points="12 6 12 12 16 14"></polyline>
                   </svg>
-                  14:35 – 15:50
+                  14:45 – 16:00
                 </div>
                 <div class="timeline-title">Session 2 Continued: Mastering Cell Fate</div>
                 <div class="timeline-speakers">
                   <div class="speaker-line">
-                    <span class="time">14:35</span>
+                    <span class="time">14:45</span>
                     <span class="speaker-mini-avatar">
                       <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/11/Dr.-Heli-Skottman.webp" alt="Dr. Heli Skottman">
                       <span class="mini-flag"><img src="https://flagcdn.com/w40/fi.png" alt="Finland"></span>
                     </span>
                     <span class="speaker-info-wrapper">
-                      <span class="topic-name">Eye Regeneration with iPSCs and Bioprinting</span>
+                      <span class="topic-name">Building the Future of Eye Regeneration with iPSCs and Bioprinting</span>
                       <span class="speaker-name">Dr. Heli Skottman</span>
                     </span>
-                  
-                    <button class="talk-bookmark-btn" onclick="event.stopPropagation(); toggleBookmark('talk-drheliskottman-1435', 'Eye Regeneration with iPSCs and Bioprinting', 'Day 1', '14:35', 'talk')">
+                    <button class="talk-bookmark-btn" onclick="event.stopPropagation(); toggleBookmark('talk-drheliskottman-1445', 'Eye Regeneration with iPSCs and Bioprinting', 'Day 1', '14:45', 'talk')">
                       <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
                     </button>
                   </div>
                   <div class="speaker-line">
-                    <span class="time">15:00</span>
+                    <span class="time">15:10</span>
                     <span class="speaker-mini-avatar">
                       <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/11/Dr.-Essam-Abdelalim.webp" alt="Dr. Essam Abdelalim">
                       <span class="mini-flag"><img src="https://flagcdn.com/w40/qa.png" alt="Qatar"></span>
                     </span>
                     <span class="speaker-info-wrapper">
-                      <span class="topic-name">Modeling Monogenic Diabetes with iPSC-Derived Islets</span>
+                      <span class="topic-name">Modeling Monogenic Diabetes Mechanisms Using iPSC-Derived Islets</span>
                       <span class="speaker-name">Dr. Essam Abdelalim</span>
                     </span>
-                  
-                    <button class="talk-bookmark-btn" onclick="event.stopPropagation(); toggleBookmark('talk-dressamabdelali-1500', 'Modeling Monogenic Diabetes with iPSC-Derived Islets', 'Day 1', '15:00', 'talk')">
+                    <button class="talk-bookmark-btn" onclick="event.stopPropagation(); toggleBookmark('talk-dressamabdelali-1510', 'Modeling Monogenic Diabetes with iPSC-Derived Islets', 'Day 1', '15:10', 'talk')">
                       <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
                     </button>
                   </div>
                   <div class="speaker-line">
-                    <span class="time">15:25</span>
+                    <span class="time">15:35</span>
                     <span class="speaker-mini-avatar">
                       <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/12/dscc-2026-speakers-dr-khaled-alsayegh.webp" alt="Dr. Khaled Alsayegh">
                       <span class="mini-flag"><img src="https://flagcdn.com/w40/sa.png" alt="Saudi Arabia"></span>
                     </span>
                     <span class="speaker-info-wrapper">
-                      <span class="topic-name">The Saudi Bank of iPSCs (SBiPSCs)</span>
+                      <span class="topic-name">The Saudi Bank of Induced Pluripotent Stem Cells (SBiPSCs)</span>
                       <span class="speaker-name">Dr. Khaled Alsayegh</span>
                     </span>
-                  
-                    <button class="talk-bookmark-btn" onclick="event.stopPropagation(); toggleBookmark('talk-drkhaledalsayeg-1525', 'The Saudi Bank of iPSCs (SBiPSCs)', 'Day 1', '15:25', 'talk')">
+                    <button class="talk-bookmark-btn" onclick="event.stopPropagation(); toggleBookmark('talk-drkhaledalsayeg-1535', 'The Saudi Bank of iPSCs (SBiPSCs)', 'Day 1', '15:35', 'talk')">
                       <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
                     </button>
                   </div>
@@ -3221,7 +3279,7 @@
 
             <div class="timeline-item" data-id="d1-s3">
               <div class="timeline-card">
-                <button class="bookmark-btn" onclick="toggleBookmark('d1-s3', 'Session 3: Global Regeneration', 'Day 1', '15:50 – 17:15', 'session')">
+                <button class="bookmark-btn" onclick="toggleBookmark('d1-s3', 'Session 3: Global Regeneration', 'Day 1', '16:00 – 17:25', 'session')">
                   <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
                   <span class="notification-dot"></span>
                 </button>
@@ -3230,68 +3288,64 @@
                     <circle cx="12" cy="12" r="10"></circle>
                     <polyline points="12 6 12 12 16 14"></polyline>
                   </svg>
-                  15:50 – 17:15
+                  16:00 – 17:25
                 </div>
                 <div class="timeline-title">Session 3: Global Regeneration</div>
                 <div class="timeline-subtitle">A Dubai-Germany Alliance In Stem Cell Innovation</div>
                 <div class="timeline-speakers">
                   <div class="speaker-line">
-                    <span class="time">15:50</span>
+                    <span class="time">16:00</span>
                     <span class="speaker-mini-avatar">
                       <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/11/Daniel-Besser.webp" alt="Dr. Daniel Besser">
                       <span class="mini-flag"><img src="https://flagcdn.com/w40/de.png" alt="Germany"></span>
                     </span>
                     <span class="speaker-info-wrapper">
-                      <span class="topic-name">Introduction</span>
-                      <span class="speaker-name">Dr. Daniel Besser (German Stem Cell Network)</span>
+                      <span class="topic-name">Introduction remarks German Stem Cell Network</span>
+                      <span class="speaker-name">Dr. Daniel Besser</span>
                     </span>
-                  
-                    <button class="talk-bookmark-btn" onclick="event.stopPropagation(); toggleBookmark('talk-drdanielbesserg-1550', 'Introduction', 'Day 1', '15:50', 'talk')">
+                    <button class="talk-bookmark-btn" onclick="event.stopPropagation(); toggleBookmark('talk-drdanielbesserg-1600', 'Introduction', 'Day 1', '16:00', 'talk')">
                       <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
                     </button>
                   </div>
                   <div class="speaker-line">
-                    <span class="time">16:00</span>
+                    <span class="time">16:10</span>
                     <span class="speaker-mini-avatar">
                       <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/11/Prof.-Dr.-Sina-Bartfeld.webp" alt="Dr. Sina Bartfeld">
                       <span class="mini-flag"><img src="https://flagcdn.com/w40/de.png" alt="Germany"></span>
                     </span>
                     <span class="speaker-info-wrapper">
-                      <span class="topic-name">Infection, Innate Immunity & Cancer: Organoids as Model</span>
+                      <span class="topic-name">Infection, Innate immunity and cancer in the gut - Organoids as model</span>
                       <span class="speaker-name">Dr. Sina Bartfeld</span>
                     </span>
-                  
-                    <button class="talk-bookmark-btn" onclick="event.stopPropagation(); toggleBookmark('talk-drsinabartfeld-1600', 'Infection, Innate Immunity & Cancer: Organoids as Model', 'Day 1', '16:00', 'talk')">
+                    <button class="talk-bookmark-btn" onclick="event.stopPropagation(); toggleBookmark('talk-drsinabartfeld-1610', 'Infection, Innate Immunity & Cancer: Organoids as Model', 'Day 1', '16:10', 'talk')">
                       <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
                     </button>
                   </div>
                   <div class="speaker-line">
-                    <span class="time">16:25</span>
+                    <span class="time">16:35</span>
                     <span class="speaker-mini-avatar">
                       <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/11/Prof.-Dr.-Andreas-Trumpp-PhD.webp" alt="Prof. Andreas Trumpp">
                       <span class="mini-flag"><img src="https://flagcdn.com/w40/de.png" alt="Germany"></span>
                     </span>
                     <span class="speaker-info-wrapper">
-                      <span class="topic-name">Malignant Stem Cells</span>
+                      <span class="topic-name">Malignant stem cells</span>
                       <span class="speaker-name">Prof. Andreas Trumpp</span>
                     </span>
-                  
-                    <button class="talk-bookmark-btn" onclick="event.stopPropagation(); toggleBookmark('talk-profandreastrum-1625', 'Malignant Stem Cells', 'Day 1', '16:25', 'talk')">
+                    <button class="talk-bookmark-btn" onclick="event.stopPropagation(); toggleBookmark('talk-profandreastrum-1635', 'Malignant Stem Cells', 'Day 1', '16:35', 'talk')">
                       <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
                     </button>
                   </div>
                   <div class="speaker-line">
-                    <span class="time">16:50</span>
+                    <span class="time">17:00</span>
                     <span class="speaker-mini-avatar">
                       <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/11/Ludovic-Vallier.webp" alt="Prof. Ludovic Vallier">
                       <span class="mini-flag"><img src="https://flagcdn.com/w40/de.png" alt="Germany"></span>
                     </span>
                     <span class="speaker-info-wrapper">
-                      <span class="topic-name">Cell Based Therapy Against Liver Diseases</span>
+                      <span class="topic-name">Cell based therapy against liver diseases</span>
                       <span class="speaker-name">Prof. Ludovic Vallier</span>
                     </span>
-                  
-                    <button class="talk-bookmark-btn" onclick="event.stopPropagation(); toggleBookmark('talk-profludovicvall-1650', 'Cell Based Therapy Against Liver Diseases', 'Day 1', '16:50', 'talk')">
+                    <button class="talk-bookmark-btn" onclick="event.stopPropagation(); toggleBookmark('talk-profludovicvall-1700', 'Cell Based Therapy Against Liver Diseases', 'Day 1', '17:00', 'talk')">
                       <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
                     </button>
                   </div>
@@ -3301,7 +3355,7 @@
 
             <div class="timeline-item" data-id="d1-s4">
               <div class="timeline-card">
-                <button class="bookmark-btn" onclick="toggleBookmark('d1-s4', 'Session 4: Cardiac Regeneration', 'Day 1', '17:15 – 18:05', 'session')">
+                <button class="bookmark-btn" onclick="toggleBookmark('d1-s4', 'Session 4: Cardiac Regeneration', 'Day 1', '17:25 – 17:50', 'session')">
                   <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
                   <span class="notification-dot"></span>
                 </button>
@@ -3310,38 +3364,22 @@
                     <circle cx="12" cy="12" r="10"></circle>
                     <polyline points="12 6 12 12 16 14"></polyline>
                   </svg>
-                  17:15 – 18:05
+                  17:25 – 17:50
                 </div>
                 <div class="timeline-title">Session 4: Cardiac Regeneration</div>
                 <div class="timeline-subtitle">New Frontiers In Heart Repair</div>
                 <div class="timeline-speakers">
                   <div class="speaker-line">
-                    <span class="time">17:15</span>
+                    <span class="time">17:25</span>
                     <span class="speaker-mini-avatar">
                       <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/11/Prof.-Antoni-Bayes-Genis-MD-PhD-FESC.webp" alt="Prof. Antoni Bayes Genis">
                       <span class="mini-flag"><img src="https://flagcdn.com/w40/es.png" alt="Spain"></span>
                     </span>
                     <span class="speaker-info-wrapper">
-                      <span class="topic-name">UCB-MSCs Tissue Engineering and Cardiac Repair</span>
+                      <span class="topic-name">UCB-MSCs tissue engineering and cardiac repair</span>
                       <span class="speaker-name">Prof. Antoni Bayes Genis</span>
                     </span>
-                  
-                    <button class="talk-bookmark-btn" onclick="event.stopPropagation(); toggleBookmark('talk-profantonibayes-1715', 'UCB-MSCs Tissue Engineering and Cardiac Repair', 'Day 1', '17:15', 'talk')">
-                      <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
-                    </button>
-                  </div>
-                  <div class="speaker-line">
-                    <span class="time">17:40</span>
-                    <span class="speaker-mini-avatar">
-                      <img src="https://ui-avatars.com/api/?name=Carolina+Galvez+Monton&background=0a3d2e&color=c9a962&size=64&font-size=0.4" alt="Prof. Carolina Galvez Monton">
-                      <span class="mini-flag"><img src="https://flagcdn.com/w40/es.png" alt="Spain"></span>
-                    </span>
-                    <span class="speaker-info-wrapper">
-                      <span class="topic-name">New Tissue-Engineered Vascular Graft (VasCraft)</span>
-                      <span class="speaker-name">Prof. Carolina Galvez Monton</span>
-                    </span>
-                  
-                    <button class="talk-bookmark-btn" onclick="event.stopPropagation(); toggleBookmark('talk-profcarolinagal-1740', 'New Tissue-Engineered Vascular Graft (VasCraft)', 'Day 1', '17:40', 'talk')">
+                    <button class="talk-bookmark-btn" onclick="event.stopPropagation(); toggleBookmark('talk-profantonibayes-1725', 'UCB-MSCs Tissue Engineering and Cardiac Repair', 'Day 1', '17:25', 'talk')">
                       <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
                     </button>
                   </div>
@@ -3356,10 +3394,10 @@
                     <circle cx="12" cy="12" r="10"></circle>
                     <polyline points="12 6 12 12 16 14"></polyline>
                   </svg>
-                  18:05 – 18:50
+                  17:50 – 18:35
                 </div>
                 <div class="timeline-title">Innovation Exchange</div>
-                <div class="timeline-subtitle">Networking & Poster Sessions</div>
+                <div class="timeline-subtitle">Exhibitor Sessions, Poster Presentations & Coffee Connect</div>
               </div>
             </div>
 
@@ -3378,7 +3416,7 @@
 
           <div class="workshops-grid">
             <div class="workshop-card" data-id="w1">
-              <button class="bookmark-btn" onclick="toggleBookmark('w1', 'How to Establish a Scientific Career?', 'Day 1', '15:15 – 16:30', 'workshop')">
+              <button class="bookmark-btn" onclick="toggleBookmark('w1', 'How to establish a scientific career?', 'Day 1', '15:15 – 16:30', 'workshop')">
                 <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
                 <span class="notification-dot"></span>
               </button>
@@ -3389,7 +3427,7 @@
                 </div>
               </div>
               <div class="workshop-card-content">
-                <h3>How to Establish a Scientific Career?</h3>
+                <h3>How to establish a scientific career?</h3>
               </div>
               <div class="workshop-speaker">
                 <div class="avatar">
@@ -3423,7 +3461,7 @@
                   <span class="workshop-flag"><img src="https://flagcdn.com/w40/de.png" alt="Germany"></span>
                 </div>
                 <div class="speaker-details">
-                  <div class="name">Ms. Sara Jimenez</div>
+                  <div class="name">Dr. Sara Jimenez</div>
                   <div class="role">Workshop Instructor</div>
                 </div>
               </div>
@@ -3475,7 +3513,6 @@
                       <span class="topic-name">DHA Standards for Stem Cell Services</span>
                       <span class="speaker-name">Dr. Khulood Mohamed Alsayegh</span>
                     </span>
-                  
                     <button class="talk-bookmark-btn" onclick="event.stopPropagation(); toggleBookmark('talk-drkhuloodmohame-900', 'DHA Standards for Stem Cell Services', 'Day 2', '9:00', 'talk')">
                       <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
                     </button>
@@ -3490,7 +3527,6 @@
                       <span class="topic-name">From Bench to Policy: Navigating Regulation</span>
                       <span class="speaker-name">Dr. Haythem Bin Hashr</span>
                     </span>
-                  
                     <button class="talk-bookmark-btn" onclick="event.stopPropagation(); toggleBookmark('talk-drhaythembinhas-925', 'From Bench to Policy: Navigating Regulation', 'Day 2', '9:25', 'talk')">
                       <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
                     </button>
@@ -3513,7 +3549,7 @@
                   9:50 – 10:40
                 </div>
                 <div class="timeline-title">Session 6: From Source to Solution</div>
-                <div class="timeline-subtitle">Stem Cell Origins and Clinical Applications</div>
+                <div class="timeline-subtitle">Harnessing Perinatal Stem Cells for Therapeutics</div>
                 <div class="timeline-speakers">
                   <div class="speaker-line">
                     <span class="time">9:50</span>
@@ -3522,11 +3558,10 @@
                       <span class="mini-flag"><img src="https://flagcdn.com/w40/eg.png" alt="Egypt"></span>
                     </span>
                     <span class="speaker-info-wrapper">
-                      <span class="topic-name">Multipotent Solutions: Tackling Complex Chronic Diseases</span>
-                      <span class="speaker-name">Dr. Emad Elzayed</span>
+                      <span class="topic-name">Production of Clinical Grade MSCs</span>
+                      <span class="speaker-name">Prof. Dr. Emad Mahmoud Ibrahim Elzayat</span>
                     </span>
-                  
-                    <button class="talk-bookmark-btn" onclick="event.stopPropagation(); toggleBookmark('talk-dremadelzayed-950', 'Multipotent Solutions: Tackling Complex Chronic Diseases', 'Day 2', '9:50', 'talk')">
+                    <button class="talk-bookmark-btn" onclick="event.stopPropagation(); toggleBookmark('talk-profemadmahmoud-950', 'Production of Clinical Grade MSCs', 'Day 2', '9:50', 'talk')">
                       <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
                     </button>
                   </div>
@@ -3537,11 +3572,10 @@
                       <span class="mini-flag"><img src="https://flagcdn.com/w40/ae.png" alt="UAE"></span>
                     </span>
                     <span class="speaker-info-wrapper">
-                      <span class="topic-name">Stem Cell Based Fertility Restoration and Protection</span>
+                      <span class="topic-name">Cord Blood Banking and Clinical Application</span>
                       <span class="speaker-name">Dr. Ayman Hendy</span>
                     </span>
-                  
-                    <button class="talk-bookmark-btn" onclick="event.stopPropagation(); toggleBookmark('talk-draymanhendy-1015', 'Stem Cell Based Fertility Restoration and Protection', 'Day 2', '10:15', 'talk')">
+                    <button class="talk-bookmark-btn" onclick="event.stopPropagation(); toggleBookmark('talk-draymanhendy-1015', 'Cord Blood Banking and Clinical Application', 'Day 2', '10:15', 'talk')">
                       <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
                     </button>
                   </div>
@@ -3559,7 +3593,7 @@
                   10:40 – 11:25
                 </div>
                 <div class="timeline-title">Innovation Exchange</div>
-                <div class="timeline-subtitle">Coffee & Networking</div>
+                <div class="timeline-subtitle">Exhibitor Sessions, Poster Presentations & Coffee</div>
               </div>
             </div>
 
@@ -3577,20 +3611,19 @@
                   11:25 – 12:40
                 </div>
                 <div class="timeline-title">Session 7: Novel Approaches</div>
-                <div class="timeline-subtitle">Stem Cell Therapies & Regenerative Medicine</div>
+                <div class="timeline-subtitle">Innovations in Organoids, Cell Therapeutics & Processing</div>
                 <div class="timeline-speakers">
                   <div class="speaker-line">
                     <span class="time">11:25</span>
                     <span class="speaker-mini-avatar">
-                      <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/11/Dr.-Ralf-Jauch.webp" alt="Dr. Ralf Jauch">
+                      <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/11/Dr.-Ralf-Jauch.webp" alt="Prof. Ralf Jauch">
                       <span class="mini-flag"><img src="https://flagcdn.com/w40/hk.png" alt="Hong Kong"></span>
                     </span>
                     <span class="speaker-info-wrapper">
-                      <span class="topic-name">Direct Somatic to Neural Stem Cell Conversion</span>
-                      <span class="speaker-name">Dr. Ralf Jauch</span>
+                      <span class="topic-name">How Transcription Factors Control Stem Cells</span>
+                      <span class="speaker-name">Prof. Ralf Jauch</span>
                     </span>
-                  
-                    <button class="talk-bookmark-btn" onclick="event.stopPropagation(); toggleBookmark('talk-drralfjauch-1125', 'Direct Somatic to Neural Stem Cell Conversion', 'Day 2', '11:25', 'talk')">
+                    <button class="talk-bookmark-btn" onclick="event.stopPropagation(); toggleBookmark('talk-profralfjauch-1125', 'How Transcription Factors Control Stem Cells', 'Day 2', '11:25', 'talk')">
                       <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
                     </button>
                   </div>
@@ -3598,14 +3631,13 @@
                     <span class="time">11:50</span>
                     <span class="speaker-mini-avatar">
                       <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/11/Dr.-Vincent-R.-Knight-Schrijver.webp" alt="Dr. Vincent Knight-Schrijver">
-                      <span class="mini-flag"><img src="https://flagcdn.com/w40/gb.png" alt="United Kingdom"></span>
+                      <span class="mini-flag"><img src="https://flagcdn.com/w40/gb.png" alt="UK"></span>
                     </span>
                     <span class="speaker-info-wrapper">
-                      <span class="topic-name">Whole-Organ Atlases to Benchmark Cardiomyocytes</span>
+                      <span class="topic-name">Organoid Applications to Address Unmet Clinical Need</span>
                       <span class="speaker-name">Dr. Vincent Knight-Schrijver</span>
                     </span>
-                  
-                    <button class="talk-bookmark-btn" onclick="event.stopPropagation(); toggleBookmark('talk-drvincentknight-1150', 'Whole-Organ Atlases to Benchmark Cardiomyocytes', 'Day 2', '11:50', 'talk')">
+                    <button class="talk-bookmark-btn" onclick="event.stopPropagation(); toggleBookmark('talk-drvincentknight-1150', 'Organoid Applications to Address Unmet Clinical Need', 'Day 2', '11:50', 'talk')">
                       <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
                     </button>
                   </div>
@@ -3616,11 +3648,10 @@
                       <span class="mini-flag"><img src="https://flagcdn.com/w40/de.png" alt="Germany"></span>
                     </span>
                     <span class="speaker-info-wrapper">
-                      <span class="topic-name">AI-Driven Imaging and Analytics in Stem Cell Research</span>
+                      <span class="topic-name">GMP-Manufacturing of Advanced Cell Therapies</span>
                       <span class="speaker-name">Dr. Clemens Dannheim</span>
                     </span>
-                  
-                    <button class="talk-bookmark-btn" onclick="event.stopPropagation(); toggleBookmark('talk-drclemensdannhe-1215', 'AI-Driven Imaging and Analytics in Stem Cell Research', 'Day 2', '12:15', 'talk')">
+                    <button class="talk-bookmark-btn" onclick="event.stopPropagation(); toggleBookmark('talk-drclemensdannhe-1215', 'GMP-Manufacturing of Advanced Cell Therapies', 'Day 2', '12:15', 'talk')">
                       <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
                     </button>
                   </div>
@@ -3641,12 +3672,8 @@
               </div>
             </div>
 
-            <div class="timeline-item" data-id="d2-s7cont">
+            <div class="timeline-item">
               <div class="timeline-card">
-                <button class="bookmark-btn" onclick="toggleBookmark('d2-s7cont', 'Session 7 Continued: Novel Approaches', 'Day 2', '13:40 – 15:20', 'session')">
-                  <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
-                  <span class="notification-dot"></span>
-                </button>
                 <div class="timeline-time">
                   <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <circle cx="12" cy="12" r="10"></circle>
@@ -3659,15 +3686,14 @@
                   <div class="speaker-line">
                     <span class="time">13:40</span>
                     <span class="speaker-mini-avatar">
-                      <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/12/DSCC-2026-Speakers-Dr.-Ulf-Grawunder.webp" alt="Dr. Ulf Grawunder">
+                       <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/12/DSCC-2026-Speakers-Dr.-Ulf-Grawunder.webp" alt="Dr. Ulf Grawunder">
                       <span class="mini-flag"><img src="https://flagcdn.com/w40/de.png" alt="Germany"></span>
                     </span>
                     <span class="speaker-info-wrapper">
-                      <span class="topic-name">Advances in In Vivo CAR-T Cell Therapy</span>
-                      <span class="speaker-name">Dr. Ulf Grawunder</span>
+                      <span class="topic-name">Cell Manufacturing and Quality Control</span>
+                      <span class="speaker-name">Dr. Ulf Gunnar Meißner</span>
                     </span>
-                  
-                    <button class="talk-bookmark-btn" onclick="event.stopPropagation(); toggleBookmark('talk-drulfgrawunder-1340', 'Advances in In Vivo CAR-T Cell Therapy', 'Day 2', '13:40', 'talk')">
+                    <button class="talk-bookmark-btn" onclick="event.stopPropagation(); toggleBookmark('talk-drulfgunnarme-1340', 'Cell Manufacturing and Quality Control', 'Day 2', '13:40', 'talk')">
                       <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
                     </button>
                   </div>
@@ -3678,11 +3704,10 @@
                       <span class="mini-flag"><img src="https://flagcdn.com/w40/fi.png" alt="Finland"></span>
                     </span>
                     <span class="speaker-info-wrapper">
-                      <span class="topic-name">Stem Cell Models for Mitochondrial Disease</span>
+                      <span class="topic-name">Automation in iPSC Cell Line Development</span>
                       <span class="speaker-name">Dr. Riikka Martikainen</span>
                     </span>
-                  
-                    <button class="talk-bookmark-btn" onclick="event.stopPropagation(); toggleBookmark('talk-drriikkamartika-1405', 'Stem Cell Models for Mitochondrial Disease', 'Day 2', '14:05', 'talk')">
+                    <button class="talk-bookmark-btn" onclick="event.stopPropagation(); toggleBookmark('talk-drriikkamarti-1405', 'Automation in iPSC Cell Line Development', 'Day 2', '14:05', 'talk')">
                       <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
                     </button>
                   </div>
@@ -3693,26 +3718,24 @@
                       <span class="mini-flag"><img src="https://flagcdn.com/w40/it.png" alt="Italy"></span>
                     </span>
                     <span class="speaker-info-wrapper">
-                      <span class="topic-name">Stemness, Senescence & Space Biology: REAC Technology</span>
+                      <span class="topic-name">Epigenetic Reprogramming with Physical Energies</span>
                       <span class="speaker-name">Prof. Margherita Maioli</span>
                     </span>
-                  
-                    <button class="talk-bookmark-btn" onclick="event.stopPropagation(); toggleBookmark('talk-profmargheritam-1430', 'Stemness, Senescence & Space Biology: REAC Technology', 'Day 2', '14:30', 'talk')">
+                    <button class="talk-bookmark-btn" onclick="event.stopPropagation(); toggleBookmark('talk-profmargherita-1430', 'Epigenetic Reprogramming with Physical Energies', 'Day 2', '14:30', 'talk')">
                       <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
                     </button>
                   </div>
                   <div class="speaker-line">
                     <span class="time">14:55</span>
                     <span class="speaker-mini-avatar">
-                      <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/12/DSCC-2026-Speakers-Prof.-Mingxia-Gu.webp" alt="Prof. Mingxia Gu">
+<img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/12/DSCC-2026-Speakers-Prof.-Mingxia-Gu.webp" alt="Prof. Mingxia Gu">
                       <span class="mini-flag"><img src="https://flagcdn.com/w40/us.png" alt="USA"></span>
                     </span>
                     <span class="speaker-info-wrapper">
-                      <span class="topic-name">Vascular Development with Advanced Organoid Models</span>
+                      <span class="topic-name">Engineering iPSC-based Vascular Organoids</span>
                       <span class="speaker-name">Prof. Mingxia Gu</span>
                     </span>
-                  
-                    <button class="talk-bookmark-btn" onclick="event.stopPropagation(); toggleBookmark('talk-profmingxiagu-1455', 'Vascular Development with Advanced Organoid Models', 'Day 2', '14:55', 'talk')">
+                    <button class="talk-bookmark-btn" onclick="event.stopPropagation(); toggleBookmark('talk-profmingxiagu-1455', 'Engineering iPSC-based Vascular Organoids', 'Day 2', '14:55', 'talk')">
                       <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
                     </button>
                   </div>
@@ -3730,16 +3753,12 @@
                   15:20 – 16:05
                 </div>
                 <div class="timeline-title">Innovation Exchange</div>
-                <div class="timeline-subtitle">Final Networking Session</div>
+                <div class="timeline-subtitle">Networking & Poster Sessions</div>
               </div>
             </div>
 
-            <div class="timeline-item" data-id="d2-closing">
+            <div class="timeline-item">
               <div class="timeline-card">
-                <button class="bookmark-btn" onclick="toggleBookmark('d2-closing', 'Awards Ceremony & Closing', 'Day 2', '16:05 – 16:45', 'session')">
-                  <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
-                  <span class="notification-dot"></span>
-                </button>
                 <div class="timeline-time">
                   <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <circle cx="12" cy="12" r="10"></circle>
@@ -3747,7 +3766,8 @@
                   </svg>
                   16:05 – 16:45
                 </div>
-                <div class="timeline-title">Awards Ceremony & Closing</div>
+                <div class="timeline-title">Awards & Closing Ceremony</div>
+                <div class="timeline-subtitle">Poster Awards, Best Presentations & Closing Remarks</div>
               </div>
             </div>
 
@@ -3766,7 +3786,7 @@
 
           <div class="workshops-grid">
             <div class="workshop-card" data-id="w3">
-              <button class="bookmark-btn" onclick="toggleBookmark('w3', 'Harvesting Hope: Cord Blood Collections', 'Day 2', '9:30 – 10:45', 'workshop')">
+              <button class="bookmark-btn" onclick="toggleBookmark('w3', 'Stem Cell Harvesting from Bone Marrow & Adipose Tissue', 'Day 2', '9:30 – 10:45', 'workshop')">
                 <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
                 <span class="notification-dot"></span>
               </button>
@@ -3777,7 +3797,7 @@
                 </div>
               </div>
               <div class="workshop-card-content">
-                <h3>Harvesting Hope: Science and Skills for Optimal Cord Blood Collections</h3>
+                <h3>Stem Cell Harvesting from Bone Marrow & Adipose Tissue</h3>
               </div>
               <div class="workshop-speaker">
                 <div class="avatar">
@@ -3792,7 +3812,7 @@
             </div>
 
             <div class="workshop-card" data-id="w4">
-              <button class="bookmark-btn" onclick="toggleBookmark('w4', 'Unlocking Immune Power: Why PBMCs Matter', 'Day 2', '11:15 – 12:30', 'workshop')">
+              <button class="bookmark-btn" onclick="toggleBookmark('w4', 'Unleashing Immune Cell Power: Expansion and Characterization', 'Day 2', '11:15 – 12:30', 'workshop')">
                 <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
                 <span class="notification-dot"></span>
               </button>
@@ -3803,7 +3823,7 @@
                 </div>
               </div>
               <div class="workshop-card-content">
-                <h3>Unlocking Immune Power: Why PBMCs Matter</h3>
+                <h3>Unleashing Immune Cell Power: Expansion and Characterization</h3>
               </div>
               <div class="workshop-speaker">
                 <div class="avatar">
@@ -3818,7 +3838,7 @@
             </div>
 
             <div class="workshop-card" data-id="w5">
-              <button class="bookmark-btn" onclick="toggleBookmark('w5', 'Exploring the Value of MSCs', 'Day 2', '15:30 – 16:45', 'workshop')">
+              <button class="bookmark-btn" onclick="toggleBookmark('w5', 'Exploring Mesenchymal Stem Cells: Isolation, Culture and Characterization', 'Day 2', '15:30 – 16:45', 'workshop')">
                 <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
                 <span class="notification-dot"></span>
               </button>
@@ -3829,27 +3849,89 @@
                 </div>
               </div>
               <div class="workshop-card-content">
-                <h3>Exploring the Value of MSCs from Adipose, Cord and Placental Sources</h3>
+                <h3>Exploring Mesenchymal Stem Cells: Isolation, Culture and Characterization</h3>
               </div>
-              <div class="workshop-speaker">
-                <div class="dual-avatars">
-                  <div class="avatar">
-                    <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/11/DSCC-2026-Workshop-Speakers-Dr.-Shadab-1.webp" alt="Mr. Mustafa Tareq">
-                    <span class="workshop-flag"><img src="https://flagcdn.com/w40/ae.png" alt="UAE"></span>
-                  </div>
-                  <div class="avatar">
-                    <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/11/DSCC-2026-Workshop-Speakers-Dr.-Shadab.webp" alt="Dr. Shadab Anjum">
-                    <span class="workshop-flag"><img src="https://flagcdn.com/w40/ae.png" alt="India"></span>
-                  </div>
-                </div>
-                <div class="speaker-details">
-                  <div class="name">Mr. Mustafa Tareq & Dr. Shadab Anjum</div>
-                  <div class="role">Workshop Instructors</div>
-                </div>
-              </div>
+  <div class="workshop-speaker">
+    <div class="dual-avatars-separate">
+      <div class="avatar">
+        <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/11/DSCC-2026-Workshop-Speakers-Dr.-Shadab-1.webp" alt="Mr. Mustafa Tareq">
+      </div>
+      <div class="avatar">
+        <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/11/DSCC-2026-Workshop-Speakers-Dr.-Shadab.webp" alt="Dr. Shadab Anjum">
+      </div>
+      <span class="shared-flag"><img src="https://flagcdn.com/w40/ae.png" alt="UAE"></span>
+    </div>
+    <div class="speaker-details">
+      <div class="name">Mr. Mustafa Tareq & Dr. Shadab Anjum</div>
+      <div class="role">Workshop Instructors</div>
+    </div>
+  </div>
+</div>
             </div>
           </div>
 
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Venue Section -->
+    <section class="venue-section" id="venue">
+      <div class="container">
+        <div class="section-header">
+          <span class="overline">Location</span>
+          <h2>Conference Venue</h2>
+        </div>
+        
+        <div class="venue-card">
+          <div class="venue-header">
+            <div class="venue-icon">
+              <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+            </div>
+            <h3>Mövenpick Grand Al Bustan</h3>
+            <p>Dubai, United Arab Emirates</p>
+          </div>
+          
+          <div class="venue-details">
+            <div class="venue-detail">
+              <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line>
+                <line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+              </svg>
+              <div class="label">Dates</div>
+              <div class="value">7-8 February 2026</div>
+            </div>
+            <div class="venue-detail">
+              <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+              <div class="label">Duration</div>
+              <div class="value">2 Full Days</div>
+            </div>
+            <div class="venue-detail">
+              <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+              <div class="label">Format</div>
+              <div class="value">In-Person</div>
+            </div>
+            <div class="venue-detail">
+              <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+              </svg>
+              <div class="label">Edition</div>
+              <div class="value">4th Annual Congress</div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -3859,176 +3941,252 @@
   <!-- Footer -->
   <footer>
     <div class="footer-logo">
-      <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/></svg>
     </div>
     <h4>Dubai Stem Cell Congress 2026</h4>
-    <p>Initiated & Empowered by FIRST Stem Cell and Genomics Laboratory</p>
-    <p class="tagline">"Beyond Boundaries: Pioneering the Next Era of Regenerative Medicine"</p>
+    <p>7-8 February 2026 • Mövenpick Grand Al Bustan, Dubai</p>
+    <p class="tagline">"From Stem Cells to Systems: Advancing Science, Transforming Care"</p>
   </footer>
 
   <script>
-    // =====================================================
-    // STORAGE KEYS
-    // =====================================================
-    
-    const STORAGE_KEY = 'dscc2026_bookmarks';
-    const NOTIFICATIONS_KEY = 'dscc2026_notifications';
-    const SETTINGS_KEY = 'dscc2026_notification_settings';
+    // My Schedule State
+    let savedItems = JSON.parse(localStorage.getItem('dscc2026_saved') || '{}');
+    let notificationSettings = JSON.parse(localStorage.getItem('dscc2026_notifications') || '{"enabled": false, "sound": true, "vibration": true, "defaultReminder": 30}');
+    let scheduledNotifications = JSON.parse(localStorage.getItem('dscc2026_scheduled') || '{}');
 
-    // =====================================================
-    // DEFAULT SETTINGS
-    // =====================================================
-    
-    const DEFAULT_SETTINGS = {
-      sound: true,
-      vibration: true,
-      defaultReminder: 30 // minutes
-    };
+    // Initialize
+    document.addEventListener('DOMContentLoaded', () => {
+      updateSavedCount();
+      restoreBookmarkStates();
+      initScrollAnimations();
+      updateNotificationBanner();
+      updateNotificationSettingsBtn();
+      loadNotificationSettings();
 
-    // =====================================================
-    // LOCAL STORAGE MANAGEMENT
-    // =====================================================
-    
-    function getBookmarks() {
-      try {
-        const data = localStorage.getItem(STORAGE_KEY);
-        return data ? JSON.parse(data) : {};
-      } catch (e) {
-        console.error('Error reading bookmarks:', e);
-        return {};
+      // Initialize permission status
+      updatePermissionStatus();
+    });
+
+    // Toggle Bookmark
+    function toggleBookmark(id, title, day, time, type) {
+      if (savedItems[id]) {
+        delete savedItems[id];
+        // Cancel any scheduled notifications
+        if (scheduledNotifications[id]) {
+          delete scheduledNotifications[id];
+          localStorage.setItem('dscc2026_scheduled', JSON.stringify(scheduledNotifications));
+        }
+        showToast('Removed from schedule');
+      } else {
+        savedItems[id] = { id, title, day, time, type, savedAt: Date.now(), notifyMinutes: notificationSettings.defaultReminder };
+        showToast('Added to My Schedule');
+      }
+      
+      localStorage.setItem('dscc2026_saved', JSON.stringify(savedItems));
+      updateSavedCount();
+      updateBookmarkButton(id);
+      updatePanelContent();
+    }
+
+    // Update bookmark button state
+    function updateBookmarkButton(id) {
+      const buttons = document.querySelectorAll(`[onclick*="'${id}'"]`);
+      buttons.forEach(btn => {
+        if (savedItems[id]) {
+          btn.classList.add('active');
+          if (savedItems[id].notifyMinutes && notificationSettings.enabled) {
+            btn.classList.add('has-notification');
+          }
+        } else {
+          btn.classList.remove('active', 'has-notification');
+        }
+      });
+    }
+
+    // Restore bookmark states on load
+    function restoreBookmarkStates() {
+      Object.keys(savedItems).forEach(id => {
+        updateBookmarkButton(id);
+      });
+    }
+
+    // Update saved count
+    function updateSavedCount() {
+      const count = Object.keys(savedItems).length;
+      document.getElementById('savedCount').textContent = count;
+    }
+
+    // Panel functions
+    function togglePanel() {
+      const panel = document.getElementById('schedulePanel');
+      const overlay = document.getElementById('panelOverlay');
+      panel.classList.toggle('open');
+      overlay.classList.toggle('open');
+      if (panel.classList.contains('open')) {
+        updatePanelContent();
       }
     }
 
-    function saveBookmarks(bookmarks) {
-      try {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(bookmarks));
-      } catch (e) {
-        console.error('Error saving bookmarks:', e);
-      }
+    function switchPanelTab(tab) {
+      document.querySelectorAll('.panel-tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.panel-section').forEach(s => s.classList.remove('active'));
+      
+      event.target.classList.add('active');
+      document.getElementById(`panel-${tab}`).classList.add('active');
     }
 
-    function getNotifications() {
-      try {
-        const data = localStorage.getItem(NOTIFICATIONS_KEY);
-        return data ? JSON.parse(data) : {};
-      } catch (e) {
-        console.error('Error reading notifications:', e);
-        return {};
-      }
+    // Update panel content
+    function updatePanelContent() {
+      const sessionsContainer = document.getElementById('panel-sessions');
+      const workshopsContainer = document.getElementById('panel-workshops');
+      
+      const sessions = Object.values(savedItems).filter(item => item.type === 'session' || item.type === 'talk');
+      const workshops = Object.values(savedItems).filter(item => item.type === 'workshop');
+      
+      // Sort by day and time
+      const sortByTime = (a, b) => {
+        if (a.day !== b.day) return a.day.localeCompare(b.day);
+        return a.time.localeCompare(b.time);
+      };
+      
+      sessions.sort(sortByTime);
+      workshops.sort(sortByTime);
+      
+      sessionsContainer.innerHTML = sessions.length ? sessions.map(item => createSavedItemHTML(item)).join('') : createEmptyState('sessions');
+      workshopsContainer.innerHTML = workshops.length ? workshops.map(item => createSavedItemHTML(item)).join('') : createEmptyState('workshops');
     }
 
-    function saveNotifications(notifications) {
-      try {
-        localStorage.setItem(NOTIFICATIONS_KEY, JSON.stringify(notifications));
-      } catch (e) {
-        console.error('Error saving notifications:', e);
-      }
+    function createSavedItemHTML(item) {
+      const hasNotification = item.notifyMinutes && notificationSettings.enabled;
+      const notificationControlsHTML = `
+        <div class="notification-controls ${hasNotification ? 'show' : ''}" id="notify-controls-${item.id}">
+          <div class="notification-controls-label">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+              <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+            </svg>
+            Remind me
+          </div>
+          <div class="reminder-options">
+            <span class="reminder-option ${item.notifyMinutes === 15 ? 'selected' : ''}" onclick="setItemReminder('${item.id}', 15)">15 min</span>
+            <span class="reminder-option ${item.notifyMinutes === 30 ? 'selected' : ''}" onclick="setItemReminder('${item.id}', 30)">30 min</span>
+            <span class="reminder-option ${item.notifyMinutes === 60 ? 'selected' : ''}" onclick="setItemReminder('${item.id}', 60)">1 hour</span>
+          </div>
+        </div>
+      `;
+      
+      return `
+        <div class="saved-item">
+          <div class="item-day">${item.day}</div>
+          <div class="item-time">${item.time}</div>
+          <div class="item-title">${item.title}</div>
+          <span class="item-type">${item.type}</span>
+          <div class="item-actions">
+            <button class="notify-btn ${hasNotification ? 'active' : ''}" onclick="toggleItemNotification('${item.id}')" title="Set reminder">
+              <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+              </svg>
+            </button>
+            <button class="remove-btn" onclick="removeItem('${item.id}')" title="Remove">
+              <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </button>
+          </div>
+          ${notificationControlsHTML}
+        </div>
+      `;
     }
 
-    function getSettings() {
-      try {
-        const data = localStorage.getItem(SETTINGS_KEY);
-        return data ? { ...DEFAULT_SETTINGS, ...JSON.parse(data) } : DEFAULT_SETTINGS;
-      } catch (e) {
-        console.error('Error reading settings:', e);
-        return DEFAULT_SETTINGS;
-      }
+    function createEmptyState(type) {
+      return `
+        <div class="empty-state">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+          </svg>
+          <p>No ${type} saved yet.<br>Tap the bookmark icon to save items.</p>
+        </div>
+      `;
     }
 
-    function saveSettings(settings) {
-      try {
-        localStorage.setItem(SETTINGS_KEY, JSON.stringify(settings));
-      } catch (e) {
-        console.error('Error saving settings:', e);
+    function removeItem(id) {
+      delete savedItems[id];
+      if (scheduledNotifications[id]) {
+        delete scheduledNotifications[id];
+        localStorage.setItem('dscc2026_scheduled', JSON.stringify(scheduledNotifications));
       }
+      localStorage.setItem('dscc2026_saved', JSON.stringify(savedItems));
+      updateSavedCount();
+      updateBookmarkButton(id);
+      updatePanelContent();
+      showToast('Removed from schedule');
     }
 
-    // =====================================================
-    // NOTIFICATION PERMISSION
-    // =====================================================
-    
-    function checkNotificationPermission() {
-      if (!('Notification' in window)) {
-        return 'unsupported';
-      }
-      return Notification.permission;
-    }
-
-    async function requestNotificationPermission() {
-      if (!('Notification' in window)) {
-        showToast('Notifications not supported in this browser');
+    // Notification functions
+    function toggleItemNotification(id) {
+      if (!notificationSettings.enabled) {
+        requestNotificationPermission().then(() => {
+          if (notificationSettings.enabled) {
+            toggleItemNotification(id);
+          }
+        });
         return;
       }
 
-      try {
-        const permission = await Notification.requestPermission();
-        updatePermissionUI();
-        updateNotificationBanner();
-        
-        if (permission === 'granted') {
-          showToast('Notifications enabled!');
-          updateNotificationSettingsBtn();
-        } else if (permission === 'denied') {
-          showToast('Notifications blocked. Please enable in browser settings.');
-        }
-      } catch (e) {
-        console.error('Error requesting notification permission:', e);
-        showToast('Could not request notification permission');
+      const item = savedItems[id];
+      if (!item) return;
+
+      const controlsEl = document.getElementById(`notify-controls-${id}`);
+      if (controlsEl) {
+        controlsEl.classList.toggle('show');
       }
     }
 
-    function updatePermissionUI() {
-      const permission = checkNotificationPermission();
-      const statusEl = document.getElementById('permissionStatus');
-      const labelEl = document.getElementById('permissionLabel');
-      const textEl = document.getElementById('permissionText');
-      const btnEl = document.getElementById('permissionBtn');
-
-      statusEl.classList.remove('granted', 'denied');
+    function setItemReminder(id, minutes) {
+      if (!savedItems[id]) return;
       
-      if (permission === 'granted') {
-        statusEl.classList.add('granted');
-        labelEl.textContent = 'Enabled';
-        textEl.textContent = 'You will receive notifications for your bookmarked events';
-        btnEl.style.display = 'none';
-      } else if (permission === 'denied') {
-        statusEl.classList.add('denied');
-        labelEl.textContent = 'Blocked';
-        textEl.textContent = 'Enable notifications in your browser settings';
-        btnEl.textContent = 'Open Settings';
-        btnEl.style.display = 'block';
-        btnEl.onclick = () => showToast('Please enable notifications in your browser settings');
-      } else if (permission === 'unsupported') {
-        labelEl.textContent = 'Not Supported';
-        textEl.textContent = 'Your browser does not support notifications';
-        btnEl.style.display = 'none';
-      } else {
-        labelEl.textContent = 'Not Enabled';
-        textEl.textContent = 'Click to enable notifications for event reminders';
-        btnEl.textContent = 'Enable';
-        btnEl.style.display = 'block';
-        btnEl.onclick = requestNotificationPermission;
+      savedItems[id].notifyMinutes = minutes;
+      localStorage.setItem('dscc2026_saved', JSON.stringify(savedItems));
+      
+      // Update UI
+      const controlsEl = document.getElementById(`notify-controls-${id}`);
+      if (controlsEl) {
+        controlsEl.querySelectorAll('.reminder-option').forEach(opt => {
+          opt.classList.toggle('selected', parseInt(opt.textContent) === minutes || 
+            (opt.textContent === '1 hour' && minutes === 60));
+        });
       }
+      
+      updateBookmarkButton(id);
+      showToast(`Reminder set for ${minutes} minutes before`);
     }
 
+    // Notification Banner
     function updateNotificationBanner() {
-      const permission = checkNotificationPermission();
       const banner = document.getElementById('notificationBanner');
       const btn = document.getElementById('enableNotificationsBtn');
+      
+      if (!('Notification' in window)) {
+        banner.style.display = 'none';
+        return;
+      }
 
-      banner.classList.remove('granted', 'denied');
-
-      if (permission === 'granted') {
+      if (Notification.permission === 'granted' && notificationSettings.enabled) {
         banner.classList.add('granted');
+        banner.classList.remove('denied');
         banner.querySelector('.notification-banner-title').textContent = 'Notifications Enabled';
         banner.querySelector('.notification-banner-text').textContent = 'You\'ll be reminded before your sessions';
         btn.style.display = 'none';
-      } else if (permission === 'denied') {
+      } else if (Notification.permission === 'denied') {
         banner.classList.add('denied');
+        banner.classList.remove('granted');
         banner.querySelector('.notification-banner-title').textContent = 'Notifications Blocked';
         banner.querySelector('.notification-banner-text').textContent = 'Enable in browser settings to get reminders';
         btn.style.display = 'none';
       } else {
+        banner.classList.remove('granted', 'denied');
         banner.querySelector('.notification-banner-title').textContent = 'Enable Notifications';
         banner.querySelector('.notification-banner-text').textContent = 'Get reminded before your sessions start';
         btn.style.display = 'block';
@@ -4037,584 +4195,125 @@
 
     function updateNotificationSettingsBtn() {
       const btn = document.getElementById('notificationSettingsBtn');
-      const notifications = getNotifications();
-      const hasActiveNotifications = Object.values(notifications).some(n => n.enabled);
-      
-      if (hasActiveNotifications) {
+      if (notificationSettings.enabled && Object.values(savedItems).some(item => item.notifyMinutes)) {
         btn.classList.add('has-notifications');
       } else {
         btn.classList.remove('has-notifications');
       }
     }
 
-    // =====================================================
-    // NOTIFICATION SCHEDULING
-    // =====================================================
-    
-    function toggleNotification(id) {
-      const notifications = getNotifications();
-      const bookmarks = getBookmarks();
-      const bookmark = bookmarks[id];
-      
-      if (!bookmark) return;
-
-      if (notifications[id] && notifications[id].enabled) {
-        // Disable notification
-        notifications[id].enabled = false;
-        
-        // Cancel scheduled notification
-        if (scheduledNotifications[id]) {
-          clearTimeout(scheduledNotifications[id]);
-          delete scheduledNotifications[id];
-        }
-        
-        showToast('Notification disabled');
-      } else {
-        // Enable notification with default reminder
-        const settings = getSettings();
-        notifications[id] = {
-          enabled: true,
-          reminderMinutes: settings.defaultReminder,
-          title: bookmark.title,
-          day: bookmark.day,
-          time: bookmark.time
-        };
-        
-        // Schedule the notification
-        scheduleNotification(id, bookmark, settings.defaultReminder);
-        
-        showToast(`Reminder set for ${formatReminderTime(settings.defaultReminder)} before`);
-      }
-
-      saveNotifications(notifications);
-      renderPanelContent();
-      updateBookmarkNotificationIndicators();
-      updateNotificationSettingsBtn();
-    }
-
-    function setReminderTime(id, minutes) {
-      const notifications = getNotifications();
-      const bookmarks = getBookmarks();
-      const bookmark = bookmarks[id];
-      
-      if (!notifications[id]) {
-        notifications[id] = { enabled: true };
-      }
-      
-      notifications[id].reminderMinutes = minutes;
-      notifications[id].enabled = true;
-      
-      // Reschedule with new time
-      if (bookmark) {
-        scheduleNotification(id, bookmark, minutes);
-      }
-      
-      saveNotifications(notifications);
-      renderPanelContent();
-      showToast(`Reminder updated to ${formatReminderTime(minutes)} before`);
-    }
-
-    function formatReminderTime(minutes) {
-      if (minutes >= 1440) return `${minutes / 1440} day`;
-      if (minutes >= 60) return `${minutes / 60} hour`;
-      return `${minutes} min`;
-    }
-
-    function updateBookmarkNotificationIndicators() {
-      const notifications = getNotifications();
-      
-      document.querySelectorAll('[data-id]').forEach(el => {
-        const id = el.dataset.id;
-        const btn = el.querySelector('.bookmark-btn');
-        
-        if (btn && notifications[id] && notifications[id].enabled) {
-          btn.classList.add('has-notification');
-        } else if (btn) {
-          btn.classList.remove('has-notification');
-        }
-      });
-    }
-
-    // =====================================================
-    // AUDIO SYSTEM
-    // =====================================================
-    
-    let audioContext = null;
-    
-    function initAudioContext() {
-      if (!audioContext) {
-        audioContext = new (window.AudioContext || window.webkitAudioContext)();
-      }
-      return audioContext;
-    }
-
-    function playNotificationSound() {
-      const settings = getSettings();
-      if (!settings.sound) return;
-
-      try {
-        const ctx = initAudioContext();
-        
-        // Resume if suspended (required after user interaction)
-        if (ctx.state === 'suspended') {
-          ctx.resume();
-        }
-
-        // Create a pleasant two-tone chime
-        const now = ctx.currentTime;
-        
-        // First tone
-        const osc1 = ctx.createOscillator();
-        const gain1 = ctx.createGain();
-        osc1.connect(gain1);
-        gain1.connect(ctx.destination);
-        osc1.frequency.setValueAtTime(880, now); // A5
-        osc1.type = 'sine';
-        gain1.gain.setValueAtTime(0, now);
-        gain1.gain.linearRampToValueAtTime(0.3, now + 0.05);
-        gain1.gain.exponentialRampToValueAtTime(0.01, now + 0.4);
-        osc1.start(now);
-        osc1.stop(now + 0.4);
-
-        // Second tone (higher, delayed)
-        const osc2 = ctx.createOscillator();
-        const gain2 = ctx.createGain();
-        osc2.connect(gain2);
-        gain2.connect(ctx.destination);
-        osc2.frequency.setValueAtTime(1318.5, now + 0.15); // E6
-        osc2.type = 'sine';
-        gain2.gain.setValueAtTime(0, now + 0.15);
-        gain2.gain.linearRampToValueAtTime(0.25, now + 0.2);
-        gain2.gain.exponentialRampToValueAtTime(0.01, now + 0.6);
-        osc2.start(now + 0.15);
-        osc2.stop(now + 0.6);
-
-        // Third tone (highest, more delayed)
-        const osc3 = ctx.createOscillator();
-        const gain3 = ctx.createGain();
-        osc3.connect(gain3);
-        gain3.connect(ctx.destination);
-        osc3.frequency.setValueAtTime(1760, now + 0.3); // A6
-        osc3.type = 'sine';
-        gain3.gain.setValueAtTime(0, now + 0.3);
-        gain3.gain.linearRampToValueAtTime(0.2, now + 0.35);
-        gain3.gain.exponentialRampToValueAtTime(0.01, now + 0.8);
-        osc3.start(now + 0.3);
-        osc3.stop(now + 0.8);
-
-      } catch (e) {
-        console.error('Error playing notification sound:', e);
-      }
-    }
-
-    // =====================================================
-    // SEND NOTIFICATIONS
-    // =====================================================
-    
-    function sendNotification(title, body, options = {}) {
-      const permission = checkNotificationPermission();
-      if (permission !== 'granted') return;
-
-      const settings = getSettings();
-      
-      // Play custom sound
-      playNotificationSound();
-
-      // Vibrate on mobile
-      if (settings.vibration && 'vibrate' in navigator) {
-        navigator.vibrate([200, 100, 200]);
-      }
-      
-      const notification = new Notification(title, {
-        body: body,
-        icon: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="45" fill="%23c9a962"/><path d="M50 25c-13.8 0-25 11.2-25 25s11.2 25 25 25 25-11.2 25-25-11.2-25-25-25zm-5 37.5l-12.5-12.5 3.5-3.5 9 9 19-19 3.5 3.5-22.5 22.5z" fill="%23040f0b"/></svg>',
-        badge: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="45" fill="%23c9a962"/></svg>',
-        tag: options.tag || 'dscc2026',
-        requireInteraction: true,
-        silent: true // We play our own sound
-      });
-
-      notification.onclick = function() {
-        window.focus();
-        notification.close();
-      };
-
-      return notification;
-    }
-
-    function sendTestNotification() {
-      const permission = checkNotificationPermission();
-      
-      if (permission !== 'granted') {
-        requestNotificationPermission();
+    async function requestNotificationPermission() {
+      if (!('Notification' in window)) {
+        showToast('Notifications not supported');
         return;
       }
 
-      sendNotification(
-        '🔔 Dubai Stem Cell Congress 2026',
-        'This is a test notification. Your reminders are working!',
-        { tag: 'dscc2026-test' }
-      );
-      
-      showToast('Test notification sent!');
-    }
-
-    // =====================================================
-    // NOTIFICATION SCHEDULER
-    // =====================================================
-    
-    const CONFERENCE_YEAR = 2026;
-    const CONFERENCE_MONTH = 1; // February (0-indexed)
-    const DAY1_DATE = 7;
-    const DAY2_DATE = 8;
-    
-    // Store scheduled timeouts
-    let scheduledNotifications = {};
-
-    function parseEventTime(day, timeStr) {
-      // Parse time like "8:40 – 10:20" or "9:00 – 9:50"
-      const startTime = timeStr.split('–')[0].trim();
-      const [hours, minutes] = startTime.split(':').map(n => parseInt(n.trim()));
-      
-      const date = day.includes('1') ? DAY1_DATE : DAY2_DATE;
-      
-      // Create date in local timezone (Dubai is UTC+4)
-      const eventDate = new Date(CONFERENCE_YEAR, CONFERENCE_MONTH, date, hours, minutes, 0, 0);
-      
-      return eventDate;
-    }
-
-    function scheduleNotification(id, bookmark, reminderMinutes) {
-      // Clear existing scheduled notification for this id
-      if (scheduledNotifications[id]) {
-        clearTimeout(scheduledNotifications[id]);
-        delete scheduledNotifications[id];
-      }
-
-      // Skip if no day/time info (like speakers)
-      if (!bookmark.day || !bookmark.time) return;
-
-      const eventTime = parseEventTime(bookmark.day, bookmark.time);
-      const notifyTime = new Date(eventTime.getTime() - (reminderMinutes * 60 * 1000));
-      const now = new Date();
-      
-      const msUntilNotification = notifyTime.getTime() - now.getTime();
-
-      // Debug logging
-      console.log(`Scheduling notification for "${bookmark.title}":`, {
-        eventTime: eventTime.toLocaleString(),
-        notifyTime: notifyTime.toLocaleString(),
-        reminderMinutes,
-        msUntilNotification,
-        willFireIn: msUntilNotification > 0 ? `${Math.round(msUntilNotification / 1000 / 60)} minutes` : 'PAST'
-      });
-
-      // Only schedule if in the future
-      if (msUntilNotification > 0) {
-        scheduledNotifications[id] = setTimeout(() => {
-          sendNotification(
-            `⏰ Starting in ${formatReminderTime(reminderMinutes)}`,
-            bookmark.title,
-            { tag: `dscc2026-${id}` }
-          );
-          console.log(`🔔 Notification fired for: ${bookmark.title}`);
-        }, msUntilNotification);
-        
-        console.log(`✅ Notification scheduled for ${id}`);
-      } else {
-        console.log(`⏭️ Event already passed, not scheduling: ${bookmark.title}`);
+      try {
+        const permission = await Notification.requestPermission();
+        if (permission === 'granted') {
+          notificationSettings.enabled = true;
+          localStorage.setItem('dscc2026_notifications', JSON.stringify(notificationSettings));
+          showToast('Notifications enabled!');
+        } else {
+          showToast('Notification permission denied');
+        }
+        updateNotificationBanner();
+        updatePermissionStatus();
+        updateNotificationSettingsBtn();
+      } catch (error) {
+        console.error('Error requesting notification permission:', error);
       }
     }
 
-    function scheduleAllNotifications() {
-      const bookmarks = getBookmarks();
-      const notifications = getNotifications();
-      
-      // Clear all existing scheduled notifications
-      Object.keys(scheduledNotifications).forEach(id => {
-        clearTimeout(scheduledNotifications[id]);
-        delete scheduledNotifications[id];
-      });
-
-      // Schedule new notifications
-      Object.entries(notifications).forEach(([id, notif]) => {
-        if (notif.enabled && bookmarks[id]) {
-          scheduleNotification(id, bookmarks[id], notif.reminderMinutes);
-        }
-      });
-
-      console.log(`📅 Scheduled ${Object.keys(scheduledNotifications).length} notifications`);
-    }
-
-    // =====================================================
-    // DEMO MODE - Test with simulated time
-    // =====================================================
-    
-    let demoMode = false;
-    let demoTimeOffset = 0;
-
-    function enableDemoMode() {
-      demoMode = true;
-      showToast('Demo mode enabled! Notifications will fire in 10 seconds.');
-      
-      // Schedule all enabled notifications to fire in 10 seconds
-      const notifications = getNotifications();
-      const bookmarks = getBookmarks();
-      
-      let delay = 10000; // Start after 10 seconds
-      
-      Object.entries(notifications).forEach(([id, notif]) => {
-        if (notif.enabled && bookmarks[id]) {
-          const bookmark = bookmarks[id];
-          
-          if (scheduledNotifications[id]) {
-            clearTimeout(scheduledNotifications[id]);
-          }
-          
-          scheduledNotifications[id] = setTimeout(() => {
-            sendNotification(
-              `⏰ Demo: Starting in ${formatReminderTime(notif.reminderMinutes)}`,
-              bookmark.title,
-              { tag: `dscc2026-${id}` }
-            );
-          }, delay);
-          
-          delay += 3000; // Stagger by 3 seconds
-        }
-      });
-    }
-
-
-
-    // =====================================================
-    // SETTINGS MODAL
-    // =====================================================
-    
+    // Notification Settings Modal
     function openNotificationSettings() {
-      const overlay = document.getElementById('settingsModalOverlay');
-      overlay.classList.add('open');
-      updatePermissionUI();
-      loadSettingsToUI();
-      addDemoButton();
+      document.getElementById('settingsModalOverlay').classList.add('open');
+      updatePermissionStatus();
     }
 
     function closeNotificationSettings(event) {
       if (event && event.target !== event.currentTarget) return;
-      const overlay = document.getElementById('settingsModalOverlay');
-      overlay.classList.remove('open');
+      document.getElementById('settingsModalOverlay').classList.remove('open');
     }
 
-    function loadSettingsToUI() {
-      const settings = getSettings();
+    function updatePermissionStatus() {
+      const statusEl = document.getElementById('permissionStatus');
+      const labelEl = document.getElementById('permissionLabel');
+      const textEl = document.getElementById('permissionText');
+      const btnEl = document.getElementById('permissionBtn');
+
+      if (!('Notification' in window)) {
+        statusEl.classList.remove('granted', 'denied');
+        labelEl.textContent = 'Not Supported';
+        textEl.textContent = 'Your browser doesn\'t support notifications';
+        btnEl.style.display = 'none';
+        return;
+      }
+
+      if (Notification.permission === 'granted') {
+        statusEl.classList.add('granted');
+        statusEl.classList.remove('denied');
+        labelEl.textContent = 'Enabled';
+        textEl.textContent = 'Notifications are working';
+        btnEl.style.display = 'none';
+      } else if (Notification.permission === 'denied') {
+        statusEl.classList.add('denied');
+        statusEl.classList.remove('granted');
+        labelEl.textContent = 'Blocked';
+        textEl.textContent = 'Enable in your browser settings';
+        btnEl.style.display = 'none';
+      } else {
+        statusEl.classList.remove('granted', 'denied');
+        labelEl.textContent = 'Not Enabled';
+        textEl.textContent = 'Click to enable notifications';
+        btnEl.style.display = 'block';
+      }
+    }
+
+    function loadNotificationSettings() {
+      document.getElementById('soundToggle').checked = notificationSettings.sound;
+      document.getElementById('vibrationToggle').checked = notificationSettings.vibration;
       
-      document.getElementById('soundToggle').checked = settings.sound;
-      document.getElementById('vibrationToggle').checked = settings.vibration;
-      
-      document.querySelectorAll('.default-reminder-option').forEach(option => {
-        option.classList.remove('selected');
-        if (parseInt(option.dataset.value) === settings.defaultReminder) {
-          option.classList.add('selected');
-        }
+      document.querySelectorAll('.default-reminder-option').forEach(opt => {
+        opt.classList.toggle('selected', parseInt(opt.dataset.value) === notificationSettings.defaultReminder);
       });
     }
 
     function updateNotificationSettings() {
-      const settings = {
-        sound: document.getElementById('soundToggle').checked,
-        vibration: document.getElementById('vibrationToggle').checked,
-        defaultReminder: getSettings().defaultReminder
-      };
-      
-      saveSettings(settings);
+      notificationSettings.sound = document.getElementById('soundToggle').checked;
+      notificationSettings.vibration = document.getElementById('vibrationToggle').checked;
+      localStorage.setItem('dscc2026_notifications', JSON.stringify(notificationSettings));
     }
 
     function setDefaultReminder(minutes) {
-      const settings = getSettings();
-      settings.defaultReminder = minutes;
-      saveSettings(settings);
+      notificationSettings.defaultReminder = minutes;
+      localStorage.setItem('dscc2026_notifications', JSON.stringify(notificationSettings));
       
-      document.querySelectorAll('.default-reminder-option').forEach(option => {
-        option.classList.remove('selected');
-        if (parseInt(option.dataset.value) === minutes) {
-          option.classList.add('selected');
-        }
+      document.querySelectorAll('.default-reminder-option').forEach(opt => {
+        opt.classList.toggle('selected', parseInt(opt.dataset.value) === minutes);
       });
-      
-      showToast(`Default reminder set to ${formatReminderTime(minutes)}`);
     }
 
-    // =====================================================
-    // BOOKMARK FUNCTIONALITY
-    // =====================================================
-    
-    function toggleBookmark(id, title, day, time, type) {
-      const bookmarks = getBookmarks();
-      const notifications = getNotifications();
-      
-      // Find the button - for talks, we need to search differently
-      let btn = null;
-      const mainCard = document.querySelector(`[data-id="${id}"]`);
-      if (mainCard) {
-        btn = mainCard.querySelector('.bookmark-btn');
-      } else if (type === 'talk') {
-        // For talks, find the button by matching the onclick attribute
-        document.querySelectorAll('.talk-bookmark-btn').forEach(talkBtn => {
-          const onclickAttr = talkBtn.getAttribute('onclick');
-          if (onclickAttr && onclickAttr.includes(`'${id}'`)) {
-            btn = talkBtn;
+    function sendTestNotification() {
+      if (Notification.permission !== 'granted') {
+        requestNotificationPermission().then(() => {
+          if (Notification.permission === 'granted') {
+            sendTestNotification();
           }
         });
+        return;
       }
-      
-      if (bookmarks[id]) {
-        delete bookmarks[id];
-        // Also remove any notifications for this bookmark
-        delete notifications[id];
-        saveNotifications(notifications);
-        
-        // Cancel scheduled notification
-        if (scheduledNotifications[id]) {
-          clearTimeout(scheduledNotifications[id]);
-          delete scheduledNotifications[id];
-        }
-        
-        if (btn) {
-          btn.classList.remove('active');
-          btn.classList.remove('has-notification');
-        }
-        showToast('Removed from schedule');
-      } else {
-        bookmarks[id] = { id, title, day, time, type, savedAt: Date.now() };
-        if (btn) btn.classList.add('active');
-        
-        // AUTO-ENABLE NOTIFICATIONS by default
-        const settings = getSettings();
-        notifications[id] = {
-          enabled: true,
-          reminderMinutes: settings.defaultReminder,
-          title: title,
-          day: day,
-          time: time
-        };
-        saveNotifications(notifications);
-        
-        // Schedule the notification
-        scheduleNotification(id, bookmarks[id], settings.defaultReminder);
-        
-        if (btn) btn.classList.add('has-notification');
-        
-        // Check if we have notification permission
-        const permission = checkNotificationPermission();
-        if (permission === 'granted') {
-          showToast(`Added with ${formatReminderTime(settings.defaultReminder)} reminder!`);
-        } else if (permission === 'default') {
-          showToast('Added! Enable notifications for reminders.');
-        } else {
-          showToast('Added to your schedule!');
-        }
-      }
-      
-      saveBookmarks(bookmarks);
-      updateSavedCount();
-      renderPanelContent();
-      updateNotificationSettingsBtn();
-    }
 
-    // =====================================================
-    // PANEL MANAGEMENT
-    // =====================================================
-    
-    function togglePanel() {
-      const panel = document.getElementById('schedulePanel');
-      const overlay = document.getElementById('panelOverlay');
-      panel.classList.toggle('open');
-      overlay.classList.toggle('open');
-      if (panel.classList.contains('open')) {
-        renderPanelContent();
-        updateNotificationBanner();
-      }
-    }
-
-    function switchPanelTab(tab) {
-      document.querySelectorAll('.panel-tab').forEach(t => t.classList.remove('active'));
-      document.querySelectorAll('.panel-section').forEach(s => s.classList.remove('active'));
-      event.target.classList.add('active');
-      document.getElementById(`panel-${tab}`).classList.add('active');
-    }
-
-    function renderPanelContent() {
-      const bookmarks = getBookmarks();
-      const notifications = getNotifications();
-      const settings = getSettings();
-      
-      ['sessions', 'workshops', 'speakers'].forEach(type => {
-        // Include 'talk' type with sessions
-        const typeKeys = type === 'sessions' ? ['session', 'talk'] : [type.slice(0, -1)];
-        const items = Object.values(bookmarks).filter(b => typeKeys.includes(b.type));
-        const container = document.getElementById(`panel-${type}`);
-        
-        if (items.length === 0) {
-          container.innerHTML = `
-            <div class="empty-state">
-              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
-              <p>No ${type} saved yet. Tap the bookmark icon to add items here.</p>
-            </div>`;
-          return;
-        }
-        
-        container.innerHTML = items.map(item => {
-          const notif = notifications[item.id];
-          const hasNotification = notif && notif.enabled;
-          const reminderMinutes = notif ? notif.reminderMinutes : settings.defaultReminder;
-          
-          return `
-            <div class="saved-item">
-              <div class="item-actions">
-                <button class="notify-btn ${hasNotification ? 'active' : ''}" onclick="toggleNotification('${item.id}')" title="${hasNotification ? 'Disable notification' : 'Enable notification'}">
-                  <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
-                    <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
-                  </svg>
-                </button>
-                <button class="remove-btn" onclick="toggleBookmark('${item.id}', '${item.title.replace(/'/g, "\\'")}', '${item.day}', '${item.time}', '${item.type}')">
-                  <svg viewBox="0 0 24 24" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-                </button>
-              </div>
-              ${item.day ? `<div class="item-day">${item.day}</div>` : ''}
-              <div class="item-time">${item.time}</div>
-              <div class="item-title">${item.title}</div>
-              <span class="item-type">${item.type}</span>
-              
-              <div class="notification-controls ${hasNotification ? 'show' : ''}" id="notif-controls-${item.id}">
-                <div class="notification-controls-label">
-                  <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
-                    <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
-                  </svg>
-                  Remind me
-                </div>
-                <div class="reminder-options">
-                  <button class="reminder-option ${reminderMinutes === 15 ? 'selected' : ''}" onclick="setReminderTime('${item.id}', 15)">15 min</button>
-                  <button class="reminder-option ${reminderMinutes === 30 ? 'selected' : ''}" onclick="setReminderTime('${item.id}', 30)">30 min</button>
-                  <button class="reminder-option ${reminderMinutes === 60 ? 'selected' : ''}" onclick="setReminderTime('${item.id}', 60)">1 hour</button>
-                  <button class="reminder-option ${reminderMinutes === 1440 ? 'selected' : ''}" onclick="setReminderTime('${item.id}', 1440)">1 day</button>
-                </div>
-              </div>
-            </div>
-          `;
-        }).join('');
+      const notification = new Notification('DSCC 2026 - Test Notification', {
+        body: 'Your notifications are working! You\'ll be reminded before your saved sessions.',
+        icon: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="%23c9a962"/></svg>',
+        tag: 'dscc2026-test'
       });
+
+      showToast('Test notification sent!');
     }
 
-    function updateSavedCount() {
-      const count = Object.keys(getBookmarks()).length;
-      document.getElementById('savedCount').textContent = count;
-    }
-
-    // =====================================================
-    // TOAST NOTIFICATIONS
-    // =====================================================
-    
+    // Toast notification
     function showToast(message) {
       const toast = document.getElementById('toast');
       document.getElementById('toastMessage').textContent = message;
@@ -4622,172 +4321,70 @@
       setTimeout(() => toast.classList.remove('show'), 2500);
     }
 
-    // =====================================================
-    // DAY SWITCHING
-    // =====================================================
-    
+    // Day switching
     function switchDay(day) {
-      document.querySelectorAll('.day-tab').forEach((tab, index) => {
-        tab.classList.toggle('active', index === day - 1);
+      document.querySelectorAll('.day-tab').forEach((tab, i) => {
+        tab.classList.toggle('active', i === day - 1);
       });
-      document.querySelectorAll('.day-content').forEach((content, index) => {
-        content.classList.toggle('active', index === day - 1);
+      document.querySelectorAll('.day-content').forEach((content, i) => {
+        content.classList.toggle('active', i === day - 1);
       });
-      // Update tracked active day for floating nav
-      if (typeof currentActiveDay !== 'undefined') {
-        currentActiveDay = day;
-        updateFloatingNavActive('schedule', day);
-      }
     }
 
-    // =====================================================
-    // SCROLL & NAVIGATION
-    // =====================================================
-    
+    // Progress bar
     window.addEventListener('scroll', () => {
       const scrollTop = window.scrollY;
       const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const scrollPercent = (scrollTop / docHeight) * 100;
-      document.getElementById('progressBar').style.width = scrollPercent + '%';
+      const progress = (scrollTop / docHeight) * 100;
+      document.getElementById('progressBar').style.width = progress + '%';
     });
 
+    // Floating nav active state
     const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('.floating-nav a');
-    
-    // Track which day is currently active for the floating nav
-    let currentActiveDay = 1;
-
-    // Handle floating nav clicks - switch day tabs when clicking Day 1/Day 2
-    navLinks.forEach(link => {
-      link.addEventListener('click', (e) => {
-        const dayAttr = link.getAttribute('data-day');
-        if (dayAttr) {
-          e.preventDefault();
-          const dayNum = parseInt(dayAttr);
-          switchDay(dayNum);
-          currentActiveDay = dayNum;
-          
-          // Scroll to schedule section
-          const scheduleSection = document.getElementById('schedule');
-          if (scheduleSection) {
-            scheduleSection.scrollIntoView({ behavior: 'smooth' });
-          }
-          
-          // Update active state on nav links
-          updateFloatingNavActive('schedule', dayNum);
-        }
-      });
-    });
-
-    function updateFloatingNavActive(sectionId, dayNum = null) {
-      navLinks.forEach(link => {
-        link.classList.remove('active');
-        const href = link.getAttribute('href');
-        const linkDay = link.getAttribute('data-day');
-        
-        if (sectionId === 'schedule' && linkDay) {
-          // For schedule section, highlight the correct day link
-          if (parseInt(linkDay) === (dayNum || currentActiveDay)) {
-            link.classList.add('active');
-          }
-        } else if (href === '#' + sectionId && !linkDay) {
-          link.classList.add('active');
-        }
-      });
-    }
 
     window.addEventListener('scroll', () => {
       let current = '';
       sections.forEach(section => {
         const sectionTop = section.offsetTop - 200;
-        if (window.scrollY >= sectionTop) {
+        if (scrollY >= sectionTop) {
           current = section.getAttribute('id');
         }
       });
 
-      updateFloatingNavActive(current);
-    });
-
-    const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.style.animation = 'fadeInUp 0.8s ease forwards';
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + current) {
+          link.classList.add('active');
         }
       });
-    }, observerOptions);
-
-    document.querySelectorAll('.stat-card, .timeline-item, .workshop-card, .speaker-card').forEach(el => {
-      el.style.opacity = '0';
-      observer.observe(el);
     });
 
-    // =====================================================
-    // INITIALIZATION
-    // =====================================================
-    
-    document.addEventListener('DOMContentLoaded', () => {
-      const bookmarks = getBookmarks();
-      const notifications = getNotifications();
-      
-      // Restore bookmark states from localStorage for session/workshop bookmarks
-      document.querySelectorAll('[data-id]').forEach(el => {
-        const id = el.dataset.id;
-        const btn = el.querySelector('.bookmark-btn');
-        
-        if (bookmarks[id] && btn) {
-          btn.classList.add('active');
-        }
-        
-        if (notifications[id] && notifications[id].enabled && btn) {
-          btn.classList.add('has-notification');
-        }
-      });
-      
-      // Restore talk bookmark button states
-      document.querySelectorAll('.talk-bookmark-btn').forEach(btn => {
-        const onclickAttr = btn.getAttribute('onclick');
-        if (onclickAttr) {
-          // Extract the talk ID from the onclick attribute
-          const match = onclickAttr.match(/toggleBookmark\('([^']+)'/);
-          if (match) {
-            const talkId = match[1];
-            if (bookmarks[talkId]) {
-              btn.classList.add('active');
-            }
-          }
-        }
-      });
-      
-      updateSavedCount();
-      updateNotificationBanner();
-      updateNotificationSettingsBtn();
-      
-      // Schedule all notifications on page load
-      scheduleAllNotifications();
-      
-      // Add demo button after a short delay
-      setTimeout(addDemoButton, 500);
-      
-      // Initialize audio context on first user interaction
-      document.body.addEventListener('click', () => {
-        initAudioContext();
-      }, { once: true });
-    });
-
-    // Close modals on Escape
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        const panel = document.getElementById('schedulePanel');
-        const settingsModal = document.getElementById('settingsModalOverlay');
-        
-        if (settingsModal.classList.contains('open')) {
-          closeNotificationSettings();
-        } else if (panel.classList.contains('open')) {
-          togglePanel();
-        }
+    // Handle day navigation clicks
+    navLinks.forEach(link => {
+      if (link.dataset.day) {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          switchDay(parseInt(link.dataset.day));
+          document.getElementById('schedule').scrollIntoView({ behavior: 'smooth' });
+        });
       }
     });
+
+    // Scroll animations
+    function initScrollAnimations() {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-in');
+          }
+        });
+      }, { threshold: 0.1 });
+
+      document.querySelectorAll('.stat-card, .timeline-item, .workshop-card, .speaker-card').forEach(el => {
+        observer.observe(el);
+      });
+    }
   </script>
 
 </body>
