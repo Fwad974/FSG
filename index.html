@@ -1647,10 +1647,6 @@
       .speaker-line .topic-name {
         font-size: 0.85rem;
         line-height: 1.4;
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
       }
       
       .speaker-line .speaker-name {
@@ -3061,8 +3057,12 @@
             </div>
 
             <!-- Industry Symposiums -->
-            <div class="timeline-item break">
+            <div class="timeline-item" data-id="d1-eppendorf">
               <div class="timeline-card">
+                <button class="bookmark-btn" onclick="toggleBookmark('d1-eppendorf', 'Industry Symposium by Eppendorf', 'Day 1', '9:55 – 10:15', 'session')">
+                  <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+                  <span class="notification-dot"></span>
+                </button>
                 <div class="timeline-time">
                   <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <circle cx="12" cy="12" r="10"></circle>
@@ -3074,8 +3074,12 @@
               </div>
             </div>
 
-            <div class="timeline-item break">
+            <div class="timeline-item" data-id="d1-opubor">
               <div class="timeline-card">
+                <button class="bookmark-btn" onclick="toggleBookmark('d1-opubor', 'Industry Symposium by Opubor - Miracell', 'Day 1', '10:15 – 10:25', 'session')">
+                  <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+                  <span class="notification-dot"></span>
+                </button>
                 <div class="timeline-time">
                   <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <circle cx="12" cy="12" r="10"></circle>
@@ -3087,8 +3091,12 @@
               </div>
             </div>
 
-            <div class="timeline-item break">
+            <div class="timeline-item" data-id="d1-medselect">
               <div class="timeline-card">
+                <button class="bookmark-btn" onclick="toggleBookmark('d1-medselect', 'Industry Symposium by Medselect', 'Day 1', '10:25 – 10:35', 'session')">
+                  <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+                  <span class="notification-dot"></span>
+                </button>
                 <div class="timeline-time">
                   <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <circle cx="12" cy="12" r="10"></circle>
@@ -3554,7 +3562,8 @@
                   <div class="speaker-line">
                     <span class="time">9:50</span>
                     <span class="speaker-mini-avatar">
-                      <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/11/Prof.-Dr.-Emad-Mahmoud-Ibrahim-Elzayat-PhD.webp" alt="Dr. Emad Elzayed">
+                                            <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/11/Prof.-Dr.-Emad-Mahmoud-Ibrahim-Elzayat-PhD.webp" alt="Dr. Emad Elzayed">
+
                       <span class="mini-flag"><img src="https://flagcdn.com/w40/eg.png" alt="Egypt"></span>
                     </span>
                     <span class="speaker-info-wrapper">
@@ -3630,7 +3639,7 @@
                   <div class="speaker-line">
                     <span class="time">11:50</span>
                     <span class="speaker-mini-avatar">
-                      <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/11/Dr.-Vincent-R.-Knight-Schrijver.webp" alt="Dr. Vincent Knight-Schrijver">
+                                           <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/11/Dr.-Vincent-R.-Knight-Schrijver.webp" alt="Dr. Vincent Knight-Schrijver">
                       <span class="mini-flag"><img src="https://flagcdn.com/w40/gb.png" alt="UK"></span>
                     </span>
                     <span class="speaker-info-wrapper">
@@ -3686,7 +3695,8 @@
                   <div class="speaker-line">
                     <span class="time">13:40</span>
                     <span class="speaker-mini-avatar">
-                       <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/12/DSCC-2026-Speakers-Dr.-Ulf-Grawunder.webp" alt="Dr. Ulf Grawunder">
+                                             <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/12/DSCC-2026-Speakers-Dr.-Ulf-Grawunder.webp" alt="Dr. Ulf Grawunder">
+
                       <span class="mini-flag"><img src="https://flagcdn.com/w40/de.png" alt="Germany"></span>
                     </span>
                     <span class="speaker-info-wrapper">
@@ -3714,7 +3724,7 @@
                   <div class="speaker-line">
                     <span class="time">14:30</span>
                     <span class="speaker-mini-avatar">
-                      <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/10/Prof.-Margherita-Maioli.png" alt="Prof. Margherita Maioli">
+                                            <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/10/Prof.-Margherita-Maioli.png" alt="Prof. Margherita Maioli">
                       <span class="mini-flag"><img src="https://flagcdn.com/w40/it.png" alt="Italy"></span>
                     </span>
                     <span class="speaker-info-wrapper">
@@ -3851,22 +3861,22 @@
               <div class="workshop-card-content">
                 <h3>Exploring Mesenchymal Stem Cells: Isolation, Culture and Characterization</h3>
               </div>
-  <div class="workshop-speaker">
-    <div class="dual-avatars-separate">
-      <div class="avatar">
-        <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/11/DSCC-2026-Workshop-Speakers-Dr.-Shadab-1.webp" alt="Mr. Mustafa Tareq">
-      </div>
-      <div class="avatar">
-        <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/11/DSCC-2026-Workshop-Speakers-Dr.-Shadab.webp" alt="Dr. Shadab Anjum">
-      </div>
-      <span class="shared-flag"><img src="https://flagcdn.com/w40/ae.png" alt="UAE"></span>
-    </div>
-    <div class="speaker-details">
-      <div class="name">Mr. Mustafa Tareq & Dr. Shadab Anjum</div>
-      <div class="role">Workshop Instructors</div>
-    </div>
-  </div>
-</div>
+              <div class="workshop-speaker">
+                <div class="dual-avatars-separate">
+                  <div class="avatar">
+                           <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/11/DSCC-2026-Workshop-Speakers-Dr.-Shadab-1.webp" alt="Mr. Mustafa Tareq">
+
+                  </div>
+                  <div class="avatar">
+                            <img src="https://dubaistemcellcongress.com/wp-content/uploads/2025/11/DSCC-2026-Workshop-Speakers-Dr.-Shadab.webp" alt="Dr. Shadab Anjum">
+                  </div>
+                  <span class="shared-flag"><img src="https://flagcdn.com/w40/ae.png" alt="UAE"></span>
+                </div>
+                <div class="speaker-details">
+                  <div class="name">Mr. Mohammad Tareq & Ms. Noora Anjum</div>
+                  <div class="role">Workshop Instructors</div>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -3875,73 +3885,14 @@
       </div>
     </section>
 
-    <!-- Venue Section -->
-    <section class="venue-section" id="venue">
-      <div class="container">
-        <div class="section-header">
-          <span class="overline">Location</span>
-          <h2>Conference Venue</h2>
-        </div>
-        
-        <div class="venue-card">
-          <div class="venue-header">
-            <div class="venue-icon">
-              <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                <circle cx="12" cy="10" r="3"></circle>
-              </svg>
-            </div>
-            <h3>Mövenpick Grand Al Bustan</h3>
-            <p>Dubai, United Arab Emirates</p>
-          </div>
-          
-          <div class="venue-details">
-            <div class="venue-detail">
-              <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                <line x1="16" y1="2" x2="16" y2="6"></line>
-                <line x1="8" y1="2" x2="8" y2="6"></line>
-                <line x1="3" y1="10" x2="21" y2="10"></line>
-              </svg>
-              <div class="label">Dates</div>
-              <div class="value">7-8 February 2026</div>
-            </div>
-            <div class="venue-detail">
-              <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="10"></circle>
-                <polyline points="12 6 12 12 16 14"></polyline>
-              </svg>
-              <div class="label">Duration</div>
-              <div class="value">2 Full Days</div>
-            </div>
-            <div class="venue-detail">
-              <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                <circle cx="9" cy="7" r="4"></circle>
-                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-              </svg>
-              <div class="label">Format</div>
-              <div class="value">In-Person</div>
-            </div>
-            <div class="venue-detail">
-              <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-              </svg>
-              <div class="label">Edition</div>
-              <div class="value">4th Annual Congress</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+
 
   </main>
 
   <!-- Footer -->
   <footer>
     <div class="footer-logo">
-      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/></svg>
+<svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></svg>
     </div>
     <h4>Dubai Stem Cell Congress 2026</h4>
     <p>7-8 February 2026 • Mövenpick Grand Al Bustan, Dubai</p>
@@ -4329,6 +4280,17 @@
       document.querySelectorAll('.day-content').forEach((content, i) => {
         content.classList.toggle('active', i === day - 1);
       });
+      
+      // Update floating nav active state for day links when on schedule section
+      const scheduleSection = document.getElementById('schedule');
+      const scheduleTop = scheduleSection.offsetTop - 200;
+      if (scrollY >= scheduleTop) {
+        document.querySelectorAll('.floating-nav a').forEach(link => {
+          if (link.dataset.day) {
+            link.classList.toggle('active', parseInt(link.dataset.day) === day);
+          }
+        });
+      }
     }
 
     // Progress bar
@@ -4343,22 +4305,38 @@
     const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('.floating-nav a');
 
-    window.addEventListener('scroll', () => {
-      let current = '';
+    function updateFloatingNavActive() {
+      let current = 'hero'; // Default to hero when at top
+      
       sections.forEach(section => {
         const sectionTop = section.offsetTop - 200;
-        if (scrollY >= sectionTop) {
+        if (window.scrollY >= sectionTop) {
           current = section.getAttribute('id');
         }
       });
 
       navLinks.forEach(link => {
         link.classList.remove('active');
-        if (link.getAttribute('href') === '#' + current) {
+        const href = link.getAttribute('href');
+        
+        // For day links (Day 1 and Day 2), only activate if it matches the currently active day tab
+        if (link.dataset.day && href === '#schedule' && current === 'schedule') {
+          const activeDayTab = document.querySelector('.day-tab.active');
+          const activeDay = activeDayTab ? Array.from(document.querySelectorAll('.day-tab')).indexOf(activeDayTab) + 1 : 1;
+          if (parseInt(link.dataset.day) === activeDay) {
+            link.classList.add('active');
+          }
+        } 
+        // For regular links (like Overview), use the standard logic
+        else if (!link.dataset.day && href === '#' + current) {
           link.classList.add('active');
         }
       });
-    });
+    }
+
+    window.addEventListener('scroll', updateFloatingNavActive);
+    // Also call on page load to set initial state
+    updateFloatingNavActive();
 
     // Handle day navigation clicks
     navLinks.forEach(link => {
@@ -4367,6 +4345,30 @@
           e.preventDefault();
           switchDay(parseInt(link.dataset.day));
           document.getElementById('schedule').scrollIntoView({ behavior: 'smooth' });
+          
+          // Update floating nav active state for day links
+          navLinks.forEach(navLink => {
+            navLink.classList.remove('active');
+            if (navLink.dataset.day === link.dataset.day) {
+              navLink.classList.add('active');
+            }
+          });
+        });
+      } else {
+        // Handle non-day links (like Overview)
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          const targetId = link.getAttribute('href').substring(1);
+          const targetSection = document.getElementById(targetId);
+          if (targetSection) {
+            targetSection.scrollIntoView({ behavior: 'smooth' });
+            
+            // Update floating nav active state
+            navLinks.forEach(navLink => {
+              navLink.classList.remove('active');
+            });
+            link.classList.add('active');
+          }
         });
       }
     });
