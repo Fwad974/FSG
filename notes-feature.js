@@ -3,7 +3,6 @@
  * Covers: Talks, Workshops, Industry Symposiums, Keynotes — anything with a bookmark.
  * Add before </body>:  <script src="notes-feature.js"></script>
  */
-
 (function () {
   'use strict';
 
